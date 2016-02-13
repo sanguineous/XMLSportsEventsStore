@@ -1,0 +1,33 @@
+XML to JSON Converter Challenge - Solution guide
+************************************************
+
+DEPLOYMENT GUIDE
+****************
+
+For build and deploy instruction, refer to the DeploymentGuide.docx document inside the /docs directory of the project
+
+SOLUTION DESCRIPTION
+********************
+
+The solution proposed here, is based on two components:
+
+- A Spring Boot, executable jar, that implements the HTTP REST Service required
+
+- A MongoDB database instance that provide storage functionality for game/match events
+
+Spring Boot provides a good programming model for building simple REST web services, as well as a reliable and well-tested execution platform for production ready application. There are also special production-ready features that can be enabled to better monitor the application, once it is deployed to production (See https://docs.spring.io/spring-boot/docs/current/reference/html/production-ready.html for more info).
+
+These are the main design decisions and how they address the functional and non-functional requirements:
+
+- The POST /api/events operation simply converts the content of the "file" parameter to JSON and store the <Game> object into the "games" MongoDB collection. The coversion is made by the class org.json.XML which has interesting features for the project requirements: it addresses performance by using a specialized built-in XML tokenizer and flexibility by converting all types of well-formed XML documents. This way, the solution is flexible enough to support every type of well-formed XML. The only requirements are that they need to have:
+  - the root element "RU50_EventFeed" that has ONE child "Game" element and ONE child "Event" element for the "Game" element;
+  - a numeric "game_id" attribute in "RU50_EventFeed/Game[0]" element;
+  - a numeric "id" attribute in "RU50_EventFeed/Game[0]/Event[0]" element;
+The "games" MongoDB collection is then setup with two indexes:
+  - one "simple" index for the Game.game_id property, to speed up all game events retrieval by the other REST operation;
+  - one "unique" index the Game.Event.id to guaranties that no duplicate events will be stored;
+MongoDB was chosen for the closeness of its data model to type of the data we need to store and for its storage perfomance and ability to cache/map in RAM persistent data.
+
+- The GET /api/matches/{matchId} operation, fetches all game events for the game with specified ID and group them, as a JSON array, inside a JSON object that is returned to the client.
+Because of the potentially big amount of data returned by this call, the whole data is never kept in memory during the process. Instead, thanks to the streaming approach used, in each moment, only a data related to a single event is present in memory.
+

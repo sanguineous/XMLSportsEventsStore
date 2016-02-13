@@ -1,0 +1,1912 @@
+<!DOCTYPE html>
+<!-- saved from url=(0065)https://www.topcoder.com/challenge-details/30052650/?type=develop -->
+<html lang="en" itemscope="" itemtype="http://schema.org/Article" ng-app="challengeDetails" ng-controller="CDCtrl as CD" class="ng-scope"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><script type="text/javascript" src="./XML to JSON Converter Challenge_files/shares.json"></script><style type="text/css">@charset "UTF-8";[ng\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide{display:none !important;}ng\:form{display:block;}.ng-animate-block-transitions{transition:0s all!important;-webkit-transition:0s all!important;}</style>
+  <title ng-bind="CD.challenge.challengeName" class="ng-binding">XML to JSON Converter Challenge</title>
+  <meta name="description" content="Welcome to the XML to JSON converter contest. As part of this contest, you will have to create an application that converts XML to JSON and provides an API">
+  <!-- Schema.org markup for Google+ -->
+  <meta itemprop="name" content="XML to JSON Converter Challenge">
+  <meta itemprop="description" content="Welcome to the XML to JSON converter contest. As part of this contest, you will have to create an application that converts XML to JSON and provides an API to access the converted JSON data.
+
+&amp;nbsp;
+
+Contest Background
+
+Our client is responsible for managing a real-time analytics platform for an upcoming sports event, where between 4-6 matches will occur every day over a period of a few weeks. The platform accepts a series of XML files and converts it. The conversion time takes upwards of 10 seconds. As part of this project, we need to decrease that time, and make the converted content available via an API.
+
+&amp;nbsp;
+
+Contest Details
+
+Create an application that accepts XML as input, converts it to JSON and makes it available via a RESTful API.
+
+&amp;nbsp;
+
+The expectations from your application are as follows:
+
+
+	
+	It should accept new XML every 3 to 4 seconds. Basically, the application will be called with new XML data for conversion every 3 to 4 seconds.
+	
+	
+	The conversion of the XML to JSON must occur in under 10 seconds.
+	
+	
+	The converted data should be accessible through a RESTful API. This API must return the data in JSON format itself.
+	
+	
+	The XML data submitted is essentially a Game / Match data. It contains information about the current progress / status of the game. This data is generated periodically - as mentioned, the application can expect new XML data submitted every 3 to 4 seconds. Thus, as each match in the sports event is completed and the corresponding XML data is converted, the application must update the corresponding &amp;ldquo;match&amp;rdquo; with the latest results. So, in essence, you will group all the XML data based on the match they belong to and then when the user queries for the converted data, the API should return for any given game / match all the events associated with it. Something like GET /api/match/match_id should be supported. (Note that the API endpoint mentioned here is an example. You can use a different endpoint of your liking which you think is suitable)
+	
+	
+	So, in total, you will provide two endpoints - one to allow the user to submit the XML file containing the data which you convert to JSON and store in the database and another to get the match details.
+	
+
+
+&amp;nbsp;
+
+We will share sample XML documents with you that will be submitted / used with your application. You need to provide an API to accept these documents and provide another API to access the converted JSON data. The implementation logic is left to you. What our client proposed is that you could create the API over a single table in SQL Server Database. We are also sharing the Table Structure with you as shared by our client. You can check it out to get an idea of how to model the data. However, this is purely a suggestion. You are free to use a tech stack of your choice that meets the criteria mentioned below.
+
+&amp;nbsp;
+
+Preferred Tech Stack
+
+
+	
+	Open Source is preferred.
+	
+	You should not make use of any libraries or frameworks or tools or anything related to your submission that requires a Paid License.">
+
+  <!-- Twitter Card data -->
+  <meta name="twitter:site" content="@topcoder">
+  <meta name="twitter:title" content="XML to JSON Converter Challenge">
+  <meta name="twitter:description" content="Welcome to the XML to JSON converter contest. As part of this contest, you will have to create an application that converts XML to JSON and provides an API to access the converted JSON data.
+
+&amp;nbsp;
+
+">
+  <meta name="twitter:creator" content="@topcoder">
+
+  <!-- Open Graph data -->
+  <meta property="og:title" content="XML to JSON Converter Challenge">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://www.topcoder.com/challenge-details/30052650/?type=develop">
+  <meta property="og:description" content="Welcome to the XML to JSON converter contest. As part of this contest, you will have to create an application that converts XML to JSON and provides an API to access the converted JSON data.
+
+&amp;nbsp;
+
+Contest Background
+
+Our client is responsible for managing a real-time analytics platform for an upcoming sports event, where between 4-6 matches will occur every day over a period of a few weeks. The platform accepts a series of XML files and converts it. The conversion time takes upwards of 10 seconds. As part of this project, we need to decrease that time, and make the converted content available via an API.
+
+&amp;nbsp;
+
+Contest Details
+
+Create an application that accepts XML as input, converts it to JSON and makes it available via a RESTful API.
+
+&amp;nbsp;
+
+The expectations from your application are as follows:
+
+
+	
+	It should accept new XML every 3 to 4 seconds. Basically, the application will be called with new XML data for conversion every 3 to 4 seconds.
+	
+	
+	The conversion of the XML to JSON must occur in under 10 seconds.
+	
+	
+	The converted data should be accessible through a RESTful API. This API must return the data in JSON format itself.
+	
+	
+	The XML data submitted is essentially a Game / Match data. It contains information about the current progress / status of the game. This data is generated periodically - as mentioned, the application can expect new XML data submitted every 3 to 4 seconds. Thus, as each match in the sports event is completed and the corresponding XML data is converted, the application must update the corresponding &amp;ldquo;match&amp;rdquo; with the latest results. So, in essence, you will group all the XML data based on the match they belong to and then when the user queries for the converted data, the API should return for any given game / match all the events associated with it. Something like GET /api/match/match_id should be supported. (Note that the API endpoint mentioned here is an example. You can use a different endpoint of your liking which you think is suitable)
+	
+	
+	So, in total, you will provide two endpoints - one to allow the user to submit the XML file containing the data which you convert to JSON and store in the database and another to get the match details.
+	
+
+
+&amp;nbsp;
+
+We will share sample XML documents with you that will be submitted / used with your application. You need to provide an API to accept these documents and provide another API to access the converted JSON data. The implementation logic is left to you. What our client proposed is that you could create the API over a single table in SQL Server Database. We are also sharing the Table Structure with you as shared by our client. You can check it out to get an idea of how to model the data. However, this is purely a suggestion. You are free to use a tech stack of your choice that meets the criteria mentioned below.
+
+&amp;nbsp;
+
+Preferred Tech Stack
+
+
+	
+	Open Source is preferred.
+	
+	You should not make use of any libraries or frameworks or tools or anything related to your submission that requires a Paid License.">
+  <meta property="og:site_name" content="topcoder">
+  <meta property="article:published_time" content="2016-01-19T01:00:00.000-05:00">
+
+  <meta charset="utf-8">
+  <meta name="fragment" content="!">
+  <meta name="author" content="@topcoder">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <!--[if lt IE 9]>
+  <script src="/js/html5shiv.js" type="text/javascript"></script>
+  <script src="/js/respond.min.js" type="text/javascript"></script>
+  <script src="/js/modernizr.js" type="text/javascript"></script>
+  <link rel = "stylesheet" href = "/css/ie.css ? v = 201407282" / >
+  <![endif]-->
+  <script type="text/javascript" async="" src="./XML to JSON Converter Challenge_files/aa23cd43c455ef33b6a0df3de81a79af9ea30f75.1.js"></script><script type="text/javascript" async="" src="./XML to JSON Converter Challenge_files/i.js"></script><script async="" src="./XML to JSON Converter Challenge_files/analytics.js"></script><script type="text/javascript" async="" src="./XML to JSON Converter Challenge_files/munchkin.js"></script><script type="text/javascript">
+    // UNIVERSAL
+    var tcconfig = {"auth0ClientID":"6ZwZEUo2ZK4c50aLPpgupeg5v2Ffxp9P","auth0CallbackURL":"https://www.topcoder.com/reg2/callback.action","auth0LDAP":"LDAP","auth0URL":"topcoder.auth0.com","domain":"topcoder.com","mainURL":"https://www.topcoder.com","apiURL":"https://api.topcoder.com/v2","api3URL":"https://api.topcoder.com/v3","cdnURL":"/mf","useVer":false,"version":"","communityURL":"//community.topcoder.com","reviewAppURL":"software.topcoder.com/review","helpAppURL":"help.topcoder.com","forumsAppURL":"apps.topcoder.com/forums/","swiftProgramId":3445,"swiftProgramURL":"http://ios.topcoder.com","arenaURL":"//arena.topcoder.com","useGz":false,"useMin":1,"useCND":1,"myFiltersURL":"//lc1-user-settings-service.herokuapp.com","cbURL":"https://coderbits.com","blogRSSFeedURL":"https://www.topcoder.com/feed/?post_type=blog","photoLinkBaseURL":"https://www.topcoder.com","marketingMessageMyDashURL":"https://banners-r-us.herokuapp.com/serve?size=650x150"}
+
+    var wpUrl  = tcconfig.mainURL;
+
+    var tcApiRUL = tcconfig.apiURL;
+    var myFiltersURL = tcconfig.myFiltersURL;
+
+    var siteURL = tcconfig.mainURL;
+    var communityURL = tcconfig.communityURL;
+    
+    var base_url = tcconfig.mainURL + '/wp-content/themes/tcs-responsive'; // can use '' ?
+    var stylesheet_dir = tcconfig.mainURL + '/wp-content/themes/tcs-responsive/css';
+    var timezone_string = "America/New_York";
+    var challengeType = 'develop';
+
+    var cbApiURL = tcconfig.cbURL;
+
+    window.prerenderReady = false;
+    
+    function getParameterByName(name, source) {
+      name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+      var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+      results = regex.exec(source || location.search);
+      return results == null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+    }
+    function getHashParameterByName(name, source) {
+      name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+      var regex = new RegExp("[\\#&]" + name + "=([^&#]*)"),
+      results = regex.exec(source || location.hash);
+      return results == null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+    }
+
+    // CHALLENGE DETAILS
+    var autoRegister = getParameterByName('autoRegister');
+  </script>
+
+  <!-- HARDCODED FOR NOW -->
+  <link rel="shortcut icon" href="https://www.topcoder.com/wp-content/themes/tcs-responsive/favicon.ico">
+
+  <link rel="stylesheet" href="./XML to JSON Converter Challenge_files/ng-details.min.css" type="text/css" media="all">
+
+  <meta name="google-site-verification" content="13nbPcn6VRWD2zdq-CEG0LbT00aOwSyhofA3OAEmbEI">
+  <meta name="google-site-verification" content="p0OVxcrMQ2HYDsGgaRLRS9bsXuXmjKVcTGZnXNphIUI">
+
+  <style>
+    .btn, a.btn, .blogCategoryMenu a, .searchBox input, .subscribeBox input {
+      behavior: url("/wp-content/themes/tcs-responsive/css/PIE.htc");
+    }
+  </style>
+
+  <style type="text/css">.recentcomments a{display:inline !important;padding:0 !important;margin:0 !important;}</style>
+<style type="text/css">#at16lb{display:none;position:absolute;top:0;left:0;width:100%;height:100%;z-index:1001;background-color:#000;opacity:.001}#at16pc,#at16pi,#at16pib,#at_complete,#at_email,#at_error,#at_share,#at_success{position:static!important}.at15dn{display:none}.at15a{border:0;height:0;margin:0;padding:0;width:230px}.atnt{text-align:center!important;padding:6px 0 0!important;height:24px!important}.atnt a{text-decoration:none;color:#36b}.atnt a:hover{text-decoration:underline}#at15s,#at16nms,#at16p,#at16p form input,#at16p label,#at16p textarea,#at16recap,#at16sas,#at_msg,#at_share .at_item{font-family:arial,helvetica,tahoma,verdana,sans-serif!important;font-size:9pt!important;outline-style:none;outline-width:0;line-height:1em}* html #at15s.mmborder{position:absolute!important}#at15s.mmborder{position:fixed!important;width:250px!important}#at15s{background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAABtJREFUeNpiZGBgaGAgAjAxEAlGFVJHIUCAAQDcngCUgqGMqwAAAABJRU5ErkJggg==);float:none;line-height:1em;margin:0;overflow:visible;padding:5px;text-align:left;position:absolute}#at15s a,#at15s span{outline:0;direction:ltr;text-transform:none}#at15s .at-label{margin-left:5px}#at15s .at-icon-wrapper,#at16ps .at-icon-wrapper{width:1pc;height:1pc;vertical-align:middle}#at15s .at-icon,#at16ps .at-icon{width:1pc;height:1pc}.at4-icon{display:inline-block;background-repeat:no-repeat;background-position:top left;margin:0;overflow:hidden;cursor:pointer}.addthis_16x16_style .at4-icon,.addthis_16x16_white_style .at4-icon,.addthis_default_style .at4-icon,.at4-icon,.at-16x16{width:1pc;height:1pc;line-height:1pc;background-size:1pc!important}.addthis_32x32_style .at4-icon,.addthis_32x32_white_style .at4-icon,.at-32x32{width:2pc;height:2pc;line-height:2pc;background-size:2pc!important}.addthis_24x24_style .at4-icon,.addthis_24x24_white_style .at4-icon,.at-24x24{width:24px;height:24px;line-height:24px;background-size:24px!important}.addthis_20x20_style .at4-icon,.addthis_20x20_white_style .at4-icon,.at-20x20{width:20px;height:20px;line-height:20px;background-size:20px!important}.at4-icon.circular,.circular .at4-icon,.circular.aticon{border-radius:50%}.at4-icon.rounded,.rounded .at4-icon{border-radius:4px}.at4-icon-left{float:left}#at15s .at4-icon{text-indent:20px;padding:0;overflow:visible;white-space:nowrap;background-size:1pc;width:1pc;height:1pc;background-position:top left;display:inline-block;line-height:1pc}.addthis_vertical_style .at4-icon,.at4-follow-container .at4-icon,.sortable-list-container .at4-icon{margin-right:5px}html>body #at15s{width:250px!important}#at15s.atm{background:none!important;padding:0!important;width:10pc!important}#at15s.atiemode2{width:252px!important}#at15s_inner{background:#fff;border:1px solid #fff;margin:0}#at15s_head{position:relative;background:#f2f2f2;padding:4px;cursor:default;border-bottom:1px solid #e5e5e5}.at15s_head_success{background:#cafd99!important;border-bottom:1px solid #a9d582!important}.at15s_head_success a,.at15s_head_success span{color:#000!important;text-decoration:none}#at15s_brand,#at15sptx,#at16_brand{position:absolute}#at15s_brand{top:4px;right:4px}.at15s_brandx{right:20px!important}a#at15sptx{top:4px;right:4px;text-decoration:none;color:#4c4c4c;font-weight:700}#at15s.atiemode2 a#at15sptx,.at15sie6 a#at15sptx{right:8px}#at15sptx:hover{text-decoration:underline}#at16_brand{top:5px;right:30px;cursor:default}#at_hover{padding:4px}#at_hover .at_item,#at_share .at_item{background:#fff!important;float:left!important;color:#4c4c4c!important}#at_share .at_item .at-icon-wrapper{margin-right:5px}#at_hover .at_bold{font-weight:700;color:#000!important}#at16nms,#at16sas{padding:4px 5px}#at16nms{display:none}#at16sas{clear:left;padding-top:1pc;padding-bottom:1pc}#at_hover .at_item{width:7pc!important;padding:2px 3px!important;margin:1px;text-decoration:none!important}#at_hover .at_item.atiemode2{width:114px!important}#at_hover .at_item.athov,#at_hover .at_item:focus,#at_hover .at_item:hover{margin:0!important}#at16ps .at_item:focus,#at_hover .at_item.athov,#at_hover .at_item:focus,#at_hover .at_item:hover,#at_share .at_item.athov,#at_share .at_item:hover{background:#f2f2f2!important;border:1px solid #e5e5e5;color:#000!important;text-decoration:none}.ipad #at_hover .at_item:focus{background:#fff!important;border:1px solid #fff}* html #at_hover .at_item{border:1px solid #fff}* html #at_hover .at_item.athov{border:1px solid #e5e5e5!important;margin:1px!important}#at_email15{padding-top:5px}.at15e_row{height:28px}.at15e_row label,.at15e_row span{padding-left:10px!important;display:block!important;width:60px!important;float:left!important}.at15e_row input,.at15e_row textarea{display:block!important;width:150px!important;float:left!important;background:#fff!important;border:1px solid #ccc!important;color:#333!important;font-size:11px!important;font-weight:400!important;padding:0!important}#at_email input,#at_email label,#at_email textarea{font-size:11px!important}#at_email #at16meo{margin:15px 0 0 2px}#at16meo span{float:left;margin-right:5px;padding-top:4px}#at16meo a{float:left;margin:0}#at_sending{top:130px;left:110px;position:absolute;text-align:center}#at_sending img{padding:10px}.at15t{display:block!important;height:1pc!important;line-height:1pc!important;padding-left:20px!important;background-position:0 0;text-align:left}.addthis_button,.at15t{cursor:pointer}.addthis_toolbox a.at300b,.addthis_toolbox a.at300m{width:auto}.addthis_toolbox a{margin-bottom:5px;line-height:initial}.addthis_toolbox.addthis_vertical_style{width:140px}.addthis_toolbox.addthis_close_style .addthis_button_google_plusone{width:65px;overflow:hidden}.addthis_toolbox.addthis_close_style .addthis_button_facebook_like{width:85px;overflow:hidden}.addthis_toolbox.addthis_close_style .addthis_button_tweet{width:90px;overflow:hidden}.addthis_button_facebook_like .fb_iframe_widget{line-height:100%}.addthis_button_facebook_like iframe.fb_iframe_widget_lift{max-width:none}.addthis_toolbox span.addthis_follow_label{display:none}.addthis_toolbox.addthis_vertical_style span.addthis_follow_label{display:block;white-space:nowrap}.addthis_toolbox.addthis_vertical_style a{display:block}.addthis_toolbox.addthis_vertical_style.addthis_32x32_style a{line-height:2pc;height:2pc}.addthis_toolbox.addthis_vertical_style .at300bs{margin-right:4px;float:left}.addthis_toolbox.addthis_20x20_style span{line-height:20px;*height:20px}.addthis_toolbox.addthis_32x32_style span{line-height:2pc;*height:2pc}.addthis_toolbox.addthis_pill_combo_style .addthis_button_compact .at15t_compact,.addthis_toolbox.addthis_pill_combo_style a{float:left}.addthis_toolbox.addthis_pill_combo_style a.addthis_button_tweet{margin-top:-2px}.addthis_toolbox.addthis_pill_combo_style .addthis_button_compact .at15t_compact{margin-right:4px}.addthis_default_style .addthis_separator{margin:0 5px;display:inline}div.atclear{clear:both}.addthis_default_style .addthis_separator,.addthis_default_style .at4-icon,.addthis_default_style .at300b,.addthis_default_style .at300bo,.addthis_default_style .at300bs,.addthis_default_style .at300m{float:left}.at300b img,.at300bo img{border:0}a.at300b .at4-icon,a.at300m .at4-icon{display:block}.addthis_default_style .at300b,.addthis_default_style .at300bo,.addthis_default_style .at300m{padding:0 2px}.at300b,.at300bo,.at300bs,.at300m{cursor:pointer}.addthis_button_facebook_like.at300b:hover,.addthis_button_facebook_like.at300bs:hover,.addthis_button_facebook_send.at300b:hover,.addthis_button_facebook_send.at300bs:hover{opacity:1;-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";filter:alpha(opacity=100)}.addthis_20x20_style .at15t,.addthis_20x20_style .at300bs,.addthis_20x20_style .dummy .at300bs{overflow:hidden;display:block;height:20px!important;width:20px!important;line-height:20px!important}.addthis_32x32_style .at15t,.addthis_32x32_style .at300bs,.addthis_32x32_style .dummy .at300bs{overflow:hidden;display:block;height:2pc!important;width:2pc!important;line-height:2pc!important}.at300bs{background-position:0 0}.at16nc,.at300bs{overflow:hidden;display:block;height:1pc;width:1pc;line-height:1pc!important}.at16t{padding-left:20px!important;width:auto;cursor:pointer;text-align:left;overflow:visible!important}#at_feed{display:none;padding:10px;height:300px}#at_feed span{margin-bottom:10px;font-size:9pt}#at_feed div{width:102px!important;height:26px!important;line-height:26px!important;float:left!important;margin-right:68px}#at_feed div.at_litem{margin-right:0}#at_feed a{margin:10px 0;height:17px;line-height:17px}#at_feed.atused .fbtn{background:url(//s7.addthis.com/static/r05/feed00.gif) no-repeat;float:left;width:102px;cursor:pointer;text-indent:-9000px}#at_feed .fbtn.bloglines{background-position:0 0!important;width:94px;height:20px!important;line-height:20px!important;margin-top:8px!important}#at_feed .fbtn.yahoo{background-position:0 -20px!important}#at_feed .fbtn.newsgator,.fbtn.newsgator-on{background-position:0 -37px!important}#at_feed .fbtn.technorati{background-position:0 -71px!important}#at_feed .fbtn.netvibes{background-position:0 -88px!important}#at_feed .fbtn.pageflakes{background-position:0 -141px!important}#at_feed .fbtn.feedreader{background-position:0 -172px!important}#at_feed .fbtn.newsisfree{background-position:0 -207px!important}#at_feed .fbtn.google{background-position:0 -54px!important;width:78pt}#at_feed .fbtn.winlive{background-position:0 -105px!important;width:75pt;height:19px!important;line-height:19px;margin-top:9px!important}#at_feed .fbtn.mymsn{background-position:0 -158px;width:71px;height:14px!important;line-height:14px!important;margin-top:9pt!important}#at_feed .fbtn.aol{background-position:0 -189px;width:92px;height:18px!important;line-height:18px!important}.addthis_default_style .at15t_compact,.addthis_default_style .at15t_expanded{margin-right:4px}#at16clb{font-size:16pt;font-family:verdana bold,verdana,arial,sans-serif}#at_share .at_item{width:123px!important;padding:4px;margin-right:2px;border:1px solid #fff}#at16pm{background:#fff;width:298px;height:380px;text-align:left;border-right:1px solid #ccc;position:static}#at16pcc,#at16pccImg{position:fixed;top:0;left:0;width:100%;margin:0 auto;font-size:10px!important;color:#4c4c4c;padding:0;z-index:10000001;overflow:visible}#at16pccImg{height:100%}* html #at16pcc{position:absolute}#at16abifc{overflow:hidden;margin:0;top:10px;left:10px;height:355px;width:492px;position:absolute;border:0}#at16abifc iframe{border:0;position:absolute;height:380px;width:516px;top:-10px;left:-10px}* html div#at16abifc.atiemode2{height:374px;width:482px}* html #at16abifc iframe{height:23pc;left:-10px;top:-10px;overflow:hidden}#at16p{background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAABtJREFUeNpiZGBgaGAgAjAxEAlGFVJHIUCAAQDcngCUgqGMqwAAAABJRU5ErkJggg==);z-index:10000001}#at16p,#atie6cmifh,#atie6ifh{position:absolute;top:50%;left:50%;width:300px;padding:10px;margin:0 auto;margin-top:-185px;margin-left:-155px;font-family:arial,helvetica,tahoma,verdana,sans-serif;font-size:9pt;color:#5e5e5e}#atie6ifh{width:322px;height:381px;margin-left:-165px}#atie6cmifh,#atie6ifh{padding:0;z-index:100001}#atie6cmifh{width:15pc;height:225px;margin:0}#at_share{margin:0;padding:0}#at16ps{overflow-y:scroll;height:19pc;padding:5px}a#at16pit{position:absolute;top:37px;right:10px;display:block;background:url(data:image/gif;base64,R0lGODlhEAAUAKIFAKqqquHh4cLCwszMzP///////wAAAAAAACH5BAEAAAUALAAAAAAQABQAAAMtOLqsAqWQSSsN0OoLthfeNoTaSFbmOaUqe7okHMoeLaqUXeITiGM/SGM4eEQSADs=) no-repeat;width:1pc;height:20px;line-height:19px;margin-right:-17px;text-align:center;overflow:hidden;color:#36b}#at16pi{background:#e5e5e5;text-align:left;border:1px solid #ccc;border-bottom:0}#at16pi a{text-decoration:none;color:#36b}#at16p #at16abc{margin-left:2px!important}#at16pi a:hover{text-decoration:underline}#at16pt{position:relative;background:#f2f2f2;height:13px;padding:5px 10px}#at16pt a,#at16pt h4{font-weight:700}#at16pt h4{display:inline;margin:0;padding:0;font-size:9pt;color:#4c4c4c;cursor:default}#at16pt a{position:absolute;top:5px;right:10px;color:#4c4c4c;text-decoration:none;padding:2px}#at15sptx:focus,#at16pt a:focus{outline:thin dotted}#at16pc form{margin:0}#at16pc form label{display:block;font-size:11px;font-weight:700;padding-bottom:4px;float:none;text-align:left}#at16pc form label span{font-weight:400;color:#4c4c4c;display:inline}#at_email form .abif{width:17pc!important}#at_email textarea{height:55px!important;word-wrap:break-word}* html #at_email textarea,:first-child+html #at_email textarea{height:42px!important}#at_email label{width:220px}#at_email input,#at_email textarea{background:#fff;border:1px solid #bbb;width:17pc!important;margin:0;margin-bottom:8px;font-weight:400;padding:3px!important;font-family:arial,helvetica,tahoma,verdana,sans-serif;font-size:11px;line-height:1.4em;color:#333}#at_email form .atfxmode2{width:279px!important}#at16pc form .at_ent{color:#333!important}#at16pc textarea{height:3pc}#at16pc form input:focus,#at16pc textarea:focus{background:ivory;color:#333}#at16p .atbtn,#at16recap .atbtn{background:#fff;border:1px solid #b5b5b5;width:60px!important;padding:2px 4px;margin:0;margin-right:2px!important;font-size:11px!important;font-weight:700;color:#333;cursor:pointer}#at16p .atbtn:focus,#at16p .atbtn:hover,#at16recap .atbtn:focus,#at16recap .atbtn:hover{border-color:#444;color:#06c}#at16p .atrse,#at16recap .atrse{font-weight:400!important;color:#666;margin-left:2px!important}#atsb .atbtn{width:78px!important;margin:0!important}#at_email #ateml{text-align:right;font-size:10px;color:#999}#at16pc{height:343px!important;font-size:11px;text-align:left;color:#4c4c4c}#at_email{padding:5px 10px}#at16pc .tmsg{padding:4px 2px;text-align:right}#at16psf{position:relative;background:#f2f2f2 url(data:image/gif;base64,R0lGODlhGQEVAMQYAGZmZuDg4Ozs7MjIyMzMzPj4+LOzs3BwcMbGxsvLy5+fn/X19djY2IODg+bm5paWlnl5eeLi4oyMjKmpqdXV1dvb28/Pz////////wAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAEAABgALAAAAAAZARUAAAX/ICaOGJFYaKqubOu+cCzPdG3feK7vPJwQpOBoEChcjsikcslsOp/QqHRKrVqv2Kx2Gy0EBkKRgMEtm8/otHrNTjMEQYGjTa/b7/h82gEfVfSAgYKDhGcVQ0sLBhAAEAYLhZGSk5RqYBgBSgsNAA0GnA2QlaOkpaZHASVGSQYACEgIABOntLW2eAUmSxASShIHt8HCw1snSwAGSq3EzM3OSyhLBw9KD8DP2Nm30UoKrrAACtrj5KMWCYmcCgbeAAcR5fHygT+rSQvtAA8A7vDz/wDV5MIUJVa/gAgTZkmFYYAUg70USpz45BKGPwUPiKPIseOhEXI6ihzphE8cMiRTMI58E6ZhEZUwEXqx2LIEAwsUKujcybOnz59AgwodSrSo0aNIkypdyrSpU58ofoQJAQA7) no-repeat center center;border-bottom:1px solid #ccc;height:20px;padding:4px 10px;text-align:center}* html #at16psf input,:first-child+html #at16psf input{padding:0}#at16psf input,#at16psf input:focus{background:#fff;border:none;width:220px;margin:2px 0 0;color:#666;outline-style:none;outline-width:0;padding:2px 0 0;line-height:9pt;font-family:arial,helvetica,tahoma,verdana,sans-serif;font-size:9pt}#at16pcc .at_error,#at16recap .at_error{background:#f26d7d;border-bottom:1px solid #df5666;padding:5px 10px;color:#fff}#at16pcc #at_success{background:#d0fbda;border-bottom:1px solid #a8e7b7;padding:5px 10px;color:#4c4c4c}#at_complete{font-size:13pt;color:#47731d;text-align:center;padding-top:130px;height:13pc!important;width:472px}#at_s_msg{margin-bottom:10px}.atabout{left:55px}.ac-about{right:20px}.at_baa{display:block;overflow:hidden;outline:0}#at15s #at16pf a{top:1px}#at16pc form #at_send{width:5pc!important}#at16pp{color:#4c4c4c;position:absolute;top:9pt;right:9pt;font-size:11px}#at16pp label{font-size:11px!important}#at16ppc{padding:10px;width:179px}#at16pph{padding:5px 0 10px}#at16pph select{margin:5px 0 8px}#at16pp .atinp{width:156px}#at16ppb{background:#fff;border:1px solid #ccc;height:274px}#at16ep{height:1pc;padding:8px}#at16ep a{display:block;height:1pc;line-height:1pc;padding-left:22px;margin-bottom:8px;font-size:9pt}#at16ep a.at_gmail{background:url(data:image/gif;base64,R0lGODlhEAAQALMPAPKqo95TU+NkY/TCwP74+PbX1/zo59wtJ/nx7uZ7fvnRzfCTgvq2td9DQf///////yH5BAEAAA8ALAAAAAAQABAAAARi8MlJq700hMS6/4vWNIdQOERKOMgyvqSgOLRjJAe8CUcw0ApeYyF4DQpCwCDQGyCKo59BGDtNjbRBIvazQRtSxgCwGDAMrO/AcK7ZztcRoO1+B43oOs0Qb8w/gAxFGISFFREAOw==) no-repeat left}#at16ep a.at_hotmail{background:url(data:image/gif;base64,R0lGODlhEAAQAMQfAP7XFG7B4/zjl/JZIAm7TK7V7v3FY/aLRGDNhOqmkA2ql/2YJvfr2Pn7++9vWtXe6/jQvOfw9funZg2EzEWv3zil0heg0zDCbESHx9PpxY6TvJ3QpPJtQf7+/v///////yH5BAEAAB8ALAAAAAAQABAAAAWO4CeOpNhAUFeuzDEMiRepK/S+XDBVjzd6kAWHc3tMjpVZhyE8cByvDsViOQYehsPCSeR8IpQpFZMwGCQHl/dToAQoionGLEHDRJ5CoHJRkM92ED8FCgQEGHNoDgsCJB4XhgpzZwsAjSQZFxcIGgCengwlHRsIpQKfAg0rHQiGEacGqisfDZsdtzSzHz4rIQA7) no-repeat left}#at16ep a.at_yahoo{background:url(data:image/gif;base64,R0lGODlhEAAQAKIHAPylpevx8bsICNJfX/jQ0Kahof8AAP///yH5BAEAAAcALAAAAAAQABAAAANJeLrc/jAuAmolcQhjhBiBBRDDAChAVxzE5g3csKRGQQpFqDL0fsCCQCOFUwR8vI7wECgtjQDg6CfA8DxYmWbVCHi/TK9kTC4zEgA7) no-repeat left}#at16ppf p#atsb{padding-top:20px;font-size:10px}#at16abr{margin-top:10px}#at16abr input{padding:0;margin:0;margin-right:5px}#at16ppso{display:none;text-align:right;margin-top:2px}#at16ppa{background:#fff;border:1px solid #ccc;height:228px;width:178px;overflow:auto}#at16ppa a{display:block;white-space:nowrap;padding:4px 8px;font-size:9pt!important}#at16eatdr{position:absolute;background:#fff;border-top:0;max-height:110px;overflow:auto;z-index:500;top:129px;left:21px;width:277px}* html #at_email #at16eatdr,:first-child+html #at_email #at16eatdr{top:115px!important;width:17pc!important}#at16eatdr a{display:block;overflow:hidden;border-bottom:1px dotted #eee;padding:4px 8px}#at16eatdr a.hover,#at16eatdr a:hover{background:#e0eefa;text-decoration:none;color:#333}#at_pspromo{height:130px;padding-top:10px}#at15psp,#at_pspromo{width:205px;padding-left:5px}#at_testpromo{font-size:9pt;width:220px;display:none}.atm-i #at_pspromo{height:150px}.atm-i #at_pspromo,.atm-i #at_testpromo{width:140px}#at_testpromo input{width:200px}#at_promo .at-promo-content,#at_testpromo .at-promo-content{margin-top:9pt}#at_promo .at-promo-btn,#at_testpromo .at-promo-btn{padding-top:10px}#at_promo h4,#at_testpromo h4{font-family:arial,helvetica,tahoma,verdana,sans-serif;background:0;font-size:14px;font-weight:700;margin:0 0 4px;padding:0;line-height:18px;height:36px}.atm-i #at_promo h4,.atm-i #at_testpromo h4{height:66px}#at_testpromo h4{font-size:13.5px}#at_promo h4 sup{font-size:11px;color:#ee6a44}#at_promo span{display:block}#_atssh{width:1px!important;height:1px!important;border:0!important}.at-promo-single{padding:10px;padding-top:2px;line-height:1.5em}.at-promo-single img{padding:3px}.at-promo-content img{margin-right:5px;margin-bottom:20px;float:left}.addthis_textshare{display:block;background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABKCAYAAAAYJRJMAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAABmNJREFUeNrsmk9oI3UUx99vZjL5n7TbukLbxYve1INa8KAi6F48ubAHV2+KWCoqyF4WpZZ6cuthq1gKe1oU9+CCoLjg+uciCEWQPSjuReyy7Vq7W7LNJM0kM5nxvV9+U5JNk/xCm8wmMw8ek06TXyafee/93u83XwY1Y+jKwsLCiUwm87Gqqg8oigJBMsdxoFqtXs/n86fn5ua+plPoLhNw1NnZ2ZPZbPai67pgWRbQMUjGGINIJMKPOzs7p5aXly/h6apGkYMexZOLSA/K5TKYpgm2bQcKkKZpEIvFIBqNUnAs4qlv0U0CpKInt7a2pjC1+JuDBoeMsobcMAxKtSliQqcJEHmSIofCK8hGgMhEeSFABS+CopVKJfCAPBOAosRG82awEFATIKrNTPOKuAyg54/p8O6Lz0AylgKnVAEo4WxXruKIdW9SGBSNPCz9+jv8uFUdZEAchgcIZAC98+wjMK644Nz8B9x8GcCogFvarQHC6g9ModEhHk/CWw/eD5fX1wYZEDQAkinSCasCzvYdcAwsZgWLR6H78ttgRxDOd1+AbuTAxZnQrZiQsC0+5tAAkomgqmGCi/0C5EuYk5heWMKSj06DFU9B8fKXwBAgRHRe2qr4JTTm0ADyprj2gMocgJPIQnUkhhmlAMPBGEaLmRkDB18r2LJHSwb/kkEF1NBAdgPIMTFqbBOiL7wCypPP1apYMg0RPIzNvs+hFK6uAlz8hC9kZMYcKkBAk1KEpjwTtGKeF3oWT2ApUkEvl8Ct2qBZou5gLQoeIPzRDAty5colqHz/FQeTPHMObKxBhU8/AH17k69pIJ3ka+GhAoTrj84ppqje3gC6eD8WZBfP8887uIajFXEGZzXLkRpzYADRfkjHANIwv1yH9gZ49FDfY63+DI4eraVWIopwYgAp/NtmUmMODCAZy+EqfyyVxS66KKhWofLN55yXnsK0ymI9SscgMn4Ecuvrw7EN0s2b3/tpFT48/hSMJBKw1ypo0VrhjmtYn3SEpUJ+YxPOXPhhODbS0DPox9D/CJepDfYw+g0l5NDeQkAhoMMBRCV3LcSxZ2uCCQfkikXEEnopZMMZLAkmLrXGfE8anR5lUPNyH/rRgML5E/08+m/oW+iGJsBQ53dL/OM6ekr0SL3YpGYicl9Cf6zLz/6LfgH9NjRu9B54C0hwKAgwtwQT27tYiqARET1j6Gl0vUeAFDE2PVZ5Df0Jyc/dRD8nLr7spcAhAqLNKwN9W3zHHfoeVndH6aIT4sJjPYwgSum4uBGUyrPo0xJwzorovi3utNWDCDJF5OwKYA6jTS5W22tl4uK9Z2W9agEUcQOOoE+gT6K/2QYSwfkI/W/x+pb4AdVDTjNHjGl7Y5OxfosUxM2IiDpHETTVBlI9nBvo/6Hv0N3F6+7LVkHfG0W3dkesuoJIM+cG+mdikmgFZ7PfcPgN9Uvm0iKSJkQkTYqaUw8n3284vgJqAYkAjYsamBNR5BucrveDepFuyMhLNxDF0RCpnxdTrm9wfI+gfSIpJloAJnqdkp9w7hlAdZAUkV7etOv4CQfqGkF+cSsrKyfS6TQXcQZNCkOBQiJOwzBOz8zMNIs45+fnT46OjnIRJ0nwgijipGd6dMzlcqeQR6OIs1gsLpZKJf48nVQZw/BMq6v1j6pyAaeu6/S4qlnEub29PeVpo4MGxzNPbIGAmkWcGEEQNPF4y0VZ7YFno4iTtNEhoAZAjSLOEFAToEYRJxXoToCePurCG8cfh2QsCc4uNsDm/iLO3YIB569eg192tEEG1CjipAjq1Pu8Pv0QjDEHnI32Is5YPAmvTqTgymZuYHuiprUYRVAnQHHLlBdx4oxAYwYKkE0iTlVOxGm7MFyAZFLMIRGnJifipFSjMYcGkIym2SFlvSYr4hxcQPvuB8kA4utqJifipFo0qELyfQFJaZoVrSsR51DppGV+jOP1SZIizqECFIo4OwCSsVDE2cFCEWdo9RaKOGUsBBQCOhxAoYiz0dYgFHG2tFDE2cZCEWerdTiEIs6OgEIRp0QENYs468I+FHHeJeIEIV7wY3lzYBGn+EE9N9Wn2cK7W5Y4ErRrAtRkCzh7Urx+wfETUCtIf9UBOus3HOhRET5IurUVcfYbTtf7QT2wes00QBsRpx9w7oUIujuS9hVx+gWHX1jQpHbd2v8CDAAwldUwLVojIgAAAABJRU5ErkJggg==) no-repeat 0 0;width:44px;height:37px;line-height:28px;padding:0 0 0 28px;margin:0;text-decoration:none;font-family:helvetica,arial,sans-serif;font-size:9pt;color:#fff;cursor:pointer}.addthis_textshare:hover{background-position:0 -37px;text-decoration:none}.at_img_share{position:absolute;opacity:0;background:url(data:image/gif;base64,R0lGODlhFwAVAMQAAP7+/vLy8vv7+/X19fj4+Pz8/PHx8f39/fDw8O/v7/T09Pn5+fPz8/r6+vb29vf394CAgHZ2dm5ubklJSWRkZFtbW39/f4KCglJSUnt7e3h4eAAAAAAAAAAAAAAAAAAAACH5BAAAAAAALAAAAAAXABUAAAWLICCOZGmeaAocbOu+MFvMdG3fs6DvfO//PY0QqGsYj8iMEslsLJ7QqGUarS4I2Kz2wtV6vwSIeEyGfB/odGTNbkfSaYd8Lqnb75L5fMDv+ymAfoKDghWGhH0KiouMGI6MkAoMk5SVE5eVmQwBnJ2en6ChoqMBBqanqKmqpgitrq+wsa0JtLW2t7i0IQA7) repeat-x bottom;border:1px solid #ccc;width:23px;height:21px;line-height:21px;text-indent:-9999px;padding:0;margin:0;cursor:pointer;z-index:1000}.at_img_share:hover{border-color:#8b8b8b}.at_img_share .addthis_toolbox{width:180px;margin:0 auto}.atm{width:10pc!important;padding:0;margin:0;line-height:9pt;letter-spacing:normal;font-family:arial,helvetica,tahoma,verdana,sans-serif;font-size:9pt;color:#444;background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAABtJREFUeNpiZGBgaGAgAjAxEAlGFVJHIUCAAQDcngCUgqGMqwAAAABJRU5ErkJggg==);padding:4px}.atm-f{text-align:right;border-top:1px solid #ddd;padding:5px 8px}.atm-i{background:#fff;border:1px solid #d5d6d6;padding:0;margin:0;box-shadow:1px 1px 5px rgba(0,0,0,.15)}.atm-s{margin:0!important;padding:0!important}.atm-s a:focus{border:transparent;outline:0;-webkit-transition:none;transition:none}#at_hover.atm-s a,.atm-s a{display:block;text-decoration:none;padding:4px 10px;color:#235dab!important;font-weight:400;font-style:normal;-webkit-transition:none;transition:none}#at_hover.atm-s .at_bold{color:#235dab!important}#at_hover.atm-s a:hover,.atm-s a:hover{background:#2095f0;text-decoration:none;color:#fff!important}#at_hover.atm-s .at_bold{font-weight:700}#at_hover.atm-s a:hover .at_bold{color:#fff!important}.atm-s a .at-label{vertical-align:middle;margin-left:5px;direction:ltr}.atm-i #atic_settings{border:none!important;border-top:1px solid #d5d6d6!important;padding-top:6px!important;top:4px}.at_a11y{position:absolute!important;top:auto!important;width:1px!important;height:1px!important;overflow:hidden!important}.at_a11y_container{margin:0;padding:0}.addthis_overlay_container{position:absolute}.addthis_overlay_toolbox{-webkit-border-top-left-radius:10px;-webkit-border-top-right-radius:10px;-moz-border-radius-topleft:10px;-moz-border-radius-topright:10px;border-top-left-radius:10px;border-top-right-radius:10px;padding:5px;background-color:#000;background-color:rgba(0,0,0,.6)}.linkServiceDiv{height:200px;width:25pc;border:1px solid #000;background-color:#aaa}.at_redloading{background:url(data:image/gif;base64,R0lGODlhCgAKAJEDAMzMzP9mZv8AAP///yH/C05FVFNDQVBFMi4wAwEAAAAh+QQFAAADACwAAAAACgAKAAACF5wncgaAGgJzJ647cWua4sOBFEd62VEAACH5BAUAAAMALAEAAAAIAAMAAAIKnBM2IoMDAFMQFAAh+QQFAAADACwAAAAABgAGAAACDJwHMBGofKIRItJYAAAh+QQFAAADACwAAAEAAwAIAAACChxgOBPBvpYQYxYAIfkEBQAAAwAsAAAEAAYABgAAAgoEhmPJHOGgEGwWACH5BAUAAAMALAEABwAIAAMAAAIKBIYjYhOhRHqpAAAh+QQFAAADACwEAAQABgAGAAACDJwncqi7EQYAA0p6CgAh+QQJAAADACwHAAEAAwAIAAACCpRmoxoxvQAYchQAOw==);height:1pc;width:1pc;background-repeat:no-repeat;margin:0 auto}.at-promo-single-dl-ch{width:90pt;height:37px}.at-promo-single-dl-ff{width:90pt;height:44px}.at-promo-single-dl-saf{width:90pt;height:3pc}.at-promo-single-dl-ie{width:129px;height:51px}.atPinBox{position:fixed;top:25%;left:35%;background:#fff;width:482px;margin:0 auto;overflow:auto;overflow-x:hidden;background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAABtJREFUeNpiZGBgaGAgAjAxEAlGFVJHIUCAAQDcngCUgqGMqwAAAABJRU5ErkJggg==);border-radius:8px;-webkit-border-radius:8px;-moz-border-radius:8px;padding:8px;font-family:arial,helvetica,tahoma,verdana,sans-serif;font-size:9pt;color:#cfcaca;z-index:10000001}.atPinHdr,.atPinWinHdr{display:block;background:#f1f1f1;border-bottom:1px solid #ccc;box-shadow:0 0 3px rgba(0,0,0,.1);-webkit-box-shadow:0 0 3px rgba(0,0,0,.1);-moz-box-shadow:0 0 3px rgba(0,0,0,.1);padding:8px 10px;font-size:1pc;line-height:1pc;color:#8c7e7e}.atPinHdr img,.atPinWinHdr img{vertical-align:bottom;margin-left:5px;cursor:pointer}.atPinHdr span{vertical-align:top}.atPinHdr{height:1pc}.atPinMn{background:#fff;padding:10px;height:296px;overflow:auto;overflow-x:hidden;text-align:center;position:relative}.atPinHdrMsg{left:20px}.atPinClose{width:9pt;text-align:right;font-weight:700;position:absolute;right:15px;cursor:pointer}.atImgSpanOuter{position:relative;overflow:hidden;height:200px;width:200px;border:1px solid #a0a0a0;float:left;display:block;margin:10px;background-color:#fff}.atImgSpanInner img{cursor:pointer}.atImgSpanSize{position:absolute;bottom:0;left:0;right:0;display:block;background:#fff;height:22px;line-height:24px;color:#000;overflow:hidden;font-size:10px;zoom:1;filter:alpha(opacity=70);opacity:.7}.atImgActBtn{display:none;width:2pc;height:2pc;position:absolute;top:75px;left:5pc;background-color:#fff}.atPinWin{font-family:arial,helvetica,tahoma,verdana,sans-serif;text-align:center}.atPinWinHdr{display:block;font-size:20px;height:20px;width:100%;position:fixed;z-index:1}.atPinWinMn{text-align:center;padding:40px 0 0;display:inline-block}.atImgIco,.atImgMsg{float:left}.atImgIco{margin-right:5px}.atNoImg{display:block;margin-top:40px;font-size:1pc;line-height:1pc;color:#8c7e7e}.at_PinItButton{display:block;width:40px;height:20px;padding:0;margin:0;background-image:url(//s7.addthis.com/static/t00/pinit00.png);background-repeat:no-repeat}.at_PinItButton:hover{background-position:0 -20px}.addthis_toolbox .addthis_button_pinterest_pinit{position:relative}.at-share-tbx-element .fb_iframe_widget span{vertical-align:baseline!important}.at3PinWinMn{text-align:center;padding:20px 0 0 20px;overflow:auto;height:437px}.at3ImgSpanOuter{position:relative;width:185px;height:185px;border:1px solid #dedede;margin:0 10px 10px 0;overflow:hidden;float:left}.at3ImgSpanOuter:hover{border-color:#3dadfc;box-shadow:0 0 3px #3dadfc;cursor:pointer}.at3ImgSpanOuter .atImgLB{display:block;position:absolute;top:0;bottom:0;left:0;right:0;z-index:1;background-color:rgba(0,0,0,.8);background-repeat:no-repeat;background-position:center center}#at3lb{position:fixed;top:0;right:0;left:0;bottom:0;z-index:16777270;display:none}.at3lblight{background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAABtJREFUeNpizCuu/sRABGBiIBKMKqSOQoAAAwC8KgJipENhxwAAAABJRU5ErkJggg==);background:hsla(217,6%,46%,.65)}.at3lbdark{background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAABtJREFUeNpiZGBg2M9ABGBiIBKMKqSOQoAAAwBAlwDTJEe1aAAAAABJRU5ErkJggg==);background:rgba(0,0,0,.5)}.at3lbnone{background:hsla(0,0%,100%,0)}#at3win{position:fixed;_position:absolute;top:15%;left:50%;margin-left:-20pc;background:#fff;border:1px solid #d2d2d1;width:40pc;box-shadow:0 0 8px 4px rgba(0,0,0,.25);font-family:helvetica neue,helvetica,arial,sans-serif;z-index:16777271;display:none;overflow:hidden}#at3win #at3winheader{position:relative;border-bottom:1px solid #d2d2d1;background:#f1f1f1;height:49px;cursor:default}#at3win #at3winheader p{position:absolute;top:1pc;left:75pt;width:475px;padding:0;margin:0;font-size:14px;line-height:18px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}#at3win #at3winheader h3{height:49px;text-align:left;line-height:49px;margin:0 50px 0 22px;border:0;padding:0 20px;font-size:1pc;font-family:helvetica neue,helvetica,arial,sans-serif;font-weight:700;text-shadow:0 1px #fff;color:#333;direction:ltr}#at3win #at3winheader h3.logoaddthis{padding-left:22px}#at3win #at3winheader .at3winheadersvc{display:inline-block;position:absolute;top:15px;left:20px;cursor:default!important;opacity:1!important}#at3win #at3winheader .at3winheadersvc .at-icon,#at3win #at3winheader .at3winheadersvc .at-icon-wrapper{display:block}#at3win #at3winheader #at3winheaderclose{display:block;position:absolute;top:0;right:0;background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2tpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wUmlnaHRzPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvcmlnaHRzLyIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcFJpZ2h0czpNYXJrZWQ9IkZhbHNlIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOjQwNzc2QTQ5Qjk1RDExRTFCMkE4OEUxNTUwRjMwREY0IiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOjQwNzc2QTQ4Qjk1RDExRTFCMkE4OEUxNTUwRjMwREY0IiB4bXA6Q3JlYXRvclRvb2w9IkFkb2JlIFBob3Rvc2hvcCBDUzMgTWFjaW50b3NoIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InV1aWQ6OEE1QUU0REMzMEU4REYxMUJCNzJGQkJCQzlBM0Y1RkMiIHN0UmVmOmRvY3VtZW50SUQ9InV1aWQ6M0M5RkJGRTEyQUU4REYxMUJCNzJGQkJCQzlBM0Y1RkMiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz78RHhFAAAApUlEQVR42rxTiQnAIAxU6QAdxRW6iZ1EnKRu4gqO0g1sCilEvT7Q0kBQ9O4wl6hLKepNGPUyhmMTQhhpSZTZez8jMGEWWizlRJi1fUHiS8dARHaMSaiELPaViCB3WC1NBMB4CMozWaJuuwBE1BkZdoEB8Qn5kzaaC7fbgN0xN+TYlNOJmCvyXjPwpBKRL7BnhgERiwQmHhDothDJjMVz8Ptv3AQYAJWjVVdnlDZCAAAAAElFTkSuQmCC);background-repeat:no-repeat;background-position:center center;border-left:1px solid #d2d2d1;width:49px;height:49px;line-height:49px;overflow:hidden;text-indent:-9999px;text-shadow:none;cursor:pointer}#at3win #at3winheader #at3winheaderclose:hover{background-color:#dedede}#at3win #at3wincontent{height:440px;position:relative}#at3wincopy,#at3winemail,#at3winshare{height:440px}#ate-promo .addthis_button_twitter .aticon-twitter{background-position:0 -4pc!important}#at3wincontent{-o-box-sizing:content-box;box-sizing:content-box}#at3win #at3wincontent.at3nowin{position:relative;height:25pc;padding:20px;overflow:auto}#at3winfooter{position:relative;background:#fff;-o-box-sizing:content-box;box-sizing:content-box;border-top:1px solid #d2d2d1;height:11px;_height:20px;line-height:11px;padding:5px 20px;font-size:11px;color:#666}#at3winfooter a{margin-right:10px;text-decoration:none;color:#666;float:left}#at3winfooter a:hover{text-decoration:none;color:#000}#at3logo{background:url(//s7.addthis.com/static/t00/at3logo-sm.gif) no-repeat left center!important;padding-left:10px}#at3privacy{position:absolute;top:5px;right:10px;background:url(//s7.addthis.com/static/t00/at3-privacy.gif) no-repeat right center!important;padding-right:14px}#at3winfilter{background:#f1f1f1;border-top:1px solid #fff;border-bottom:1px solid #d2d2d1;padding:13px 0;text-align:center}#at3winsvc-filter{background-repeat:no-repeat;background-position:right;background-image:url(data:image/gif;base64,R0lGODlhHgAUALMAAJiYmHV1deTk5Kmpqbe3t9nZ2Y2Njfn5+fT09Ozs7MnJyYGBgWpqav39/WZmZv///yH5BAAAAAAALAAAAAAeABQAAASi8MlXxgoLqDa7/xICOGTpLAKoTshCMsZgBG+6gqNjJA93DAxH4HDzCEgGTqdBIBGKnSYjoewcXAvoZJRVDUhErcEBWClIPC1X1fg6ENrHl4GoThquQJxCKn+kA3sPY2QHSkwMQQJ2Nw0INEIABBYmATZxCQtBJpyWgg0KBkEMCwQKm0KXgoYTBaiegh8NriUBabFLtH24Hg2zm368HgULKDcRADs=);border:1px solid #d2d2d1;padding:15px 38px 15px 9pt;margin:0 auto;width:374px;text-align:left;font-size:18px;border-radius:5px;box-shadow:inset 0 1px 2px rgba(0,0,0,.1);-webkit-box-shadow:inset 0 1px 2px rgba(0,0,0,.1);-moz-box-shadow:inset 0 1px 2px rgba(0,0,0,.1);color:#666}#service-filter:hover{border-color:#9c9c9c}#service-filter:focus{border-color:#3dadfc;box-shadow:0 0 4px rgba(61,173,252,.8);-webkit-box-shadow:0 0 4px rgba(61,173,252,.8);-moz-box-shadow:0 0 4px rgba(61,173,252,.8);outline:0}#at3wintoolbox{margin:0 0 0 20px;height:340px;overflow:auto;padding:10px 0}#at3wintoolbox a{display:block;float:left;width:180px;padding:4px;margin-bottom:10px;text-decoration:none;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;border-radius:4px;-moz-border-radius:4px;-webkit-border-radius:4px;font-size:1pc;color:#235dab}#at3wintoolbox a:focus,#at3wintoolbox a:hover{background-color:#2095f0}#at3wintoolbox a:focus,#at3wintoolbox a:hover,#at3wintoolbox span:hover{text-decoration:none;color:#fff;font-weight:400;text-shadow:none;opacity:1;filter:alpha(opacity=100);cursor:pointer}#at3wintoolbox span{display:block;height:2pc;line-height:2pc;padding-left:38px!important;width:auto!important}.service-icon{padding:4px 8px}.service-icon:hover{background:#2095f0;color:#fff}.service-icon span{padding-left:20px}#at3winssi{position:absolute;right:50px;top:0;height:50px;display:block}.at-quickshare-header-peep{position:absolute;top:0;right:34px;height:1pc;padding:6px;border-left:1px solid #dedede;cursor:pointer}.at-quickshare-header-peep.peep-active{background:#dedede;cursor:default}.at-quickshare-header-peep span{display:inline-block;background:url(data:image/gif;base64,R0lGODlhBwAEAIABALm5uf///yH5BAEAAAEALAAAAAAHAAQAAAIIhA+BGWoNWSgAOw==) no-repeat right;padding-right:11px}.at-quickshare-header-peep span img{display:block;background:#ccc;width:1pc;height:1pc;line-height:20px;overflow:hidden;text-indent:-9999px;border:1px solid #bbb;border-radius:3px;-webkit-border-radius:3px;-moz-border-radius:3px}.at-quickshare-header-peep ul{position:absolute;top:25px;left:-75px;width:140px;background:#fff;border:1px solid #bbb;border-radius:4px;box-shadow:0 1px 4px hsla(0,0%,40%,.8);margin:0;padding:0;font-weight:400;z-index:1100}.at-quickshare-header-peep ul li{list-style:none;font-size:9pt;padding:0;margin:0;text-align:left}.at-quickshare-menu{outline:0}.at-quickshare-menu li.at-quickshare-menu-sep{border-bottom:1px solid #dedede}.at-quickshare-header-peep ul li a{display:block;padding:5px 10px;text-decoration:none;color:#666}.at-quickshare-header-peep ul li a:hover{background:#0d98fb;text-decoration:none;color:#fff}#at_auth{position:relative;box-sizing:content-box;-moz-box-sizing:content-box;-webkit-box-sizing:content-box;-o-box-sizing:content-box;border-top:1px solid #d5d6d6!important;padding:10px 10px 7px;line-height:1pc;height:1pc}#atic_signin{cursor:pointer}#atic_signin,#atic_signin:hover{text-decoration:none}#atic_signin #at_auth:hover{background:#2095f0;text-decoration:none;color:#fff!important}#atic_usersettings{cursor:pointer}#atic_usersettings:hover{text-decoration:underline}#atic_usersignout{font-size:11px;position:absolute;top:10px;right:10px;cursor:pointer}#atic_usersignout:hover{text-decoration:underline}#at_auth img{width:1pc;height:1pc;overflow:hidden;border:none;padding:0;margin:0 5px 0 0;float:left}#at_auth a{text-decoration:none}#at16pf{height:auto;text-align:right;padding:4px 8px}@media screen and (max-width:680px){#at3win{width:95%;left:auto;margin-left:auto}}@media print{#at3win,#at4-follow,#at4-share,#at4-thankyou,#at4-whatsnext,#at4m-mobile,#at15s,#at-recommendedside,.at4,.at4-recommended{display:none!important}}@media screen and (max-width:400px){.at4win{width:100%}.addthis_bar .addthis_bar_p{margin-right:auto}}@media screen and (max-height:700px) and (max-width:400px){.at4-thankyou-inner .at4-recommended-container{height:122px;overflow:hidden}.at4-thankyou-inner .at4-recommended .at4-recommended-item:first-child{border-bottom:1px solid #c5c5c5}}</style><style type="text/css">.at-icon{fill:#fff;border:0}.at-icon-wrapper{display:inline-block;overflow:hidden}a .at-icon-wrapper{cursor:pointer}.at-rounded,.at-rounded-element .at-icon-wrapper{border-radius:12%}.at-circular,.at-circular-element .at-icon-wrapper{border-radius:50%}.addthis_32x32_style .at-icon{width:2pc;height:2pc}.addthis_24x24_style .at-icon{width:24px;height:24px}.addthis_20x20_style .at-icon{width:20px;height:20px}.addthis_16x16_style .at-icon{width:1pc;height:1pc}</style><style type="text/css">.at-branding-logo{font-family:helvetica,arial,sans-serif;text-decoration:none;font-size:10px;display:inline-block;margin:2px 0;letter-spacing:.2px}.at-branding-logo .at-branding-icon{background-image:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAMAAAC67D+PAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAAZQTFRF////+GlNUkcc1QAAAB1JREFUeNpiYIQDBjQmAwMmkwEM0JnY1WIxFyDAABGeAFEudiZsAAAAAElFTkSuQmCC")}.at-branding-logo .at-branding-icon,.at-branding-logo .at-privacy-icon{display:inline-block;height:10px;width:10px;margin-left:4px;margin-right:3px;margin-bottom:-1px;background-repeat:no-repeat}.at-branding-logo .at-privacy-icon{background-image:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAkAAAAKCAMAAABR24SMAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAABhQTFRF8fr9ot/xXcfn2/P5AKva////////AKTWodjhjAAAAAd0Uk5T////////ABpLA0YAAAA6SURBVHjaJMzBDQAwCAJAQaj7b9xifV0kUKJ9ciWxlzWEWI5gMF65KUTv0VKkjVeTerqE/x7+9BVgAEXbAWI8QDcfAAAAAElFTkSuQmCC")}.at-branding-logo span{text-decoration:none}.at-branding-logo .at-branding-addthis,.at-branding-logo .at-branding-powered-by{color:#666}.at-branding-logo .at-branding-addthis:hover{color:#333}.at-cv-with-image .at-branding-addthis,.at-cv-with-image .at-branding-addthis:hover{color:#fff}a.at-branding-logo:visited{color:initial}.at-branding-info{display:inline-block;padding:0 5px;color:#666;border:1px solid #666;border-radius:50%;font-size:10px;line-height:9pt;opacity:.7;transition:all .3s ease;text-decoration:none}.at-branding-info span{border:0;clip:rect(0 0 0 0);height:1px;margin:-1px;overflow:hidden;padding:0;position:absolute;width:1px}.at-branding-info:before{content:'i';font-family:Times New Roman}.at-branding-info:hover{color:#0780df;border-color:#0780df}</style><script type="text/javascript" charset="utf-8" async="" src="./XML to JSON Converter Challenge_files/menu.f69da47d305e6f24c64c.js"></script><script type="text/javascript" charset="utf-8" async="" src="./XML to JSON Converter Challenge_files/counter.3f1fc5a09607ce12fb85.js"></script><style type="text/css">.addthis_counter{font-weight:700;display:inline-block;border:0;outline:0;cursor:pointer;color:#fff}.addthis_counter a{display:block;font-family:arial,helvetica,sans-serif!important;text-decoration:none!important;border:0}.addthis_counter{text-decoration:none!important;text-align:left}.addthis_counter .addthis_button_expanded,.addthis_counter .atc_s{background:url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAACaCAMAAADcrusAAAAA21BMVEX////+bUznWjrnWjrBwcGJiYnm5ubFxcWMjIyRkZH39/f19fX////nWjr+bUzys6n+uq7/7+z87evqd2H+hm3/5+P+sKPxqJz65OH/9/b+el3paU//zcT2yMDshXH99vX+kXz+nIn/w7n0vrX30cz9bEv/3tn529f/1s/ukYH3aUn+ppbvnY/bUjTmWTn/3dX+9fP3aEj/9vT52NH/5d/aUTP9a0r74tzlWDjfWz386+f/7en4b1H/7uv4b1D/3db/9/X/7uraUjT+9vT87Oj87OnpZEb52dH+dlezszuQAAAABHRSTlMAExMAzBw6IQAAAnlJREFUeF6009eKKzEMBuBJriW5T2/pPdvbqb28/xMdGbOQiyxZZ9n/QnjAH8KWJxl8uqeI3H8ZJFcUmatkFktmCUXnXHIBIRevJ/AcBuUSQI0onZ8k1/QxkNqVJIvyNPl8S1/ZMFkuuYxtqhQoS2MA1RNIGKUArjwk/4Lk0jtXp0QpjEjJHiw5SbzZQlo6eUi+fafba0985LKwqSOqJdNaMdmQ5O+NOn6WYsNlPk7nnvRF6iF3lOBz/MZqZ6kvZCBS+bUn1h/MvTCXmumYArEKijlYJr6N6t8y/fcn5zz+dfwvNlhH9ZmtB8nw6REj8vg0TO4wMnfJPpbsE4zOueQGQm5eT+A5DKopgF5htjhJLvFDIE1eoeiq0+T3A/5lw2Q65TIxmdagDU4AdIsgYJUB5NUh+RMklzbPmwwxgxVq0YLBXCBvNpBVuTgkP3/hw6UnPmLamSxHbATTRjPZouDvrT5+lm7LZTHJFp60XeYhdxTgc/zGmtxg24lAhPZrT4w/WP7CXBqmEwzEaOgWYJj4Nrp9y/Tfn5zz+Hex5Ecy3EX12e+G/9mrQxUAYBgGooEFAm3//3snZmviJnL+6cMRrXSgHqsWOGb8iISEhISEqDxRAsSld5De/nLbr4MViEEYDMI5mFQ3ff/nXejx33YHcyqtc/8QQSXaRYfJZpAaFWx2FdwfMXyqYdYjp4punpP5fcgiiyyyyCKVl9+6nxQHCP+t20WHCTdIjQo2KjgDAT/Y7UQk/li1tkPtyaQlEhBARABBUV+lvhc1rz4w+FX4bKWLrA0cp7Ue+KhqnpA/mXggAQFEBBAU9VXqe1HzzgNTv2Iyx9Dc8gWOjkKMG1wfQQAAAABJRU5ErkJggg==');background-repeat:no-repeat;display:inline-block}.addthis_counter.addthis_bubble_style{background-image:url('data:image/gif;base64,R0lGODlhUgBkAKIEAOrq6sLCwoWFhf///////wAAAAAAAAAAACH5BAEAAAQALAAAAABSAGQAAAP/SLoa/jDKSetkOGsdwPhgKI5kaYpAsK1sd75wPKZsjQVyrpuq7eO7YLDnqwGFyBixuDomn6UlkwOtkqTTm3ULwmYXTi7U+3WJreSp+VxNF9fs8ZcBjz/dRo8dPSfU90l4TXqAcn1/hTuCLYSJQ31gjY45i3mTipB0kpcnlTZhnDyZdKFKo2ClMJ5GqS+rLa2dpw2xorOgtR+vg7kou7y9AzSzYBbGx8gRxAwCzc7P0NHS09TSywoCm60AAsvZwSDcxALgId2z5OUf56fp6uyj7uXwmfLg9JD2wfh9+r38X76pGwBwisCBBYscRFhP2718Dh/OWThwXb+IEidi/New+SKIhD4ozmu3sRVIhSVLnVRYcWXIluNgopPZjmY8m/VwQlQnblxKRz29VRtKtCg0YsmSOsBgtGmzNz9zDCMgEkpQWGyI+KuyElebBVuhdI2jNc5JRF+pRtUBEu3XqlYSum0DNy6jPQHqcrVEVq2ds2spYQssY2xWsGZ/9MWW+NNiqo35cpmqV8jVFkqTMXVqlEnmz1I4i4Y3twplwjqCehVTthC71VxaA3qdSPYe2oVs/0WVG7HrBqgx+f1deouKylsEFDeOPPlyNM3tPpcTXSzw2oMT4QakOzJs475n8+Ye/vZ4vOV30+rN+Pf1PacBXQWdefPopgQSAAA7');background-repeat:no-repeat}.addthis_counter a.atc_s{display:block;color:#000;background-repeat:no-repeat;background-position:0 0;width:50px;height:20px;line-height:20px;overflow:hidden;cursor:pointer;-webkit-transition:none;transition:none}.addthis_counter a.atc_s:hover{background-position:0 -20px;height:20px}.addthis_counter .atc_s-span{height:20px;display:block}.addthis_counter .addthis_button_expanded.at300m .at4-icon{display:none!important}.addthis_counter a.addthis_button_expanded:hover,.addthis_counter a.atc_s:hover,.addthis_counter.addthis_pill_style a.addthis_button_expanded:hover,.addthis_counter.addthis_pill_style a.atc_s:hover{text-decoration:none;color:#000}.addthis_counter .addthis_button_expanded{display:block;background-repeat:no-repeat;background-position:0 -40px;width:50px;height:33px;line-height:33px;padding-bottom:4px;margin-bottom:3px;text-align:center;text-decoration:none;font-size:1pc;font-weight:700;color:#333}.addthis_counter{vertical-align:top}.addthis_counter.addthis_native_counter .addthis_button_expanded{font-weight:400}* html .addthis_counter.compatmode0 .addthis_button_expanded{padding-bottom:0!important}* html .addthis_counter .addthis_button_expanded{height:37px}.addthis_counter .addthis_button_expanded:hover{background-position:0 -77px;cursor:pointer;color:#000}.addthis_counter .addthis_button_expanded .at300bs{display:none!important}.addthis_counter.addthis_pill_style{display:inline-block;height:20px;overflow:hidden}.addthis_counter.addthis_pill_style a.atc_s{float:left}.addthis_counter.addthis_pill_style a.addthis_button_expanded{display:none;background-repeat:no-repeat;background-position:0 -114px;width:34px!important;height:20px;line-height:20px;margin:0 0 0 3px;padding:0 0 0 4px;float:left;text-align:center;text-decoration:none;font-family:arial,helvetica,sans-serif;font-weight:700;font-size:11px;color:#333;-ms-box-sizing:content-box;-o-box-sizing:content-box;box-sizing:content-box}.addthis_counter.ie6.addthis_pill_style a.addthis_button_expanded,.addthis_counter.ie7.addthis_pill_style a.addthis_button_expanded{width:38px!important}.addthis_counter.addthis_pill_style.addthis_nonzero a.addthis_button_expanded{display:block!important;-webkit-transition:none;transition:none}.addthis_counter.addthis_pill_style a.addthis_button_expanded:hover{background-position:0 -134px!important}.addthis_counter.addthis_bubble_style{margin:0 0 0 -2px;text-align:center;font-weight:700;font-family:arial,helvetica,sans-serif;color:#000;background-repeat:no-repeat;background-position:0 -4pc;padding:0 0 0 4px;height:1pc;width:2pc!important;-ms-box-sizing:content-box;-o-box-sizing:content-box;box-sizing:content-box}.addthis_native_counter_parent .addthis_counter.addthis_bubble_style{background-position:0 -4pc!important}.addthis_counter.addthis_bubble_style.addthis_native_counter{margin:0 2px}.addthis_counter.addthis_bubble_style a.addthis_button_expanded{font-size:11px;height:1pc;line-height:1pc;width:34px;background:none}.addthis_counter.addthis_bubble_style:hover{background-position:-36px -4pc!important}.addthis_20x20_style .addthis_counter.addthis_bubble_style{background-repeat:no-repeat;background-position:0 -5pc!important;height:20px;width:35px!important;line-height:20px;padding:0 0 0 6px}.addthis_20x20_style .addthis_counter.addthis_bubble_style:hover{background-position:-41px -5pc!important}.addthis_20x20_style .addthis_counter.addthis_bubble_style a.addthis_button_expanded{background:none;font-size:9pt;line-height:20px;height:20px;margin:0;width:35px!important;padding:0!important}.addthis_20x20_style .addthis_counter.addthis_bubble_style.addthis_native_counter a.addthis_button_expanded{font-size:11px}.addthis_32x32_style .addthis_counter.addthis_bubble_style,.addthis_32x32_white_style .addthis_counter.addthis_bubble_style{background-repeat:no-repeat;background-position:0 0!important;height:2pc;width:56px!important;line-height:2pc;padding:0 0 0 6px}.addthis_32x32_style .addthis_counter.addthis_bubble_style a.addthis_button_expanded,.addthis_32x32_white_style .addthis_counter.addthis_bubble_style a.addthis_button_expanded{background:none;font-size:1pc;line-height:2pc;height:2pc;margin:0;width:56px!important;padding:0!important}.addthis_32x32_style .addthis_counter.addthis_bubble_style:hover,.addthis_32x32_white_style .addthis_counter.addthis_bubble_style:hover{background-position:0 -2pc!important}.addthis_counter.addthis_bubble_style .atc_s{display:none!important}* html .addthis_counter.addthis_bubble_style{width:36px!important;display:inline}* html .addthis_counter.bubblecompatmode0{width:2pc!important;display:block}* html .addthis_counter.addthis_bubble_style a.addthis_button_expanded{width:24px!important;height:14px!important;line-height:14px!important;padding:0;margin-top:1px!important;display:inline}* html .addthis_counter.bubblecompatmode0 a.addthis_button_expanded{width:36px}* html .addthis_32x32_style .addthis_counter.addthis_bubble_style{width:60px!important}* html .addthis_32x32_style .addthis_counter.addthis_bubble_style a.addthis_button_expanded{width:46px;height:26px!important;line-height:26px!important;margin-top:2px!important}* html .addthis_32x32_style .addthis_counter.bubblecompatmode0 a.addthis_button_expanded{height:2pc!important;line-height:2pc!important}</style></head>
+
+<body style="">
+<div id="wrapper" class="tcssoUsingJS">
+<div class="ng-header-bootstrap ng-scope"><div class="header-wrapper" ng-class="{&#39;menu-visible&#39;: main.menuVisible}">
+  <header class="top-header">
+    <a href="https://www.topcoder.com/" class="logo-link"></a>
+    <div class="show-small mobile-heading"><!-- ngIf: main.menuVisible -->
+      <!-- ngIf: !main.menuVisible --><button type="button" ng-if="!main.menuVisible" ng-click="main.menuVisible = true" class="btn-open-menu ng-scope">Menu</button><!-- end ngIf: !main.menuVisible -->
+      <!-- ngIf: main.menuVisible -->
+      <!-- ngIf: !main.menuVisible --><a ng-href="" ng-switch="vm.isAuth" data-ng-if="!main.menuVisible" class="user-link ng-scope"><!-- ngSwitchWhen: true --><img ng-switch-when="true" ng-src="//community.topcoder.com/i/m/nophoto_login.gif" class="user-avatar ng-scope" src="./XML to JSON Converter Challenge_files/nophoto_login.gif"><!-- ngSwitchWhen: false --></a><!-- end ngIf: !main.menuVisible -->
+    </div>
+   <ul class="main-menu">
+      <li class="menu-item search-wrapper">
+        <div class="menu-item-header show-large">
+          <button type="button" class="btn-expand-search search-icon"></button>
+        </div>
+        <div class="submenu">
+          <input type="text" placeholder="find members" ng-model="vm.searchTerm" ng-keyup="vm.checkSubmit($event)" class="ng-pristine ng-valid">
+        </div>
+      </li>
+      <li ng-switch="vm.isAuth" ng-class="{&#39;anonymous-menu&#39;: !vm.isAuth}" class="menu-item link-group user-menu">
+        <!-- ngSwitchWhen: true --><div ng-switch-when="true" class="ng-scope">
+          <div class="menu-item-header">
+            <a ng-href="" class="profile-link-dropdown">
+              <img ng-src="//community.topcoder.com/i/m/nophoto_login.gif" class="user-avatar" src="./XML to JSON Converter Challenge_files/nophoto_login.gif">
+              <span ng-style="vm.handleStyle" class="username ng-binding">d1rk</span>
+            </a>
+          </div>
+          <a href="https://www.topcoder.com/settings/profile" class="btn-link btn-edit-profile show-small">EDIT</a>
+          <ul class="submenu">
+            <!-- ngRepeat: item in vm.userMenu --><li class="submenu-item ng-scope" ng-repeat="item in vm.userMenu">
+              <a ng-href="/my-dashboard" ng-class="{ &#39;active&#39;: vm.isActive(item.href) }" class="menu-link" target="_self" href="https://www.topcoder.com/my-dashboard">
+                <img ng-src="/mf/i/nav/dashboard.svg" class="menu-icon" src="./XML to JSON Converter Challenge_files/dashboard.svg">
+                <div class="menu-text ng-binding">DASHBOARD</div>
+              </a>
+            </li><!-- end ngRepeat: item in vm.userMenu --><li class="submenu-item ng-scope" ng-repeat="item in vm.userMenu">
+              <a ng-href="/members/d1rk" ng-class="{ &#39;active&#39;: vm.isActive(item.href) }" class="menu-link" target="_self" href="https://www.topcoder.com/members/d1rk">
+                <img ng-src="/mf/i/nav/profile.svg" class="menu-icon" src="./XML to JSON Converter Challenge_files/profile.svg">
+                <div class="menu-text ng-binding">MY PROFILE</div>
+              </a>
+            </li><!-- end ngRepeat: item in vm.userMenu --><li class="submenu-item ng-scope" ng-repeat="item in vm.userMenu">
+              <a ng-href="https://community.topcoder.com/PactsMemberServlet?module=PaymentHistory&amp;full_list=false" ng-class="{ &#39;active&#39;: vm.isActive(item.href) }" class="menu-link" target="_self" href="https://community.topcoder.com/PactsMemberServlet?module=PaymentHistory&amp;full_list=false">
+                <img ng-src="/mf/i/nav/wallet.svg" class="menu-icon" src="./XML to JSON Converter Challenge_files/wallet.svg">
+                <div class="menu-text ng-binding">PAYMENTS</div>
+              </a>
+            </li><!-- end ngRepeat: item in vm.userMenu --><li class="submenu-item ng-scope" ng-repeat="item in vm.userMenu">
+              <a ng-href="/settings/profile" ng-class="{ &#39;active&#39;: vm.isActive(item.href) }" class="menu-link" target="_self" href="https://www.topcoder.com/settings/profile">
+                <img ng-src="/mf/i/nav/settings.svg" class="menu-icon" src="./XML to JSON Converter Challenge_files/settings.svg">
+                <div class="menu-text ng-binding">SETTINGS</div>
+              </a>
+            </li><!-- end ngRepeat: item in vm.userMenu -->
+            <li class="submenu-item">
+              <a ng-click="vm.logout()" class="menu-link">
+                <img ng-src="/mf/i/nav/logout.svg" class="menu-icon" src="./XML to JSON Converter Challenge_files/logout.svg">
+                <div class="menu-text">LOG OUT</div>
+              </a>
+            </li>
+          </ul>
+        </div>
+        <!-- ngSwitchWhen: false -->
+      </li>
+      <!-- ngRepeat: header in vm.menuHeaders --><li ng-repeat="header in vm.menuHeaders" class="menu-item link-group ng-scope">
+        <div class="menu-item-header ng-binding">compete</div>
+        <ul class="submenu">
+          <!-- ngRepeat: item in vm.menuLinks[header] --><li class="submenu-item ng-scope" ng-repeat="item in vm.menuLinks[header]">
+            <a ng-click="$event.stopPropagation();" ng-href="/challenges/design/active/?pageIndex=1" ng-class="{ &#39;active&#39;: vm.isActive(item.href) }" class="menu-link" target="_self" href="https://www.topcoder.com/challenges/design/active/?pageIndex=1">
+              <img ng-src="/mf/i/nav/track-design.svg" class="menu-icon" src="./XML to JSON Converter Challenge_files/track-design.svg">
+              <div class="menu-text ng-binding">DESIGN CHALLENGES</div>
+            </a>
+          </li><!-- end ngRepeat: item in vm.menuLinks[header] --><li class="submenu-item ng-scope" ng-repeat="item in vm.menuLinks[header]">
+            <a ng-click="$event.stopPropagation();" ng-href="/challenges/develop/active/?pageIndex=1" ng-class="{ &#39;active&#39;: vm.isActive(item.href) }" class="menu-link" target="_self" href="https://www.topcoder.com/challenges/develop/active/?pageIndex=1">
+              <img ng-src="/mf/i/nav/track-develop.svg" class="menu-icon" src="./XML to JSON Converter Challenge_files/track-develop.svg">
+              <div class="menu-text ng-binding">DEVELOPMENT CHALLENGES</div>
+            </a>
+          </li><!-- end ngRepeat: item in vm.menuLinks[header] --><li class="submenu-item ng-scope" ng-repeat="item in vm.menuLinks[header]">
+            <a ng-click="$event.stopPropagation();" ng-href="/challenges/data/active/?pageIndex=1" ng-class="{ &#39;active&#39;: vm.isActive(item.href) }" class="menu-link" target="_self" href="https://www.topcoder.com/challenges/data/active/?pageIndex=1">
+              <img ng-src="/mf/i/nav/track-data.svg" class="menu-icon" src="./XML to JSON Converter Challenge_files/track-data.svg">
+              <div class="menu-text ng-binding">DATA SCIENCE CHALLENGES</div>
+            </a>
+          </li><!-- end ngRepeat: item in vm.menuLinks[header] --><li class="submenu-item ng-scope" ng-repeat="item in vm.menuLinks[header]">
+            <a ng-click="$event.stopPropagation();" ng-href="https://arena.topcoder.com" ng-class="{ &#39;active&#39;: vm.isActive(item.href) }" class="menu-link" target="_blank" href="https://arena.topcoder.com/">
+              <img ng-src="/mf/i/nav/track-cp.svg" class="menu-icon" src="./XML to JSON Converter Challenge_files/track-cp.svg">
+              <div class="menu-text ng-binding">COMPETITIVE PROGRAMMING</div>
+            </a>
+          </li><!-- end ngRepeat: item in vm.menuLinks[header] -->
+        </ul>
+      </li><!-- end ngRepeat: header in vm.menuHeaders --><li ng-repeat="header in vm.menuHeaders" class="menu-item link-group ng-scope">
+        <div class="menu-item-header ng-binding">learn</div>
+        <ul class="submenu">
+          <!-- ngRepeat: item in vm.menuLinks[header] --><li class="submenu-item ng-scope" ng-repeat="item in vm.menuLinks[header]">
+            <a ng-click="$event.stopPropagation();" ng-href="/getting-started/" ng-class="{ &#39;active&#39;: vm.isActive(item.href) }" class="menu-link" target="_self" href="https://www.topcoder.com/getting-started/">
+              <img ng-src="/mf/i/nav/rocket.svg" class="menu-icon" src="./XML to JSON Converter Challenge_files/rocket.svg">
+              <div class="menu-text ng-binding">GETTING STARTED</div>
+            </a>
+          </li><!-- end ngRepeat: item in vm.menuLinks[header] --><li class="submenu-item ng-scope" ng-repeat="item in vm.menuLinks[header]">
+            <a ng-click="$event.stopPropagation();" ng-href="/community/design/" ng-class="{ &#39;active&#39;: vm.isActive(item.href) }" class="menu-link" target="_self" href="https://www.topcoder.com/community/design/">
+              <img ng-src="/mf/i/nav/book-design.svg" class="menu-icon" src="./XML to JSON Converter Challenge_files/book-design.svg">
+              <div class="menu-text ng-binding">DESIGN</div>
+            </a>
+          </li><!-- end ngRepeat: item in vm.menuLinks[header] --><li class="submenu-item ng-scope" ng-repeat="item in vm.menuLinks[header]">
+            <a ng-click="$event.stopPropagation();" ng-href="/community/development/" ng-class="{ &#39;active&#39;: vm.isActive(item.href) }" class="menu-link" target="_self" href="https://www.topcoder.com/community/development/">
+              <img ng-src="/mf/i/nav/book-develop.svg" class="menu-icon" src="./XML to JSON Converter Challenge_files/book-develop.svg">
+              <div class="menu-text ng-binding">DEVELOPMENT</div>
+            </a>
+          </li><!-- end ngRepeat: item in vm.menuLinks[header] --><li class="submenu-item ng-scope" ng-repeat="item in vm.menuLinks[header]">
+            <a ng-click="$event.stopPropagation();" ng-href="/community/data-science/" ng-class="{ &#39;active&#39;: vm.isActive(item.href) }" class="menu-link" target="_self" href="https://www.topcoder.com/community/data-science/">
+              <img ng-src="/mf/i/nav/book-data.svg" class="menu-icon" src="./XML to JSON Converter Challenge_files/book-data.svg">
+              <div class="menu-text ng-binding">DATA SCIENCE</div>
+            </a>
+          </li><!-- end ngRepeat: item in vm.menuLinks[header] --><li class="submenu-item ng-scope" ng-repeat="item in vm.menuLinks[header]">
+            <a ng-click="$event.stopPropagation();" ng-href="/community/competitive%20programming/" ng-class="{ &#39;active&#39;: vm.isActive(item.href) }" class="menu-link" target="_self" href="https://www.topcoder.com/community/competitive%20programming/">
+              <img ng-src="/mf/i/nav/book-cp.svg" class="menu-icon" src="./XML to JSON Converter Challenge_files/book-cp.svg">
+              <div class="menu-text ng-binding">COMPETITIVE PROGRAMMING</div>
+            </a>
+          </li><!-- end ngRepeat: item in vm.menuLinks[header] -->
+        </ul>
+      </li><!-- end ngRepeat: header in vm.menuHeaders --><li ng-repeat="header in vm.menuHeaders" class="menu-item link-group ng-scope">
+        <div class="menu-item-header ng-binding">community</div>
+        <ul class="submenu">
+          <!-- ngRepeat: item in vm.menuLinks[header] --><li class="submenu-item ng-scope" ng-repeat="item in vm.menuLinks[header]">
+            <a ng-click="$event.stopPropagation();" ng-href="/community/members/" ng-class="{ &#39;active&#39;: vm.isActive(item.href) }" class="menu-link" target="_self" href="https://www.topcoder.com/community/members/">
+              <img ng-src="/mf/i/nav/members.svg" class="menu-icon" src="./XML to JSON Converter Challenge_files/members.svg">
+              <div class="menu-text ng-binding">OVERVIEW</div>
+            </a>
+          </li><!-- end ngRepeat: item in vm.menuLinks[header] --><li class="submenu-item ng-scope" ng-repeat="item in vm.menuLinks[header]">
+            <a ng-click="$event.stopPropagation();" ng-href="/community/member-programs/" ng-class="{ &#39;active&#39;: vm.isActive(item.href) }" class="menu-link" target="_self" href="https://www.topcoder.com/community/member-programs/">
+              <img ng-src="/mf/i/nav/programs.svg" class="menu-icon" src="./XML to JSON Converter Challenge_files/programs.svg">
+              <div class="menu-text ng-binding">PROGRAMS</div>
+            </a>
+          </li><!-- end ngRepeat: item in vm.menuLinks[header] --><li class="submenu-item ng-scope" ng-repeat="item in vm.menuLinks[header]">
+            <a ng-click="$event.stopPropagation();" ng-href="https://apps.topcoder.com/forums/" ng-class="{ &#39;active&#39;: vm.isActive(item.href) }" class="menu-link" target="_self" href="https://apps.topcoder.com/forums/">
+              <img ng-src="/mf/i/nav/forums.svg" class="menu-icon" src="./XML to JSON Converter Challenge_files/forums.svg">
+              <div class="menu-text ng-binding">FORUMS</div>
+            </a>
+          </li><!-- end ngRepeat: item in vm.menuLinks[header] --><li class="submenu-item ng-scope" ng-repeat="item in vm.menuLinks[header]">
+            <a ng-click="$event.stopPropagation();" ng-href="/community/statistics/" ng-class="{ &#39;active&#39;: vm.isActive(item.href) }" class="menu-link" target="_self" href="https://www.topcoder.com/community/statistics/">
+              <img ng-src="/mf/i/nav/statistics.svg" class="menu-icon" src="./XML to JSON Converter Challenge_files/statistics.svg">
+              <div class="menu-text ng-binding">STATISTICS</div>
+            </a>
+          </li><!-- end ngRepeat: item in vm.menuLinks[header] --><li class="submenu-item ng-scope" ng-repeat="item in vm.menuLinks[header]">
+            <a ng-click="$event.stopPropagation();" ng-href="/community/events/" ng-class="{ &#39;active&#39;: vm.isActive(item.href) }" class="menu-link" target="_self" href="https://www.topcoder.com/community/events/">
+              <img ng-src="/mf/i/nav/events.svg" class="menu-icon" src="./XML to JSON Converter Challenge_files/events.svg">
+              <div class="menu-text ng-binding">EVENTS</div>
+            </a>
+          </li><!-- end ngRepeat: item in vm.menuLinks[header] --><li class="submenu-item ng-scope" ng-repeat="item in vm.menuLinks[header]">
+            <a ng-click="$event.stopPropagation();" ng-href="/blog/" ng-class="{ &#39;active&#39;: vm.isActive(item.href) }" class="menu-link" target="_self" href="https://www.topcoder.com/blog/">
+              <img ng-src="/mf/i/nav/blog.svg" class="menu-icon" src="./XML to JSON Converter Challenge_files/blog.svg">
+              <div class="menu-text ng-binding">BLOG</div>
+            </a>
+          </li><!-- end ngRepeat: item in vm.menuLinks[header] -->
+        </ul>
+      </li><!-- end ngRepeat: header in vm.menuHeaders -->
+    </ul>
+  </header>
+</div></div>
+<!-- Bugfix: I-108496 hidden element needed for non-firefox browsers to detect cache-persist status of page, used for above code to display member details -->
+<input type="hidden" id="cache-persist" value="1">
+
+
+
+<div id="cdNgMain" ng-init="CD.callComplete=false" ng-show="CD.callComplete" class="hide content challenge-detail view-challenge-result develop design" style="display: block;">
+<div id="main">
+<div class="cd-wrapper">
+  <!-- ngInclude:  --><div ng-include="" src="getTemplateURL(&#39;ng-content-basic-challenge-details.tpl.html&#39;)" class="header-container ng-scope">
+    <header class="pageHeading aboutPage ng-scope">
+      <h1 ng-bind="CD.challenge.challengeName" class="ng-binding">XML to JSON Converter Challenge</h1>
+
+      <h2><span ng-bind="CD.challenge.challengeType" class="ng-binding">Code</span></h2>
+    </header>
+</div>
+  <article id="mainContent" class="splitLayout">
+    <div class="container">
+      <div id="stepBox">
+        <div class="container rightSplit  grid-3-3">
+
+          <div class="leftColumn">
+            <a ng-show="!CD.isDesign" ng-click="CD.registerToChallenge()" ng-class="{disabled:CD.challenge.registrationDisabled || !CD.callComplete, disabledNOT:!CD.challenge.registrationDisabled}" class="btn btnAction challengeRegisterBtn disabled" href="javascript:;">
+                <span>1</span><strong>Register For This Challenge</strong>
+            </a>
+            <a ng-show="!CD.isDesign" ng-class="{disabled:CD.challenge.submissionDisabled || !CD.callComplete, disabledNOT:!CD.challenge.submissionDisabled}" class="btn btnAction disabledNOT" target="_blank" ng-href="/challenge-details/30052650/submit/?type=develop" href="https://www.topcoder.com/challenge-details/30052650/submit/?type=develop">
+                <span>2</span><strong>Submit Your Entries</strong>
+            </a>
+            <a ng-show="CD.isDesign" ng-click="CD.registerToChallenge()" ng-class="{disabled:CD.challenge.registrationDisabled || !CD.callComplete, disabledNOT:!CD.challenge.registrationDisabled}" class="btn btnAction challengeRegisterBtn disabled ng-hide" href="javascript:;">
+                <span>1</span> <strong>Register For This Challenge</strong>
+            </a>
+            <a ng-show="CD.isDesign" ng-class="{disabled:CD.challenge.submissionDisabled || !CD.callComplete, disabledNOT:!CD.challenge.submissionDisabled}" class="btn btnAction disabledNOT ng-hide" target="_blank" ng-href="//studio.topcoder.com/?module=ViewRegistration&amp;ct=30052650" href="https://studio.topcoder.com/?module=ViewRegistration&amp;ct=30052650">
+                <span>2</span> <strong>Submit Your Entries</strong>
+            </a>
+            <a ng-show="CD.isDesign" ng-class="{disabled:CD.challenge.submissionDisabled || !CD.callComplete, disabledNOT:!CD.challenge.submissionDisabled}" class="btn btnAction disabledNOT ng-hide" target="_blank" href="https://studio.topcoder.com/?module=ViewSubmission&amp;ct=30052650">
+                <span>3</span> <strong>View Your Submission</strong>
+            </a>
+            <a ng-show="!CD.isDesign &amp;&amp; CD.isPeerReviewed" ng-class="{disabled:CD.challenge.peerReviewDisabled || !CD.callComplete, disabledNOT:!CD.challenge.peerReviewDisabled}" class="btn btnAction disabled ng-hide" ng-href="/reviews/index.html#/challenge/30052650" target="_blank" href="https://www.topcoder.com/reviews/index.html#/challenge/30052650">
+                <span>3</span><strong>Review This Challenge</strong>
+            </a>
+          </div>
+
+          <div class="middleColumn member-program-path ng-hide" ng-show="CD.isPeerReviewed &amp;&amp; CD.phaseProgram">
+            <!-- ngInclude:  --><div ng-include="" src="getTemplateURL(&#39;ng-content-challenge-topsection.tpl.html&#39;)" class="ng-scope"><div rel="next-step" class="ng-scope">
+	<div rel="next-step-description">
+    <div rel="title" ng-bind="CD.phaseProgram.nextStepTitle" class="ng-binding"></div>
+    <div rel="description" ng-bind="CD.phaseProgram.nextStepDescription" class="margin-top-2x ng-binding"></div>
+    <div rel="action" ng-bind="CD.phaseProgram.nextStepAction" class="margin-top-2x ng-binding"></div>
+  </div>
+  <div rel="badge">
+    <h5 rel="title" class="center-align-text">Peer Review Award</h5>
+  	<img ng-src="" alt="">
+  </div>
+  <div class="clear"></div>
+</div></div>
+          </div>
+          <div class="middleColumn" ng-show="!CD.isPeerReviewed">
+            <table class="prizeTable">
+              <tbody>
+
+                <tr>
+                  <!-- ngIf: !CD.isDesign && CD.challenge.challengeType != 'Code' -->
+                  <!-- ngIf: !CD.isDesign && CD.challenge.challengeType != 'Code' -->
+                  <!-- ngIf: (designOrCode = CD.isDesign || CD.challenge.challengeType == 'Code') --><td ng-if="(designOrCode = CD.isDesign || CD.challenge.challengeType == &#39;Code&#39;)" class="twenty ">
+                    <h3>
+                      <small>$</small><span ng-bind="(CD.challenge.prize &amp;&amp; CD.challenge.prize[0]) || 0" class="ng-binding">1,200</span>
+                    </h3>
+
+                    <h2>1st PLACE</h2>
+                  </td><!-- end ngIf: (designOrCode = CD.isDesign || CD.challenge.challengeType == 'Code') -->
+                  <!-- ngIf: designOrCode --><td ng-if="designOrCode" class="twenty ">
+                    <h3>
+                      <small>$</small><span ng-bind="(CD.challenge.prize &amp;&amp; CD.challenge.prize[1]) || 0" class="ng-binding">600</span>
+                    </h3>
+
+                    <h2>2nd PLACE</h2>
+                  </td><!-- end ngIf: designOrCode -->
+                  <!-- ngIf: designOrCode --><td ng-if="designOrCode" class="twenty ">
+                    <h3>
+                      <small>$</small><span ng-bind="(CD.challenge.prize &amp;&amp; CD.challenge.prize[2]) || 0" class="ng-binding">300</span>
+                    </h3>
+
+                    <h2>3rd PLACE</h2>
+                  </td><!-- end ngIf: designOrCode -->
+                  <!-- ngIf: designOrCode --><td ng-if="designOrCode" class="twenty noPrize">
+                    <h3>
+                      <small>$</small><span ng-bind="(CD.challenge.prize &amp;&amp; CD.challenge.prize[3]) || 0" class="ng-binding">0</span>
+                    </h3>
+
+                    <h2>4th PLACE</h2>
+                  </td><!-- end ngIf: designOrCode -->
+                  <!-- ngIf: designOrCode --><td ng-if="designOrCode" class="twenty noPrize">
+                    <h3>
+                      <small>$</small><span ng-bind="(CD.challenge.prize &amp;&amp; CD.challenge.prize[4]) || 0" class="ng-binding">0</span>
+                    </h3>
+
+                    <h2>5th PLACE</h2>
+                  </td><!-- end ngIf: designOrCode -->
+                  <!-- ngIf: designOrCode && (CD.challenge.prize && CD.challenge.prize.length > 5) -->
+                  <!-- ngIf: designOrCode && (CD.challenge.prize && CD.challenge.prize.length <= 5) --><td ng-if="designOrCode &amp;&amp; (CD.challenge.prize &amp;&amp; CD.challenge.prize.length &lt;= 5)" class="morePayments inactive ng-scope" rowspan="2">
+                  </td><!-- end ngIf: designOrCode && (CD.challenge.prize && CD.challenge.prize.length <= 5) -->
+                </tr>
+                <!-- ngRepeat: i in range(0, (CD.challenge.prize.length - 5) / 5) -->
+                <tr><!-- Bugfix: Added noPrize class when challenge has no reliability bonus -->
+                  <!-- ngIf: !CD.isDesign --><td ng-if="!CD.isDesign" colspan="5" class="noPrize">
+                    <p class="realibilityPara">
+                      Reliability Bonus
+                      <!-- ngIf: CD.reliabilityBonus && CD.challenge.challengeType !== 'Bug Hunt' -->
+                      <!-- ngIf: !(CD.reliabilityBonus) || CD.challenge.challengeType === 'Bug Hunt' --><span ng-if="!(CD.reliabilityBonus) || CD.challenge.challengeType === &#39;Bug Hunt&#39;" class="ng-scope">
+                        N/A
+                      </span><!-- end ngIf: !(CD.reliabilityBonus) || CD.challenge.challengeType === 'Bug Hunt' -->
+                    </p>
+                  </td><!-- end ngIf: !CD.isDesign -->
+                  
+                  <!-- ngIf: CD.isDesign -->
+                </tr>
+              </tbody>
+            </table>
+          <!-- TODO: not sure why this code is repeated -- probably get rid of it (or make sure my fix of it is correct) -->
+          <div class="prizeSlider hide">
+            <ul>
+              <li class="slide">
+                <table>
+                  <tbody>
+                    <tr>
+                      <!-- ngIf: !CD.isDesign && CD.challenge.challengeType != 'Code' -->
+                      <!-- ngIf: !CD.isDesign && CD.challenge.challengeType != 'Code' -->
+                      <!-- ngIf: (designOrCode = CD.isDesign || CD.challenge.challengeType == 'Code') && (CD.challenge.prize && CD.challenge.prize[0]) --><td ng-if="(designOrCode = CD.isDesign || CD.challenge.challengeType == &#39;Code&#39;) &amp;&amp; (CD.challenge.prize &amp;&amp; CD.challenge.prize[0])" class="twenty ng-scope">
+                        <h2>1st PLACE</h2>
+
+                        <h3>
+                          <small>$</small><span ng-bind="CD.challenge.prize[0]" class="ng-binding">1,200</span>
+                        </h3>
+                      </td><!-- end ngIf: (designOrCode = CD.isDesign || CD.challenge.challengeType == 'Code') && (CD.challenge.prize && CD.challenge.prize[0]) -->
+                      <!-- ngIf: designOrCode && !(CD.challenge.prize && CD.challenge.prize[0]) -->
+                      <!-- ngIf: designOrCode && (CD.challenge.prize && CD.challenge.prize[1]) --><td ng-if="designOrCode &amp;&amp; (CD.challenge.prize &amp;&amp; CD.challenge.prize[1])" class="twenty ng-scope">
+                        <h2>2nd PLACE</h2>
+
+                        <h3>
+                          <small>$</small><span ng-bind="CD.challenge.prize[1]" class="ng-binding">600</span>
+                        </h3>
+                      </td><!-- end ngIf: designOrCode && (CD.challenge.prize && CD.challenge.prize[1]) -->
+                      <!-- ngIf: designOrCode && !(CD.challenge.prize && CD.challenge.prize[1]) -->
+                      <!-- ngIf: designOrCode && (CD.challenge.prize && CD.challenge.prize[2]) --><td ng-if="designOrCode &amp;&amp; (CD.challenge.prize &amp;&amp; CD.challenge.prize[2])" class="twenty ng-scope">
+                        <h2>3rd PLACE</h2>
+
+                        <h3>
+                          <small>$</small><span ng-bind="CD.challenge.prize[2]" class="ng-binding">300</span>
+                        </h3>
+                      </td><!-- end ngIf: designOrCode && (CD.challenge.prize && CD.challenge.prize[2]) -->
+                      <!-- ngIf: designOrCode && !(CD.challenge.prize && CD.challenge.prize[2]) -->
+                      <!-- ngIf: designOrCode && (CD.challenge.prize && CD.challenge.prize[3]) -->
+                      <!-- ngIf: designOrCode && !(CD.challenge.prize && CD.challenge.prize[3]) --><td ng-if="designOrCode &amp;&amp; !(CD.challenge.prize &amp;&amp; CD.challenge.prize[3])" class="twenty noPrize ng-scope">
+                        <h2>4th PLACE</h2>
+
+                        <h3>
+                          <small>$</small><span ng-bind="CD.challenge.prize[3]" class="ng-binding"></span>
+                        </h3>
+                      </td><!-- end ngIf: designOrCode && !(CD.challenge.prize && CD.challenge.prize[3]) -->
+                      <!-- ngIf: designOrCode && (CD.challenge.prize && CD.challenge.prize[4]) -->
+                      <!-- ngIf: designOrCode && (CD.challenge.prize && CD.challenge.prize[5]) -->
+                      <!-- previously used rowspan logic might be needed: {{2 + ((CD.challenge.prize.length - 5) / 5)}} -->
+                      <!-- ngIf: designOrCode && (CD.challenge.prize && CD.challenge.prize.length > 5) -->
+                      <!-- ngIf: designOrCode && (CD.challenge.prize && CD.challenge.prize.length <= 5) --><td ng-if="designOrCode &amp;&amp; (CD.challenge.prize &amp;&amp; CD.challenge.prize.length &lt;= 5)" class="morePayments inactive ng-scope" rowspan="2">
+                      </td><!-- end ngIf: designOrCode && (CD.challenge.prize && CD.challenge.prize.length <= 5) -->
+                    </tr>
+                    <!-- ngRepeat: i in range(0, (CD.challenge.prize.length - 5) / 5) -->
+                    <tr>
+                      <!-- ngIf: !CD.isDesign --><td ng-if="!CD.isDesign" colspan="5" class="ng-scope">
+                        <p class="realibilityPara">
+                          Reliability Bonus
+                          <!-- ngIf: CD.reliabilityBonus && CD.reliabilityBonus.length > 0 -->
+                          <!-- ngIf: !(CD.reliabilityBonus && CD.reliabilityBonus.length > 0) --><span ng-if="!(CD.reliabilityBonus &amp;&amp; CD.reliabilityBonus.length &gt; 0)" class="ng-scope">
+                            N/A
+                          </span><!-- end ngIf: !(CD.reliabilityBonus && CD.reliabilityBonus.length > 0) -->
+                        </p>
+                      </td><!-- end ngIf: !CD.isDesign -->
+                      
+                      <!-- ngIf: CD.isDesign -->
+                    </tr>
+                  </tbody>
+                </table>
+              </li>
+            </ul>
+
+          </div>
+
+        </div>
+        <div class="rightColumn">
+
+          <div class="nextBox" ng-init="toggleAllNext = true;">
+
+            <div class="nextBoxContent nextDeadlineNextBoxContent" ng-show="toggleAllNext">
+              <div class="icoTime">
+                <span class="nextDTitle">Current Phase</span>
+                <!-- Bugfix I-106745: if current status of contest is not Active, output current contest status, else output current contest phase if active. -->
+                <span class="CEDate ng-binding" ng-bind="CD.challenge.currentStatus.indexOf(&#39;Active&#39;) &lt; 0 ? CD.challenge.currentStatus : CD.challenge.currentPhaseName">Registration</span>
+              </div>
+              <!-- Bugfix I-106745: Added check for cancelled contest before display of current phase remaining time -->
+              <!-- ngIf: CD.challenge.currentStatus != 'Completed' && CD.challenge.currentStatus != 'Deleted' && CD.challenge.currentStatus.indexOf('Cancelled') < 0 && CD.challenge.currentPhaseRemainingTime > 0 --><span ng-if="CD.challenge.currentStatus != &#39;Completed&#39; &amp;&amp; CD.challenge.currentStatus != &#39;Deleted&#39; &amp;&amp; CD.challenge.currentStatus.indexOf(&#39;Cancelled&#39;) &lt; 0 &amp;&amp; CD.challenge.currentPhaseRemainingTime &gt; 0" class="timeLeft ng-scope">
+                <span ng-bind="CD.challenge.currentPhaseRemainingTime | daysLeft" class="ng-binding">4</span>
+                <small><ng-pluralize count="CD.challenge.currentPhaseRemainingTime | daysLeft" when="{&#39;1&#39;: &#39;Day&#39;, &#39;other&#39;: &#39;Days&#39;}">Days</ng-pluralize></small>
+                <span ng-bind="CD.challenge.currentPhaseRemainingTime | hoursLeft" class="ng-binding">21</span>
+                <small><ng-pluralize count="CD.challenge.currentPhaseRemainingTime | hoursLeft" when="{&#39;1&#39;: &#39;Hour&#39;, &#39;other&#39;: &#39;Hours&#39;}">Hours</ng-pluralize></small>
+                <span ng-bind="CD.challenge.currentPhaseRemainingTime | minsLeft" class="ng-binding">38</span>
+                <small><ng-pluralize count="CD.challenge.currentPhaseRemainingTime | minsLeft" when="{&#39;1&#39;: &#39;Min&#39;, &#39;other&#39;: &#39;Mins&#39;}">Mins</ng-pluralize></small>
+              </span><!-- end ngIf: CD.challenge.currentStatus != 'Completed' && CD.challenge.currentStatus != 'Deleted' && CD.challenge.currentStatus.indexOf('Cancelled') < 0 && CD.challenge.currentPhaseRemainingTime > 0 -->
+            </div>
+            <!--End nextBoxContent-->
+            <!-- ngIf: !CD.isDesign --><div ng-if="!CD.isDesign" class="nextBoxContent allDeadlineNextBoxContent ng-hide ng-scope" ng-show="!toggleAllNext">
+              <p><label>Start Date:</label>
+                <span class="ng-binding">
+                 Jan 19, 2016 01:00 EST
+                </span>
+              </p>
+              <p><label>Register By:</label>
+               <span class="ng-binding">
+                 Jan 24, 2016 01:00 EST
+               </span>
+              </p>
+              <p class="{{CD.challenge.finalFixEndDate ? &#39;&#39; : &#39;last&#39;"><label>Submit By:</label>
+                <span class="ng-binding">
+                  Jan 24, 2016 01:00 EST
+                </span>
+              </p>
+              <p ng-show="CD.inReview &amp;&amp; CD.isPeerReviewed" class="ng-hide">
+                <label>Review By:</label>
+                <span class="ng-binding">
+                  Jan 24, 2016 01:00 EST
+                </span>
+              </p>
+
+              <!-- ngIf: CD.challenge.finalFixEndDate -->
+
+            </div><!-- end ngIf: !CD.isDesign -->
+            <!--End nextBoxContent-->
+            <!-- ngIf: CD.isDesign -->
+            <!--End nextBoxContent-->
+          </div>
+
+          <!--End nextBox-->
+          <div class="deadlineBox">
+
+            <div class="deadlineBoxContent nextDeadlinedeadlineBoxContent" ng-show="toggleAllNext">
+              <a class="viewAllDeadLineBtn" ng-click="toggleAllNext = !toggleAllNext">View all deadlines +</a>
+            </div>
+            <!--End deadlineBoxContent-->
+            <div class="deadlineBoxContent allDeadlinedeadlineBoxContent ng-hide" ng-show="!toggleAllNext">
+              <a class="viewNextDeadLineBtn" ng-click="toggleAllNext = !toggleAllNext">View next deadline +</a>
+            </div>
+            <!--End deadlineBoxContent-->
+          </div>
+          <!--End deadlineBox-->
+        </div>
+        </div>
+      </div><!-- Step Box end -->
+      <div class="rightSplit  grid-3-3">
+        <div class="mainStream partialList">
+
+        <section class="tabsWrap">
+        <nav class="tabNav">
+          <div class="topRightTitle topRightTitleAlt" style="position: relative;">
+            <a ng-show="CD.isRegistered" ng-href="http://apps.topcoder.com/forums/?module=Category&amp;categoryID=31678" class="contestForumIcon" target="_blank" href="http://apps.topcoder.com/forums/?module=Category&amp;categoryID=31678">Challenge Discussion</a>
+          </div>
+          <ul>
+            <li><a href="https://www.topcoder.com/challenge-details/30052650/?type=develop#contest-overview" class="active link">Details</a></li>
+            <li ng-show="!CD.isDesign" class="">
+              <a href="https://www.topcoder.com/challenge-details/30052650/?type=develop#viewRegistrant" class="link ng-binding">Registrants (23) &amp; Submissions (0)</a>
+            </li>
+            <li ng-show="CD.isDesign" class="ng-hide">
+              <a href="https://www.topcoder.com/challenge-details/30052650/?type=develop#viewRegistrant" class="link ng-binding">Registrants (23)</a>
+            </li>
+            <li ng-show="(CD.challenge.checkpoints &amp;&amp; CD.challenge.checkpoints.length &gt; 0) || CD.checkpointData" class="ng-hide"><a href="https://www.topcoder.com/challenge-details/30052650/?type=develop#checkpoints" class="link ng-binding">Checkpoints (0)</a></li>
+            <li ng-show="!CD.isDesign" class=""><a href="https://www.topcoder.com/challenge-details/30052650/?type=develop#winner" class="link">Results</a></li>
+            <li ng-show="CD.isDesign &amp;&amp; !CD.inSubmission" class="ng-hide"><a href="https://www.topcoder.com/challenge-details/30052650/?type=develop#submissions" class="link ng-binding">Submissions (0)</a></li>
+            <li ng-show="CD.isDesign &amp;&amp; (CD.inSubmission || CD.inScreening || CD.inReview)" class="ng-hide"><span class="inactive">Results</span></li>
+            <li ng-show="CD.isDesign &amp;&amp; !(CD.inSubmission || CD.inScreening || CD.inReview)" class="ng-hide"><a href="https://www.topcoder.com/challenge-details/30052650/?type=develop#winner" class="link">Results</a></li>
+          </ul>
+        </nav>
+        <nav class="tabNav firstTabNav designFirstTabNav mobile hide">
+          <ul>
+            <li><a href="https://www.topcoder.com/challenge-details/30052650/?type=develop#contest-overview" class="active link">Details</a></li>
+            <li>
+              <a href="https://www.topcoder.com/challenge-details/30052650/?type=develop#viewRegistrant" class="link ng-binding">Registrants (23)</a>
+            </li>
+          </ul>
+        </nav>
+        <nav class="tabNav firstTabNav designSecondTabNav mobile hide">
+          <ul>
+            <!-- ngIf: CD.inSubmission -->
+            <li ng-show="CD.inSubmission" class="ng-hide"><span class="inactive">Submissions</span></li>
+            <li ng-show="!CD.inSubmission" class=""><a href="https://www.topcoder.com/challenge-details/30052650/?type=develop#submissions" class="link ng-binding">Submissions (0)</a></li>
+            <li>
+              </li><li ng-show="CD.inSubmission || CD.inScreening || CD.inReview" class="ng-hide"><span class="inactive">Results</span></li>
+              <li ng-show="!(CD.inSubmission || CD.inScreening || CD.inReview)" class=""><a href="https://www.topcoder.com/challenge-details/30052650/?type=develop#winner" class="link">Results</a></li>
+            
+          </ul>
+        </nav>
+
+        <!-- ngIf: !CD.isDesign --><div ng-if="!CD.isDesign" id="contest-overview" class="tableWrap  tab">
+          <!-- ngIf: !CD.isDesign --><article ng-if="!CD.isDesign" id="contestOverview" class="ng-scope">
+            <h2>Challenge Overview</h2>
+
+            <p ng-bind-html="CD.challenge.detailedRequirements | trust" class="ng-binding"><p dir="ltr">Welcome to the XML to JSON converter contest. As part of this contest, you will have to create an application that converts XML to JSON and provides an API to access the converted JSON data.</p>
+
+<p>&nbsp;</p>
+
+<p dir="ltr"><strong>Contest Background</strong></p>
+
+<p dir="ltr">Our client is responsible for managing a real-time analytics platform for an upcoming sports event, where between 4-6 matches will occur every day over a period of a few weeks. The platform accepts a series of XML files and converts it. The conversion time takes upwards of 10 seconds. As part of this project, we need to decrease that time, and make the converted content available via an API.</p>
+
+<p>&nbsp;</p>
+
+<p dir="ltr"><strong>Contest Details</strong></p>
+
+<p dir="ltr">Create an application that accepts XML as input, converts it to JSON and makes it available via a RESTful API.</p>
+
+<p>&nbsp;</p>
+
+<p dir="ltr">The expectations from your application are as follows:</p>
+
+<ol>
+	<li dir="ltr">
+	<p dir="ltr">It should accept new XML every 3 to 4 seconds. Basically, the application will be called with new XML data for conversion every 3 to 4 seconds.</p>
+	</li>
+	<li dir="ltr">
+	<p dir="ltr">The conversion of the XML to JSON must occur in under 10 seconds.</p>
+	</li>
+	<li dir="ltr">
+	<p dir="ltr">The converted data should be accessible through a RESTful API. This API must return the data in JSON format itself.</p>
+	</li>
+	<li dir="ltr">
+	<p dir="ltr">The XML data submitted is essentially a Game / Match data. It contains information about the current progress / status of the game. This data is generated periodically - as mentioned, the application can expect new XML data submitted every 3 to 4 seconds. Thus, as each match in the sports event is completed and the corresponding XML data is converted, the application must update the corresponding “match” with the latest results. So, in essence, you will group all the XML data based on the match they belong to and then when the user queries for the converted data, the API should return for any given game / match all the events associated with it. Something like <em>GET /api/match/match_id </em>should be supported. (Note that the API endpoint mentioned here is an example. You can use a different endpoint of your liking which you think is suitable)</p>
+	</li>
+	<li dir="ltr">
+	<p dir="ltr">So, in total, you will provide two endpoints - one to allow the user to submit the XML file containing the data which you convert to JSON and store in the database and another to get the match details.</p>
+	</li>
+</ol>
+
+<p>&nbsp;</p>
+
+<p dir="ltr">We will share sample XML documents with you that will be submitted / used with your application. You need to provide an API to accept these documents and provide another API to access the converted JSON data. The implementation logic is left to you. What our client proposed is that you could create the API over a single table in SQL Server Database. We are also sharing the Table Structure with you as shared by our client. You can check it out to get an idea of how to model the data. However, this is purely a suggestion. You are free to use a tech stack of your choice that meets the criteria mentioned below.</p>
+
+<p>&nbsp;</p>
+
+<p dir="ltr"><strong>Preferred Tech Stack</strong></p>
+
+<ul>
+	<li dir="ltr">
+	<p dir="ltr">Open Source is preferred.</p>
+	</li>
+	<li dir="ltr">You should not make use of any libraries or frameworks or tools or anything related to your submission that requires a Paid License.</li>
+</ul>
+</p>
+
+            <article id="platforms">
+              <h2>Platforms</h2>
+              <ul>
+                <!-- ngRepeat: platform in CD.challenge.platforms --><!-- ngIf: (hasPlatforms = CD.challenge.platforms && CD.challenge.platforms.length > 0) --><li ng-if="(hasPlatforms = CD.challenge.platforms &amp;&amp; CD.challenge.platforms.length &gt; 0)" ng-repeat="platform in CD.challenge.platforms" class="ng-scope">
+                  <strong ng-bind="platform" class="ng-binding">Other</strong>
+                </li><!-- end ngIf: (hasPlatforms = CD.challenge.platforms && CD.challenge.platforms.length > 0) --><!-- end ngRepeat: platform in CD.challenge.platforms -->
+                <!-- ngIf: !(hasPlatforms = CD.challenge.platforms && CD.challenge.platforms.length > 0) -->
+              </ul>
+            </article>
+
+            <article id="technologies">
+              <h2>Technologies</h2>
+              <div class="technologyTags">
+                <ul>
+                  <!-- ngRepeat: tech in CD.challenge.technology --><!-- ngIf: CD.challenge.technology && CD.challenge.technology.length > 0 --><li ng-if="CD.challenge.technology &amp;&amp; CD.challenge.technology.length &gt; 0" ng-repeat="tech in CD.challenge.technology" class="ng-scope">
+                    <span class="ng-binding">C#</span>
+                  </li><!-- end ngIf: CD.challenge.technology && CD.challenge.technology.length > 0 --><!-- end ngRepeat: tech in CD.challenge.technology --><!-- ngIf: CD.challenge.technology && CD.challenge.technology.length > 0 --><li ng-if="CD.challenge.technology &amp;&amp; CD.challenge.technology.length &gt; 0" ng-repeat="tech in CD.challenge.technology" class="ng-scope">
+                    <span class="ng-binding">Go</span>
+                  </li><!-- end ngIf: CD.challenge.technology && CD.challenge.technology.length > 0 --><!-- end ngRepeat: tech in CD.challenge.technology --><!-- ngIf: CD.challenge.technology && CD.challenge.technology.length > 0 --><li ng-if="CD.challenge.technology &amp;&amp; CD.challenge.technology.length &gt; 0" ng-repeat="tech in CD.challenge.technology" class="ng-scope">
+                    <span class="ng-binding">HTTP</span>
+                  </li><!-- end ngIf: CD.challenge.technology && CD.challenge.technology.length > 0 --><!-- end ngRepeat: tech in CD.challenge.technology --><!-- ngIf: CD.challenge.technology && CD.challenge.technology.length > 0 --><li ng-if="CD.challenge.technology &amp;&amp; CD.challenge.technology.length &gt; 0" ng-repeat="tech in CD.challenge.technology" class="ng-scope">
+                    <span class="ng-binding">JSON</span>
+                  </li><!-- end ngIf: CD.challenge.technology && CD.challenge.technology.length > 0 --><!-- end ngRepeat: tech in CD.challenge.technology --><!-- ngIf: CD.challenge.technology && CD.challenge.technology.length > 0 --><li ng-if="CD.challenge.technology &amp;&amp; CD.challenge.technology.length &gt; 0" ng-repeat="tech in CD.challenge.technology" class="ng-scope">
+                    <span class="ng-binding">Java</span>
+                  </li><!-- end ngIf: CD.challenge.technology && CD.challenge.technology.length > 0 --><!-- end ngRepeat: tech in CD.challenge.technology --><!-- ngIf: CD.challenge.technology && CD.challenge.technology.length > 0 --><li ng-if="CD.challenge.technology &amp;&amp; CD.challenge.technology.length &gt; 0" ng-repeat="tech in CD.challenge.technology" class="ng-scope">
+                    <span class="ng-binding">MySQL</span>
+                  </li><!-- end ngIf: CD.challenge.technology && CD.challenge.technology.length > 0 --><!-- end ngRepeat: tech in CD.challenge.technology --><!-- ngIf: CD.challenge.technology && CD.challenge.technology.length > 0 --><li ng-if="CD.challenge.technology &amp;&amp; CD.challenge.technology.length &gt; 0" ng-repeat="tech in CD.challenge.technology" class="ng-scope">
+                    <span class="ng-binding">NoSQL</span>
+                  </li><!-- end ngIf: CD.challenge.technology && CD.challenge.technology.length > 0 --><!-- end ngRepeat: tech in CD.challenge.technology --><!-- ngIf: CD.challenge.technology && CD.challenge.technology.length > 0 --><li ng-if="CD.challenge.technology &amp;&amp; CD.challenge.technology.length &gt; 0" ng-repeat="tech in CD.challenge.technology" class="ng-scope">
+                    <span class="ng-binding">Node.js</span>
+                  </li><!-- end ngIf: CD.challenge.technology && CD.challenge.technology.length > 0 --><!-- end ngRepeat: tech in CD.challenge.technology --><!-- ngIf: CD.challenge.technology && CD.challenge.technology.length > 0 --><li ng-if="CD.challenge.technology &amp;&amp; CD.challenge.technology.length &gt; 0" ng-repeat="tech in CD.challenge.technology" class="ng-scope">
+                    <span class="ng-binding">Other</span>
+                  </li><!-- end ngIf: CD.challenge.technology && CD.challenge.technology.length > 0 --><!-- end ngRepeat: tech in CD.challenge.technology --><!-- ngIf: CD.challenge.technology && CD.challenge.technology.length > 0 --><li ng-if="CD.challenge.technology &amp;&amp; CD.challenge.technology.length &gt; 0" ng-repeat="tech in CD.challenge.technology" class="ng-scope">
+                    <span class="ng-binding">Python</span>
+                  </li><!-- end ngIf: CD.challenge.technology && CD.challenge.technology.length > 0 --><!-- end ngRepeat: tech in CD.challenge.technology --><!-- ngIf: CD.challenge.technology && CD.challenge.technology.length > 0 --><li ng-if="CD.challenge.technology &amp;&amp; CD.challenge.technology.length &gt; 0" ng-repeat="tech in CD.challenge.technology" class="ng-scope">
+                    <span class="ng-binding">REST</span>
+                  </li><!-- end ngIf: CD.challenge.technology && CD.challenge.technology.length > 0 --><!-- end ngRepeat: tech in CD.challenge.technology --><!-- ngIf: CD.challenge.technology && CD.challenge.technology.length > 0 --><li ng-if="CD.challenge.technology &amp;&amp; CD.challenge.technology.length &gt; 0" ng-repeat="tech in CD.challenge.technology" class="ng-scope">
+                    <span class="ng-binding">SQL</span>
+                  </li><!-- end ngIf: CD.challenge.technology && CD.challenge.technology.length > 0 --><!-- end ngRepeat: tech in CD.challenge.technology --><!-- ngIf: CD.challenge.technology && CD.challenge.technology.length > 0 --><li ng-if="CD.challenge.technology &amp;&amp; CD.challenge.technology.length &gt; 0" ng-repeat="tech in CD.challenge.technology" class="ng-scope">
+                    <span class="ng-binding">SQL Server</span>
+                  </li><!-- end ngIf: CD.challenge.technology && CD.challenge.technology.length > 0 --><!-- end ngRepeat: tech in CD.challenge.technology --><!-- ngIf: CD.challenge.technology && CD.challenge.technology.length > 0 --><li ng-if="CD.challenge.technology &amp;&amp; CD.challenge.technology.length &gt; 0" ng-repeat="tech in CD.challenge.technology" class="ng-scope">
+                    <span class="ng-binding">XML</span>
+                  </li><!-- end ngIf: CD.challenge.technology && CD.challenge.technology.length > 0 --><!-- end ngRepeat: tech in CD.challenge.technology -->
+                  <!-- ngIf: !(CD.challenge.technology && CD.challenge.technology.length > 0) -->
+
+                </ul>
+              <div class="clear"></div>
+              </div>
+            </article>
+
+            <h3>Final Submission Guidelines</h3>
+            <div ng-bind-html="CD.challenge.finalSubmissionGuidelines | trust" class="ng-binding"><ul>
+	<li dir="ltr">
+	<p dir="ltr">Tests in the form of <a href="https://www.getpostman.com/">POSTMAN</a> imports are acceptable.</p>
+	</li>
+	<li dir="ltr">
+	<p dir="ltr">Kindly provide a private video of your application in action. If the video is hosted on Youtube, kindly ensure that the video is unlisted. Best to also show how to deploy your application in the video too.</p>
+	</li>
+	<li dir="ltr">
+	<p dir="ltr">Make sure that you specify clearly how to deploy your application and how to call your APIs.</p>
+	</li>
+	<li dir="ltr">Upload your solution through the Submit and Review tool for this contest.</li>
+</ul>
+</div>
+
+            <article id="payments">
+              <h2>Payments</h2>
+
+              <p>Topcoder will compensate members in accordance with the payment structure of this challenge.
+                Initial payment for the winning member will be distributed in two installments. The first payment
+                will be made at the closure of the approval phase. The second payment will be made at the
+                completion of the support period.</p>
+
+              <h2>Reliability Rating and Bonus</h2>
+
+              <p>For challenges that have a reliability bonus, the bonus depends on the reliability rating at
+                the moment of registration for that project. A participant with no previous projects is
+                considered to have no reliability rating, and therefore gets no bonus.
+                Reliability bonus does not apply to Digital Run winnings. Since reliability rating is
+                based on the past 15 projects, it can only have 15 discrete values.<br>
+                <a href="http://help.topcoder.com/development/understanding-reliability-and-ratings/">Read more.</a></p>
+            </article>
+
+          </article><!-- end ngIf: !CD.isDesign -->
+
+        </div><!-- end ngIf: !CD.isDesign -->
+        <!-- ngIf: CD.isDesign -->
+
+        <div id="viewRegistrant" class="tableWrap hide tab" style="">
+
+
+          <article>
+            <table class="registrantsTable">
+              <thead>
+                <tr>
+                  <th class="handleColumn">
+                    <div>Username</div>
+                  </th>
+                  <!-- ngIf: !CD.isDesign --><th ng-if="!CD.isDesign" class="ratingColumn ng-scope">
+                    <div>Rating</div>
+                  </th><!-- end ngIf: !CD.isDesign -->
+                  <!-- ngIf: !CD.isDesign --><th ng-if="!CD.isDesign" class="reliabilityColumn ng-scope">
+                    <div>Reliability</div>
+                  </th><!-- end ngIf: !CD.isDesign -->
+                  <th class="regDateColumn">
+                    <div>Registration Date</div>
+                  </th>
+                  <th class="subDateColumn">
+                    <div>Submission Date</div>
+                  </th>
+                  <th class="successIconColumn" ng-show="!CD.isPeerReviewed">
+                    <div>Result</div>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- ngRepeat: registrant in CD.challenge.registrants | orderBy:'registrationDate' --><tr ng-repeat="registrant in CD.challenge.registrants | orderBy:&#39;registrationDate&#39;" class="ng-scope">
+                  <td ng-class="CD.challengeType == &#39;design&#39; ? &#39;handleColumnDesign&#39; : &#39;handleColumn&#39;" class="handleColumn">
+                    <span>
+                        <a ng-href="https://www.topcoder.com/member-profile/ananthhh" ng-bind="registrant.handle" class="ng-binding" href="https://www.topcoder.com/member-profile/ananthhh">ananthhh</a>
+                    </span>
+                  </td>
+                  <!-- ngIf: !CD.isDesign --><td ng-if="!CD.isDesign" class="ratingColumn ng-scope">
+                    <span style="color: #000000" ng-bind="registrant.rating || 0" class="ng-binding">0</span>
+                  </td><!-- end ngIf: !CD.isDesign -->
+                  <!-- ngIf: !CD.isDesign --><td ng-if="!CD.isDesign" class="reliabilityColumn ng-scope">
+                    <span ng-bind="registrant.reliability" class="ng-binding">n/a</span>
+                  </td><!-- end ngIf: !CD.isDesign -->
+                  <td ng-class="CD.challengeType == &#39;design&#39; ? &#39;regDateColumnDesign&#39; : &#39;regDateColumn&#39;" ng-bind="registrant.registrationDate | formatDate:2" class="ng-binding regDateColumn">Jan 19, 2016 01:12 EST</td>
+                  <td ng-class="CD.challengeType == &#39;design&#39; ? &#39;subDateColumnDesign&#39; : &#39;subDateColumn&#39;" ng-bind="registrant.submissionDate | formatDate:2" class="ng-binding subDateColumn">--</td>
+                  <!--bugfix refactored-challenge-details-68: added missing icons -->
+                  <td class="successIconColumn" ng-show="!CD.isPeerReviewed">
+                    <i class="" title=""></i>
+                  </td>
+                </tr><!-- end ngRepeat: registrant in CD.challenge.registrants | orderBy:'registrationDate' --><tr ng-repeat="registrant in CD.challenge.registrants | orderBy:&#39;registrationDate&#39;" class="ng-scope">
+                  <td ng-class="CD.challengeType == &#39;design&#39; ? &#39;handleColumnDesign&#39; : &#39;handleColumn&#39;" class="handleColumn">
+                    <span>
+                        <a ng-href="https://www.topcoder.com/member-profile/code56Life" ng-bind="registrant.handle" class="ng-binding" href="https://www.topcoder.com/member-profile/code56Life">code56Life</a>
+                    </span>
+                  </td>
+                  <!-- ngIf: !CD.isDesign --><td ng-if="!CD.isDesign" class="ratingColumn ng-scope">
+                    <span style="color: #000000" ng-bind="registrant.rating || 0" class="ng-binding">0</span>
+                  </td><!-- end ngIf: !CD.isDesign -->
+                  <!-- ngIf: !CD.isDesign --><td ng-if="!CD.isDesign" class="reliabilityColumn ng-scope">
+                    <span ng-bind="registrant.reliability" class="ng-binding">n/a</span>
+                  </td><!-- end ngIf: !CD.isDesign -->
+                  <td ng-class="CD.challengeType == &#39;design&#39; ? &#39;regDateColumnDesign&#39; : &#39;regDateColumn&#39;" ng-bind="registrant.registrationDate | formatDate:2" class="ng-binding regDateColumn">Jan 19, 2016 01:12 EST</td>
+                  <td ng-class="CD.challengeType == &#39;design&#39; ? &#39;subDateColumnDesign&#39; : &#39;subDateColumn&#39;" ng-bind="registrant.submissionDate | formatDate:2" class="ng-binding subDateColumn">--</td>
+                  <!--bugfix refactored-challenge-details-68: added missing icons -->
+                  <td class="successIconColumn" ng-show="!CD.isPeerReviewed">
+                    <i class="" title=""></i>
+                  </td>
+                </tr><!-- end ngRepeat: registrant in CD.challenge.registrants | orderBy:'registrationDate' --><tr ng-repeat="registrant in CD.challenge.registrants | orderBy:&#39;registrationDate&#39;" class="ng-scope">
+                  <td ng-class="CD.challengeType == &#39;design&#39; ? &#39;handleColumnDesign&#39; : &#39;handleColumn&#39;" class="handleColumn">
+                    <span>
+                        <a ng-href="https://www.topcoder.com/member-profile/PrakashSekar" ng-bind="registrant.handle" class="ng-binding" href="https://www.topcoder.com/member-profile/PrakashSekar">PrakashSekar</a>
+                    </span>
+                  </td>
+                  <!-- ngIf: !CD.isDesign --><td ng-if="!CD.isDesign" class="ratingColumn ng-scope">
+                    <span style="color: #000000" ng-bind="registrant.rating || 0" class="ng-binding">0</span>
+                  </td><!-- end ngIf: !CD.isDesign -->
+                  <!-- ngIf: !CD.isDesign --><td ng-if="!CD.isDesign" class="reliabilityColumn ng-scope">
+                    <span ng-bind="registrant.reliability" class="ng-binding">n/a</span>
+                  </td><!-- end ngIf: !CD.isDesign -->
+                  <td ng-class="CD.challengeType == &#39;design&#39; ? &#39;regDateColumnDesign&#39; : &#39;regDateColumn&#39;" ng-bind="registrant.registrationDate | formatDate:2" class="ng-binding regDateColumn">Jan 19, 2016 01:17 EST</td>
+                  <td ng-class="CD.challengeType == &#39;design&#39; ? &#39;subDateColumnDesign&#39; : &#39;subDateColumn&#39;" ng-bind="registrant.submissionDate | formatDate:2" class="ng-binding subDateColumn">--</td>
+                  <!--bugfix refactored-challenge-details-68: added missing icons -->
+                  <td class="successIconColumn" ng-show="!CD.isPeerReviewed">
+                    <i class="" title=""></i>
+                  </td>
+                </tr><!-- end ngRepeat: registrant in CD.challenge.registrants | orderBy:'registrationDate' --><tr ng-repeat="registrant in CD.challenge.registrants | orderBy:&#39;registrationDate&#39;" class="ng-scope">
+                  <td ng-class="CD.challengeType == &#39;design&#39; ? &#39;handleColumnDesign&#39; : &#39;handleColumn&#39;" class="handleColumn">
+                    <span>
+                        <a ng-href="https://www.topcoder.com/member-profile/sri02" ng-bind="registrant.handle" class="ng-binding" href="https://www.topcoder.com/member-profile/sri02">sri02</a>
+                    </span>
+                  </td>
+                  <!-- ngIf: !CD.isDesign --><td ng-if="!CD.isDesign" class="ratingColumn ng-scope">
+                    <span style="color: #000000" ng-bind="registrant.rating || 0" class="ng-binding">0</span>
+                  </td><!-- end ngIf: !CD.isDesign -->
+                  <!-- ngIf: !CD.isDesign --><td ng-if="!CD.isDesign" class="reliabilityColumn ng-scope">
+                    <span ng-bind="registrant.reliability" class="ng-binding">n/a</span>
+                  </td><!-- end ngIf: !CD.isDesign -->
+                  <td ng-class="CD.challengeType == &#39;design&#39; ? &#39;regDateColumnDesign&#39; : &#39;regDateColumn&#39;" ng-bind="registrant.registrationDate | formatDate:2" class="ng-binding regDateColumn">Jan 19, 2016 01:18 EST</td>
+                  <td ng-class="CD.challengeType == &#39;design&#39; ? &#39;subDateColumnDesign&#39; : &#39;subDateColumn&#39;" ng-bind="registrant.submissionDate | formatDate:2" class="ng-binding subDateColumn">--</td>
+                  <!--bugfix refactored-challenge-details-68: added missing icons -->
+                  <td class="successIconColumn" ng-show="!CD.isPeerReviewed">
+                    <i class="" title=""></i>
+                  </td>
+                </tr><!-- end ngRepeat: registrant in CD.challenge.registrants | orderBy:'registrationDate' --><tr ng-repeat="registrant in CD.challenge.registrants | orderBy:&#39;registrationDate&#39;" class="ng-scope">
+                  <td ng-class="CD.challengeType == &#39;design&#39; ? &#39;handleColumnDesign&#39; : &#39;handleColumn&#39;" class="handleColumn">
+                    <span>
+                        <a ng-href="https://www.topcoder.com/member-profile/yulishan3" ng-bind="registrant.handle" class="ng-binding" href="https://www.topcoder.com/member-profile/yulishan3">yulishan3</a>
+                    </span>
+                  </td>
+                  <!-- ngIf: !CD.isDesign --><td ng-if="!CD.isDesign" class="ratingColumn ng-scope">
+                    <span style="color: #000000" ng-bind="registrant.rating || 0" class="ng-binding">0</span>
+                  </td><!-- end ngIf: !CD.isDesign -->
+                  <!-- ngIf: !CD.isDesign --><td ng-if="!CD.isDesign" class="reliabilityColumn ng-scope">
+                    <span ng-bind="registrant.reliability" class="ng-binding">n/a</span>
+                  </td><!-- end ngIf: !CD.isDesign -->
+                  <td ng-class="CD.challengeType == &#39;design&#39; ? &#39;regDateColumnDesign&#39; : &#39;regDateColumn&#39;" ng-bind="registrant.registrationDate | formatDate:2" class="ng-binding regDateColumn">Jan 19, 2016 01:19 EST</td>
+                  <td ng-class="CD.challengeType == &#39;design&#39; ? &#39;subDateColumnDesign&#39; : &#39;subDateColumn&#39;" ng-bind="registrant.submissionDate | formatDate:2" class="ng-binding subDateColumn">--</td>
+                  <!--bugfix refactored-challenge-details-68: added missing icons -->
+                  <td class="successIconColumn" ng-show="!CD.isPeerReviewed">
+                    <i class="" title=""></i>
+                  </td>
+                </tr><!-- end ngRepeat: registrant in CD.challenge.registrants | orderBy:'registrationDate' --><tr ng-repeat="registrant in CD.challenge.registrants | orderBy:&#39;registrationDate&#39;" class="ng-scope">
+                  <td ng-class="CD.challengeType == &#39;design&#39; ? &#39;handleColumnDesign&#39; : &#39;handleColumn&#39;" class="handleColumn">
+                    <span>
+                        <a ng-href="https://www.topcoder.com/member-profile/Luckyodell" ng-bind="registrant.handle" class="ng-binding" href="https://www.topcoder.com/member-profile/Luckyodell">Luckyodell</a>
+                    </span>
+                  </td>
+                  <!-- ngIf: !CD.isDesign --><td ng-if="!CD.isDesign" class="ratingColumn ng-scope">
+                    <span style="color: #000000" ng-bind="registrant.rating || 0" class="ng-binding">0</span>
+                  </td><!-- end ngIf: !CD.isDesign -->
+                  <!-- ngIf: !CD.isDesign --><td ng-if="!CD.isDesign" class="reliabilityColumn ng-scope">
+                    <span ng-bind="registrant.reliability" class="ng-binding">n/a</span>
+                  </td><!-- end ngIf: !CD.isDesign -->
+                  <td ng-class="CD.challengeType == &#39;design&#39; ? &#39;regDateColumnDesign&#39; : &#39;regDateColumn&#39;" ng-bind="registrant.registrationDate | formatDate:2" class="ng-binding regDateColumn">Jan 19, 2016 01:19 EST</td>
+                  <td ng-class="CD.challengeType == &#39;design&#39; ? &#39;subDateColumnDesign&#39; : &#39;subDateColumn&#39;" ng-bind="registrant.submissionDate | formatDate:2" class="ng-binding subDateColumn">--</td>
+                  <!--bugfix refactored-challenge-details-68: added missing icons -->
+                  <td class="successIconColumn" ng-show="!CD.isPeerReviewed">
+                    <i class="" title=""></i>
+                  </td>
+                </tr><!-- end ngRepeat: registrant in CD.challenge.registrants | orderBy:'registrationDate' --><tr ng-repeat="registrant in CD.challenge.registrants | orderBy:&#39;registrationDate&#39;" class="ng-scope">
+                  <td ng-class="CD.challengeType == &#39;design&#39; ? &#39;handleColumnDesign&#39; : &#39;handleColumn&#39;" class="handleColumn">
+                    <span>
+                        <a ng-href="https://www.topcoder.com/member-profile/minhaj_ksm" ng-bind="registrant.handle" class="ng-binding" href="https://www.topcoder.com/member-profile/minhaj_ksm">minhaj_ksm</a>
+                    </span>
+                  </td>
+                  <!-- ngIf: !CD.isDesign --><td ng-if="!CD.isDesign" class="ratingColumn ng-scope">
+                    <span style="color: #000000" ng-bind="registrant.rating || 0" class="ng-binding">0</span>
+                  </td><!-- end ngIf: !CD.isDesign -->
+                  <!-- ngIf: !CD.isDesign --><td ng-if="!CD.isDesign" class="reliabilityColumn ng-scope">
+                    <span ng-bind="registrant.reliability" class="ng-binding">n/a</span>
+                  </td><!-- end ngIf: !CD.isDesign -->
+                  <td ng-class="CD.challengeType == &#39;design&#39; ? &#39;regDateColumnDesign&#39; : &#39;regDateColumn&#39;" ng-bind="registrant.registrationDate | formatDate:2" class="ng-binding regDateColumn">Jan 19, 2016 01:20 EST</td>
+                  <td ng-class="CD.challengeType == &#39;design&#39; ? &#39;subDateColumnDesign&#39; : &#39;subDateColumn&#39;" ng-bind="registrant.submissionDate | formatDate:2" class="ng-binding subDateColumn">--</td>
+                  <!--bugfix refactored-challenge-details-68: added missing icons -->
+                  <td class="successIconColumn" ng-show="!CD.isPeerReviewed">
+                    <i class="" title=""></i>
+                  </td>
+                </tr><!-- end ngRepeat: registrant in CD.challenge.registrants | orderBy:'registrationDate' --><tr ng-repeat="registrant in CD.challenge.registrants | orderBy:&#39;registrationDate&#39;" class="ng-scope">
+                  <td ng-class="CD.challengeType == &#39;design&#39; ? &#39;handleColumnDesign&#39; : &#39;handleColumn&#39;" class="handleColumn">
+                    <span>
+                        <a ng-href="https://www.topcoder.com/member-profile/siong5309" ng-bind="registrant.handle" class="ng-binding" href="https://www.topcoder.com/member-profile/siong5309">siong5309</a>
+                    </span>
+                  </td>
+                  <!-- ngIf: !CD.isDesign --><td ng-if="!CD.isDesign" class="ratingColumn ng-scope">
+                    <span style="color: #000000" ng-bind="registrant.rating || 0" class="ng-binding">0</span>
+                  </td><!-- end ngIf: !CD.isDesign -->
+                  <!-- ngIf: !CD.isDesign --><td ng-if="!CD.isDesign" class="reliabilityColumn ng-scope">
+                    <span ng-bind="registrant.reliability" class="ng-binding">n/a</span>
+                  </td><!-- end ngIf: !CD.isDesign -->
+                  <td ng-class="CD.challengeType == &#39;design&#39; ? &#39;regDateColumnDesign&#39; : &#39;regDateColumn&#39;" ng-bind="registrant.registrationDate | formatDate:2" class="ng-binding regDateColumn">Jan 19, 2016 01:27 EST</td>
+                  <td ng-class="CD.challengeType == &#39;design&#39; ? &#39;subDateColumnDesign&#39; : &#39;subDateColumn&#39;" ng-bind="registrant.submissionDate | formatDate:2" class="ng-binding subDateColumn">--</td>
+                  <!--bugfix refactored-challenge-details-68: added missing icons -->
+                  <td class="successIconColumn" ng-show="!CD.isPeerReviewed">
+                    <i class="" title=""></i>
+                  </td>
+                </tr><!-- end ngRepeat: registrant in CD.challenge.registrants | orderBy:'registrationDate' --><tr ng-repeat="registrant in CD.challenge.registrants | orderBy:&#39;registrationDate&#39;" class="ng-scope">
+                  <td ng-class="CD.challengeType == &#39;design&#39; ? &#39;handleColumnDesign&#39; : &#39;handleColumn&#39;" class="handleColumn">
+                    <span>
+                        <a ng-href="https://www.topcoder.com/member-profile/net_buster" ng-bind="registrant.handle" class="ng-binding" href="https://www.topcoder.com/member-profile/net_buster">net_buster</a>
+                    </span>
+                  </td>
+                  <!-- ngIf: !CD.isDesign --><td ng-if="!CD.isDesign" class="ratingColumn ng-scope">
+                    <span style="color: #000000" ng-bind="registrant.rating || 0" class="ng-binding">0</span>
+                  </td><!-- end ngIf: !CD.isDesign -->
+                  <!-- ngIf: !CD.isDesign --><td ng-if="!CD.isDesign" class="reliabilityColumn ng-scope">
+                    <span ng-bind="registrant.reliability" class="ng-binding">n/a</span>
+                  </td><!-- end ngIf: !CD.isDesign -->
+                  <td ng-class="CD.challengeType == &#39;design&#39; ? &#39;regDateColumnDesign&#39; : &#39;regDateColumn&#39;" ng-bind="registrant.registrationDate | formatDate:2" class="ng-binding regDateColumn">Jan 19, 2016 01:27 EST</td>
+                  <td ng-class="CD.challengeType == &#39;design&#39; ? &#39;subDateColumnDesign&#39; : &#39;subDateColumn&#39;" ng-bind="registrant.submissionDate | formatDate:2" class="ng-binding subDateColumn">--</td>
+                  <!--bugfix refactored-challenge-details-68: added missing icons -->
+                  <td class="successIconColumn" ng-show="!CD.isPeerReviewed">
+                    <i class="" title=""></i>
+                  </td>
+                </tr><!-- end ngRepeat: registrant in CD.challenge.registrants | orderBy:'registrationDate' --><tr ng-repeat="registrant in CD.challenge.registrants | orderBy:&#39;registrationDate&#39;" class="ng-scope">
+                  <td ng-class="CD.challengeType == &#39;design&#39; ? &#39;handleColumnDesign&#39; : &#39;handleColumn&#39;" class="handleColumn">
+                    <span>
+                        <a ng-href="https://www.topcoder.com/member-profile/amolskh" ng-bind="registrant.handle" class="ng-binding" href="https://www.topcoder.com/member-profile/amolskh">amolskh</a>
+                    </span>
+                  </td>
+                  <!-- ngIf: !CD.isDesign --><td ng-if="!CD.isDesign" class="ratingColumn ng-scope">
+                    <span style="color: #000000" ng-bind="registrant.rating || 0" class="ng-binding">0</span>
+                  </td><!-- end ngIf: !CD.isDesign -->
+                  <!-- ngIf: !CD.isDesign --><td ng-if="!CD.isDesign" class="reliabilityColumn ng-scope">
+                    <span ng-bind="registrant.reliability" class="ng-binding">n/a</span>
+                  </td><!-- end ngIf: !CD.isDesign -->
+                  <td ng-class="CD.challengeType == &#39;design&#39; ? &#39;regDateColumnDesign&#39; : &#39;regDateColumn&#39;" ng-bind="registrant.registrationDate | formatDate:2" class="ng-binding regDateColumn">Jan 19, 2016 01:27 EST</td>
+                  <td ng-class="CD.challengeType == &#39;design&#39; ? &#39;subDateColumnDesign&#39; : &#39;subDateColumn&#39;" ng-bind="registrant.submissionDate | formatDate:2" class="ng-binding subDateColumn">--</td>
+                  <!--bugfix refactored-challenge-details-68: added missing icons -->
+                  <td class="successIconColumn" ng-show="!CD.isPeerReviewed">
+                    <i class="" title=""></i>
+                  </td>
+                </tr><!-- end ngRepeat: registrant in CD.challenge.registrants | orderBy:'registrationDate' --><tr ng-repeat="registrant in CD.challenge.registrants | orderBy:&#39;registrationDate&#39;" class="ng-scope">
+                  <td ng-class="CD.challengeType == &#39;design&#39; ? &#39;handleColumnDesign&#39; : &#39;handleColumn&#39;" class="handleColumn">
+                    <span>
+                        <a ng-href="https://www.topcoder.com/member-profile/zsudraco" ng-bind="registrant.handle" class="ng-binding" href="https://www.topcoder.com/member-profile/zsudraco">zsudraco</a>
+                    </span>
+                  </td>
+                  <!-- ngIf: !CD.isDesign --><td ng-if="!CD.isDesign" class="ratingColumn ng-scope">
+                    <span style="color: #000000" ng-bind="registrant.rating || 0" class="ng-binding">0</span>
+                  </td><!-- end ngIf: !CD.isDesign -->
+                  <!-- ngIf: !CD.isDesign --><td ng-if="!CD.isDesign" class="reliabilityColumn ng-scope">
+                    <span ng-bind="registrant.reliability" class="ng-binding">n/a</span>
+                  </td><!-- end ngIf: !CD.isDesign -->
+                  <td ng-class="CD.challengeType == &#39;design&#39; ? &#39;regDateColumnDesign&#39; : &#39;regDateColumn&#39;" ng-bind="registrant.registrationDate | formatDate:2" class="ng-binding regDateColumn">Jan 19, 2016 01:34 EST</td>
+                  <td ng-class="CD.challengeType == &#39;design&#39; ? &#39;subDateColumnDesign&#39; : &#39;subDateColumn&#39;" ng-bind="registrant.submissionDate | formatDate:2" class="ng-binding subDateColumn">--</td>
+                  <!--bugfix refactored-challenge-details-68: added missing icons -->
+                  <td class="successIconColumn" ng-show="!CD.isPeerReviewed">
+                    <i class="" title=""></i>
+                  </td>
+                </tr><!-- end ngRepeat: registrant in CD.challenge.registrants | orderBy:'registrationDate' --><tr ng-repeat="registrant in CD.challenge.registrants | orderBy:&#39;registrationDate&#39;" class="ng-scope">
+                  <td ng-class="CD.challengeType == &#39;design&#39; ? &#39;handleColumnDesign&#39; : &#39;handleColumn&#39;" class="handleColumn">
+                    <span>
+                        <a ng-href="https://www.topcoder.com/member-profile/codingdrone" ng-bind="registrant.handle" class="ng-binding" href="https://www.topcoder.com/member-profile/codingdrone">codingdrone</a>
+                    </span>
+                  </td>
+                  <!-- ngIf: !CD.isDesign --><td ng-if="!CD.isDesign" class="ratingColumn ng-scope">
+                    <span style="color: #000000" ng-bind="registrant.rating || 0" class="ng-binding">0</span>
+                  </td><!-- end ngIf: !CD.isDesign -->
+                  <!-- ngIf: !CD.isDesign --><td ng-if="!CD.isDesign" class="reliabilityColumn ng-scope">
+                    <span ng-bind="registrant.reliability" class="ng-binding">n/a</span>
+                  </td><!-- end ngIf: !CD.isDesign -->
+                  <td ng-class="CD.challengeType == &#39;design&#39; ? &#39;regDateColumnDesign&#39; : &#39;regDateColumn&#39;" ng-bind="registrant.registrationDate | formatDate:2" class="ng-binding regDateColumn">Jan 19, 2016 01:34 EST</td>
+                  <td ng-class="CD.challengeType == &#39;design&#39; ? &#39;subDateColumnDesign&#39; : &#39;subDateColumn&#39;" ng-bind="registrant.submissionDate | formatDate:2" class="ng-binding subDateColumn">--</td>
+                  <!--bugfix refactored-challenge-details-68: added missing icons -->
+                  <td class="successIconColumn" ng-show="!CD.isPeerReviewed">
+                    <i class="" title=""></i>
+                  </td>
+                </tr><!-- end ngRepeat: registrant in CD.challenge.registrants | orderBy:'registrationDate' --><tr ng-repeat="registrant in CD.challenge.registrants | orderBy:&#39;registrationDate&#39;" class="ng-scope">
+                  <td ng-class="CD.challengeType == &#39;design&#39; ? &#39;handleColumnDesign&#39; : &#39;handleColumn&#39;" class="handleColumn">
+                    <span>
+                        <a ng-href="https://www.topcoder.com/member-profile/rajrkrish" ng-bind="registrant.handle" class="ng-binding" href="https://www.topcoder.com/member-profile/rajrkrish">rajrkrish</a>
+                    </span>
+                  </td>
+                  <!-- ngIf: !CD.isDesign --><td ng-if="!CD.isDesign" class="ratingColumn ng-scope">
+                    <span style="color: #000000" ng-bind="registrant.rating || 0" class="ng-binding">0</span>
+                  </td><!-- end ngIf: !CD.isDesign -->
+                  <!-- ngIf: !CD.isDesign --><td ng-if="!CD.isDesign" class="reliabilityColumn ng-scope">
+                    <span ng-bind="registrant.reliability" class="ng-binding">n/a</span>
+                  </td><!-- end ngIf: !CD.isDesign -->
+                  <td ng-class="CD.challengeType == &#39;design&#39; ? &#39;regDateColumnDesign&#39; : &#39;regDateColumn&#39;" ng-bind="registrant.registrationDate | formatDate:2" class="ng-binding regDateColumn">Jan 19, 2016 01:35 EST</td>
+                  <td ng-class="CD.challengeType == &#39;design&#39; ? &#39;subDateColumnDesign&#39; : &#39;subDateColumn&#39;" ng-bind="registrant.submissionDate | formatDate:2" class="ng-binding subDateColumn">--</td>
+                  <!--bugfix refactored-challenge-details-68: added missing icons -->
+                  <td class="successIconColumn" ng-show="!CD.isPeerReviewed">
+                    <i class="" title=""></i>
+                  </td>
+                </tr><!-- end ngRepeat: registrant in CD.challenge.registrants | orderBy:'registrationDate' --><tr ng-repeat="registrant in CD.challenge.registrants | orderBy:&#39;registrationDate&#39;" class="ng-scope">
+                  <td ng-class="CD.challengeType == &#39;design&#39; ? &#39;handleColumnDesign&#39; : &#39;handleColumn&#39;" class="handleColumn">
+                    <span>
+                        <a ng-href="https://www.topcoder.com/member-profile/ganesanr" ng-bind="registrant.handle" class="ng-binding" href="https://www.topcoder.com/member-profile/ganesanr">ganesanr</a>
+                    </span>
+                  </td>
+                  <!-- ngIf: !CD.isDesign --><td ng-if="!CD.isDesign" class="ratingColumn ng-scope">
+                    <span style="color: #000000" ng-bind="registrant.rating || 0" class="ng-binding">0</span>
+                  </td><!-- end ngIf: !CD.isDesign -->
+                  <!-- ngIf: !CD.isDesign --><td ng-if="!CD.isDesign" class="reliabilityColumn ng-scope">
+                    <span ng-bind="registrant.reliability" class="ng-binding">n/a</span>
+                  </td><!-- end ngIf: !CD.isDesign -->
+                  <td ng-class="CD.challengeType == &#39;design&#39; ? &#39;regDateColumnDesign&#39; : &#39;regDateColumn&#39;" ng-bind="registrant.registrationDate | formatDate:2" class="ng-binding regDateColumn">Jan 19, 2016 01:39 EST</td>
+                  <td ng-class="CD.challengeType == &#39;design&#39; ? &#39;subDateColumnDesign&#39; : &#39;subDateColumn&#39;" ng-bind="registrant.submissionDate | formatDate:2" class="ng-binding subDateColumn">--</td>
+                  <!--bugfix refactored-challenge-details-68: added missing icons -->
+                  <td class="successIconColumn" ng-show="!CD.isPeerReviewed">
+                    <i class="" title=""></i>
+                  </td>
+                </tr><!-- end ngRepeat: registrant in CD.challenge.registrants | orderBy:'registrationDate' --><tr ng-repeat="registrant in CD.challenge.registrants | orderBy:&#39;registrationDate&#39;" class="ng-scope">
+                  <td ng-class="CD.challengeType == &#39;design&#39; ? &#39;handleColumnDesign&#39; : &#39;handleColumn&#39;" class="handleColumn">
+                    <span>
+                        <a ng-href="https://www.topcoder.com/member-profile/kondakovdmitry" ng-bind="registrant.handle" class="ng-binding" href="https://www.topcoder.com/member-profile/kondakovdmitry">kondakovdmitry</a>
+                    </span>
+                  </td>
+                  <!-- ngIf: !CD.isDesign --><td ng-if="!CD.isDesign" class="ratingColumn ng-scope">
+                    <span style="color: #000000" ng-bind="registrant.rating || 0" class="ng-binding">0</span>
+                  </td><!-- end ngIf: !CD.isDesign -->
+                  <!-- ngIf: !CD.isDesign --><td ng-if="!CD.isDesign" class="reliabilityColumn ng-scope">
+                    <span ng-bind="registrant.reliability" class="ng-binding">n/a</span>
+                  </td><!-- end ngIf: !CD.isDesign -->
+                  <td ng-class="CD.challengeType == &#39;design&#39; ? &#39;regDateColumnDesign&#39; : &#39;regDateColumn&#39;" ng-bind="registrant.registrationDate | formatDate:2" class="ng-binding regDateColumn">Jan 19, 2016 01:58 EST</td>
+                  <td ng-class="CD.challengeType == &#39;design&#39; ? &#39;subDateColumnDesign&#39; : &#39;subDateColumn&#39;" ng-bind="registrant.submissionDate | formatDate:2" class="ng-binding subDateColumn">--</td>
+                  <!--bugfix refactored-challenge-details-68: added missing icons -->
+                  <td class="successIconColumn" ng-show="!CD.isPeerReviewed">
+                    <i class="" title=""></i>
+                  </td>
+                </tr><!-- end ngRepeat: registrant in CD.challenge.registrants | orderBy:'registrationDate' --><tr ng-repeat="registrant in CD.challenge.registrants | orderBy:&#39;registrationDate&#39;" class="ng-scope">
+                  <td ng-class="CD.challengeType == &#39;design&#39; ? &#39;handleColumnDesign&#39; : &#39;handleColumn&#39;" class="handleColumn">
+                    <span>
+                        <a ng-href="https://www.topcoder.com/member-profile/GeetaMamuni" ng-bind="registrant.handle" class="ng-binding" href="https://www.topcoder.com/member-profile/GeetaMamuni">GeetaMamuni</a>
+                    </span>
+                  </td>
+                  <!-- ngIf: !CD.isDesign --><td ng-if="!CD.isDesign" class="ratingColumn ng-scope">
+                    <span style="color: #000000" ng-bind="registrant.rating || 0" class="ng-binding">0</span>
+                  </td><!-- end ngIf: !CD.isDesign -->
+                  <!-- ngIf: !CD.isDesign --><td ng-if="!CD.isDesign" class="reliabilityColumn ng-scope">
+                    <span ng-bind="registrant.reliability" class="ng-binding">n/a</span>
+                  </td><!-- end ngIf: !CD.isDesign -->
+                  <td ng-class="CD.challengeType == &#39;design&#39; ? &#39;regDateColumnDesign&#39; : &#39;regDateColumn&#39;" ng-bind="registrant.registrationDate | formatDate:2" class="ng-binding regDateColumn">Jan 19, 2016 02:01 EST</td>
+                  <td ng-class="CD.challengeType == &#39;design&#39; ? &#39;subDateColumnDesign&#39; : &#39;subDateColumn&#39;" ng-bind="registrant.submissionDate | formatDate:2" class="ng-binding subDateColumn">--</td>
+                  <!--bugfix refactored-challenge-details-68: added missing icons -->
+                  <td class="successIconColumn" ng-show="!CD.isPeerReviewed">
+                    <i class="" title=""></i>
+                  </td>
+                </tr><!-- end ngRepeat: registrant in CD.challenge.registrants | orderBy:'registrationDate' --><tr ng-repeat="registrant in CD.challenge.registrants | orderBy:&#39;registrationDate&#39;" class="ng-scope">
+                  <td ng-class="CD.challengeType == &#39;design&#39; ? &#39;handleColumnDesign&#39; : &#39;handleColumn&#39;" class="handleColumn">
+                    <span>
+                        <a ng-href="https://www.topcoder.com/member-profile/pfilippi" ng-bind="registrant.handle" class="ng-binding" href="https://www.topcoder.com/member-profile/pfilippi">pfilippi</a>
+                    </span>
+                  </td>
+                  <!-- ngIf: !CD.isDesign --><td ng-if="!CD.isDesign" class="ratingColumn ng-scope">
+                    <span style="color: #000000" ng-bind="registrant.rating || 0" class="ng-binding">0</span>
+                  </td><!-- end ngIf: !CD.isDesign -->
+                  <!-- ngIf: !CD.isDesign --><td ng-if="!CD.isDesign" class="reliabilityColumn ng-scope">
+                    <span ng-bind="registrant.reliability" class="ng-binding">n/a</span>
+                  </td><!-- end ngIf: !CD.isDesign -->
+                  <td ng-class="CD.challengeType == &#39;design&#39; ? &#39;regDateColumnDesign&#39; : &#39;regDateColumn&#39;" ng-bind="registrant.registrationDate | formatDate:2" class="ng-binding regDateColumn">Jan 19, 2016 02:15 EST</td>
+                  <td ng-class="CD.challengeType == &#39;design&#39; ? &#39;subDateColumnDesign&#39; : &#39;subDateColumn&#39;" ng-bind="registrant.submissionDate | formatDate:2" class="ng-binding subDateColumn">--</td>
+                  <!--bugfix refactored-challenge-details-68: added missing icons -->
+                  <td class="successIconColumn" ng-show="!CD.isPeerReviewed">
+                    <i class="" title=""></i>
+                  </td>
+                </tr><!-- end ngRepeat: registrant in CD.challenge.registrants | orderBy:'registrationDate' --><tr ng-repeat="registrant in CD.challenge.registrants | orderBy:&#39;registrationDate&#39;" class="ng-scope">
+                  <td ng-class="CD.challengeType == &#39;design&#39; ? &#39;handleColumnDesign&#39; : &#39;handleColumn&#39;" class="handleColumn">
+                    <span>
+                        <a ng-href="https://www.topcoder.com/member-profile/bannie2492" ng-bind="registrant.handle" class="ng-binding" href="https://www.topcoder.com/member-profile/bannie2492">bannie2492</a>
+                    </span>
+                  </td>
+                  <!-- ngIf: !CD.isDesign --><td ng-if="!CD.isDesign" class="ratingColumn ng-scope">
+                    <span style="color: #000000" ng-bind="registrant.rating || 0" class="ng-binding">0</span>
+                  </td><!-- end ngIf: !CD.isDesign -->
+                  <!-- ngIf: !CD.isDesign --><td ng-if="!CD.isDesign" class="reliabilityColumn ng-scope">
+                    <span ng-bind="registrant.reliability" class="ng-binding">n/a</span>
+                  </td><!-- end ngIf: !CD.isDesign -->
+                  <td ng-class="CD.challengeType == &#39;design&#39; ? &#39;regDateColumnDesign&#39; : &#39;regDateColumn&#39;" ng-bind="registrant.registrationDate | formatDate:2" class="ng-binding regDateColumn">Jan 19, 2016 02:27 EST</td>
+                  <td ng-class="CD.challengeType == &#39;design&#39; ? &#39;subDateColumnDesign&#39; : &#39;subDateColumn&#39;" ng-bind="registrant.submissionDate | formatDate:2" class="ng-binding subDateColumn">--</td>
+                  <!--bugfix refactored-challenge-details-68: added missing icons -->
+                  <td class="successIconColumn" ng-show="!CD.isPeerReviewed">
+                    <i class="" title=""></i>
+                  </td>
+                </tr><!-- end ngRepeat: registrant in CD.challenge.registrants | orderBy:'registrationDate' --><tr ng-repeat="registrant in CD.challenge.registrants | orderBy:&#39;registrationDate&#39;" class="ng-scope">
+                  <td ng-class="CD.challengeType == &#39;design&#39; ? &#39;handleColumnDesign&#39; : &#39;handleColumn&#39;" class="handleColumn">
+                    <span>
+                        <a ng-href="https://www.topcoder.com/member-profile/panoptimum" ng-bind="registrant.handle" class="ng-binding" href="https://www.topcoder.com/member-profile/panoptimum">panoptimum</a>
+                    </span>
+                  </td>
+                  <!-- ngIf: !CD.isDesign --><td ng-if="!CD.isDesign" class="ratingColumn ng-scope">
+                    <span style="color: #000000" ng-bind="registrant.rating || 0" class="ng-binding">0</span>
+                  </td><!-- end ngIf: !CD.isDesign -->
+                  <!-- ngIf: !CD.isDesign --><td ng-if="!CD.isDesign" class="reliabilityColumn ng-scope">
+                    <span ng-bind="registrant.reliability" class="ng-binding">n/a</span>
+                  </td><!-- end ngIf: !CD.isDesign -->
+                  <td ng-class="CD.challengeType == &#39;design&#39; ? &#39;regDateColumnDesign&#39; : &#39;regDateColumn&#39;" ng-bind="registrant.registrationDate | formatDate:2" class="ng-binding regDateColumn">Jan 19, 2016 02:44 EST</td>
+                  <td ng-class="CD.challengeType == &#39;design&#39; ? &#39;subDateColumnDesign&#39; : &#39;subDateColumn&#39;" ng-bind="registrant.submissionDate | formatDate:2" class="ng-binding subDateColumn">--</td>
+                  <!--bugfix refactored-challenge-details-68: added missing icons -->
+                  <td class="successIconColumn" ng-show="!CD.isPeerReviewed">
+                    <i class="" title=""></i>
+                  </td>
+                </tr><!-- end ngRepeat: registrant in CD.challenge.registrants | orderBy:'registrationDate' --><tr ng-repeat="registrant in CD.challenge.registrants | orderBy:&#39;registrationDate&#39;" class="ng-scope">
+                  <td ng-class="CD.challengeType == &#39;design&#39; ? &#39;handleColumnDesign&#39; : &#39;handleColumn&#39;" class="handleColumn">
+                    <span>
+                        <a ng-href="https://www.topcoder.com/member-profile/parapluplu" ng-bind="registrant.handle" class="ng-binding" href="https://www.topcoder.com/member-profile/parapluplu">parapluplu</a>
+                    </span>
+                  </td>
+                  <!-- ngIf: !CD.isDesign --><td ng-if="!CD.isDesign" class="ratingColumn ng-scope">
+                    <span style="color: #000000" ng-bind="registrant.rating || 0" class="ng-binding">0</span>
+                  </td><!-- end ngIf: !CD.isDesign -->
+                  <!-- ngIf: !CD.isDesign --><td ng-if="!CD.isDesign" class="reliabilityColumn ng-scope">
+                    <span ng-bind="registrant.reliability" class="ng-binding">n/a</span>
+                  </td><!-- end ngIf: !CD.isDesign -->
+                  <td ng-class="CD.challengeType == &#39;design&#39; ? &#39;regDateColumnDesign&#39; : &#39;regDateColumn&#39;" ng-bind="registrant.registrationDate | formatDate:2" class="ng-binding regDateColumn">Jan 19, 2016 02:54 EST</td>
+                  <td ng-class="CD.challengeType == &#39;design&#39; ? &#39;subDateColumnDesign&#39; : &#39;subDateColumn&#39;" ng-bind="registrant.submissionDate | formatDate:2" class="ng-binding subDateColumn">--</td>
+                  <!--bugfix refactored-challenge-details-68: added missing icons -->
+                  <td class="successIconColumn" ng-show="!CD.isPeerReviewed">
+                    <i class="" title=""></i>
+                  </td>
+                </tr><!-- end ngRepeat: registrant in CD.challenge.registrants | orderBy:'registrationDate' --><tr ng-repeat="registrant in CD.challenge.registrants | orderBy:&#39;registrationDate&#39;" class="ng-scope">
+                  <td ng-class="CD.challengeType == &#39;design&#39; ? &#39;handleColumnDesign&#39; : &#39;handleColumn&#39;" class="handleColumn">
+                    <span>
+                        <a ng-href="https://www.topcoder.com/member-profile/ShindouHikaru" ng-bind="registrant.handle" class="ng-binding" href="https://www.topcoder.com/member-profile/ShindouHikaru">ShindouHikaru</a>
+                    </span>
+                  </td>
+                  <!-- ngIf: !CD.isDesign --><td ng-if="!CD.isDesign" class="ratingColumn ng-scope">
+                    <span style="color: #000000" ng-bind="registrant.rating || 0" class="ng-binding">0</span>
+                  </td><!-- end ngIf: !CD.isDesign -->
+                  <!-- ngIf: !CD.isDesign --><td ng-if="!CD.isDesign" class="reliabilityColumn ng-scope">
+                    <span ng-bind="registrant.reliability" class="ng-binding">n/a</span>
+                  </td><!-- end ngIf: !CD.isDesign -->
+                  <td ng-class="CD.challengeType == &#39;design&#39; ? &#39;regDateColumnDesign&#39; : &#39;regDateColumn&#39;" ng-bind="registrant.registrationDate | formatDate:2" class="ng-binding regDateColumn">Jan 19, 2016 03:09 EST</td>
+                  <td ng-class="CD.challengeType == &#39;design&#39; ? &#39;subDateColumnDesign&#39; : &#39;subDateColumn&#39;" ng-bind="registrant.submissionDate | formatDate:2" class="ng-binding subDateColumn">--</td>
+                  <!--bugfix refactored-challenge-details-68: added missing icons -->
+                  <td class="successIconColumn" ng-show="!CD.isPeerReviewed">
+                    <i class="" title=""></i>
+                  </td>
+                </tr><!-- end ngRepeat: registrant in CD.challenge.registrants | orderBy:'registrationDate' --><tr ng-repeat="registrant in CD.challenge.registrants | orderBy:&#39;registrationDate&#39;" class="ng-scope">
+                  <td ng-class="CD.challengeType == &#39;design&#39; ? &#39;handleColumnDesign&#39; : &#39;handleColumn&#39;" class="handleColumn">
+                    <span>
+                        <a ng-href="https://www.topcoder.com/member-profile/kharish89" ng-bind="registrant.handle" class="ng-binding" href="https://www.topcoder.com/member-profile/kharish89">kharish89</a>
+                    </span>
+                  </td>
+                  <!-- ngIf: !CD.isDesign --><td ng-if="!CD.isDesign" class="ratingColumn ng-scope">
+                    <span style="color: #000000" ng-bind="registrant.rating || 0" class="ng-binding">0</span>
+                  </td><!-- end ngIf: !CD.isDesign -->
+                  <!-- ngIf: !CD.isDesign --><td ng-if="!CD.isDesign" class="reliabilityColumn ng-scope">
+                    <span ng-bind="registrant.reliability" class="ng-binding">n/a</span>
+                  </td><!-- end ngIf: !CD.isDesign -->
+                  <td ng-class="CD.challengeType == &#39;design&#39; ? &#39;regDateColumnDesign&#39; : &#39;regDateColumn&#39;" ng-bind="registrant.registrationDate | formatDate:2" class="ng-binding regDateColumn">Jan 19, 2016 03:15 EST</td>
+                  <td ng-class="CD.challengeType == &#39;design&#39; ? &#39;subDateColumnDesign&#39; : &#39;subDateColumn&#39;" ng-bind="registrant.submissionDate | formatDate:2" class="ng-binding subDateColumn">--</td>
+                  <!--bugfix refactored-challenge-details-68: added missing icons -->
+                  <td class="successIconColumn" ng-show="!CD.isPeerReviewed">
+                    <i class="" title=""></i>
+                  </td>
+                </tr><!-- end ngRepeat: registrant in CD.challenge.registrants | orderBy:'registrationDate' --><tr ng-repeat="registrant in CD.challenge.registrants | orderBy:&#39;registrationDate&#39;" class="ng-scope">
+                  <td ng-class="CD.challengeType == &#39;design&#39; ? &#39;handleColumnDesign&#39; : &#39;handleColumn&#39;" class="handleColumn">
+                    <span>
+                        <a ng-href="https://www.topcoder.com/member-profile/d1rk" ng-bind="registrant.handle" class="ng-binding" href="https://www.topcoder.com/member-profile/d1rk">d1rk</a>
+                    </span>
+                  </td>
+                  <!-- ngIf: !CD.isDesign --><td ng-if="!CD.isDesign" class="ratingColumn ng-scope">
+                    <span style="color: #000000" ng-bind="registrant.rating || 0" class="ng-binding">0</span>
+                  </td><!-- end ngIf: !CD.isDesign -->
+                  <!-- ngIf: !CD.isDesign --><td ng-if="!CD.isDesign" class="reliabilityColumn ng-scope">
+                    <span ng-bind="registrant.reliability" class="ng-binding">n/a</span>
+                  </td><!-- end ngIf: !CD.isDesign -->
+                  <td ng-class="CD.challengeType == &#39;design&#39; ? &#39;regDateColumnDesign&#39; : &#39;regDateColumn&#39;" ng-bind="registrant.registrationDate | formatDate:2" class="ng-binding regDateColumn">Jan 19, 2016 03:15 EST</td>
+                  <td ng-class="CD.challengeType == &#39;design&#39; ? &#39;subDateColumnDesign&#39; : &#39;subDateColumn&#39;" ng-bind="registrant.submissionDate | formatDate:2" class="ng-binding subDateColumn">--</td>
+                  <!--bugfix refactored-challenge-details-68: added missing icons -->
+                  <td class="successIconColumn" ng-show="!CD.isPeerReviewed">
+                    <i class="" title=""></i>
+                  </td>
+                </tr><!-- end ngRepeat: registrant in CD.challenge.registrants | orderBy:'registrationDate' -->
+              </tbody>
+            </table>
+
+
+          </article>
+
+
+        </div>
+        <div id="winner" class="tableWrap hide tab">
+          <!-- ngInclude:  --><div ng-include="" src="getTemplateURL(&#39;ng-page-challenge-result.tpl.html&#39;)" class="ng-scope"><div ng-controller="SubmissionCtrl as subCtrl" class="ng-scope">
+  <!-- ngIf: CD.isDesign && CD.submissions.length > 0 -->
+
+  <!-- ngIf: !CD.isDesign && CD.submissions.length > 0 && !(CD.challenge.reviewType === 'PEER') -->
+
+  <!-- ngIf: !CD.isDesign && CD.submissions.length > 0 && CD.challenge.reviewType === 'PEER' -->
+
+  <!-- ngIf: !CD.submissions || CD.submissions.length == 0 --><div ng-if="!CD.submissions || CD.submissions.length == 0" class="ng-scope">
+    <div class="notView2">
+      <p>
+        <strong>Submissions are available after the review phase.</strong>
+      </p>
+    </div>
+  </div><!-- end ngIf: !CD.submissions || CD.submissions.length == 0 -->
+
+  <!-- ngInclude:  --><div ng-include="" src="getTemplateURL(&#39;ng-content-submission-single-view.tpl.html&#39;)" class="ng-scope"><div class="submissionSingleView studio ng-scope ng-hide" ng-show="subCtrl.singleViewMode">
+
+  <!-- /.informationViewSlider -->
+
+  <div class="informationView">
+    <div class="basicInfo">
+      <span class="meataAction">
+        <span class="metaDate ng-binding" ng-bind="subCtrl.singleViewSubmission.formattedDate"></span>
+        <span ng-bind="&#39;Views &#39; + subCtrl.singleViewSubmission.viewCounter" class="ng-binding">Views </span>&nbsp;&nbsp;
+        <a ng-href="" class="download ng-binding" ng-bind="&#39;Downloads &#39; + subCtrl.singleViewSubmission.downloadCounter">Downloads </a>
+        <a href="javascript:;" class="back btn btnAlt" ng-click="subCtrl.singleViewMode = false">Back</a>
+      </span>
+      <span class="subNum ng-binding" ng-bind=" &#39;#&#39; + subCtrl.singleViewSubmission.submissionId">#</span>
+      <a ng-href="/member-profile//design" class="handle coderTextOrange ng-binding" ng-bind="subCtrl.singleViewSubmission.submitter" href="https://www.topcoder.com/member-profile//design"></a>
+    </div>
+    <!-- /.basicInfo -->
+    <div class="furtherInfo">
+      <h6>DECLARATION</h6>
+      <div class="commentInfo">
+        <label>Comment:</label>
+        <p><a href="javascript:;" ng-bind="subCtrl.submissionInfo.comment" class="ng-binding"></a></p>
+      </div>
+      <!-- /.furtherInfo -->
+      <div class="fontInfo">
+        <label>Fonts:</label>
+        <!-- ngRepeat: font in subCtrl.submissionInfo.fonts -->
+      </div>
+      <!-- /.fontInfo -->
+      <div class="stockArtInfo">
+        <label>Stock Art:</label>
+        <!-- ngRepeat: stockArt in subCtrl.submissionInfo.stockArts | limitTo : subCtrl.stockArtThreshold -->
+        <!-- remove the jsSeeMore class so we wont use old jquery code. -->
+        <!-- ngIf: subCtrl.submissionInfo.stockArts.length > 3 -->
+        <!-- ngIf: subCtrl.submissionInfo.stockArts.length > 3 -->
+      </div>
+      <!-- /.stockArtInfo -->
+      <div class="clear"></div>
+    </div>
+    <!-- /.furtherInfo -->
+  </div>
+  <!-- /.informationView -->
+
+  <div class="clear"></div>
+
+  <div class="submissionShowcase">
+    <div class="scrollPane" tc-scroll-pane="" style="overflow: hidden; padding: 0px; width: 227px;">
+      
+    <div class="jspContainer" style="width: 227px; height: 680px;"><div class="jspPane" style="padding: 18px 0px 0px; top: 0px; width: 227px;"><ul class="submissionShowcaseList">
+        <!-- ngRepeat: link in subCtrl.singleViewSubmission.previewList -->
+      </ul></div></div></div>
+    <div class="submissionBig">
+      <!-- ngRepeat: link in subCtrl.singleViewSubmission.fullPreviewList -->
+      <p><a href="javascript:;" class="btn btnAlt fullScreenBtn" tc-full-screen="">FULL SCREEN</a></p>
+    </div>
+    <div class="clear"></div>
+  </div>
+  <!-- /.submissionShowcase -->
+</div>
+<!-- /.submissionSingleView --></div>
+
+</div>
+</div>
+        </div>
+        <div id="checkpoints" class="tableWrap hide tab">
+
+
+          <article>
+            <!-- ngInclude:  --><div ng-include="" src="getTemplateURL(&#39;ng-content-checkpoint.tpl.html&#39;)" class="ng-scope"><div ng-show="CD.checkpointData" class="ng-scope ng-hide">
+  <h1>checkpoint WINNERS</h1>
+  <p class="info">The following submissions have received a checkpoint prize.</p>
+  <ul class="winnerList">
+    <!-- ngRepeat: result in CD.checkpointResults -->
+  </ul>
+  <div class="clear"></div>
+  <h1>Checkpoint General Feedback</h1>
+  <div class="generalFeedback">
+    <p class="ng-binding">
+      
+    </p>
+  </div>
+  <h1 class="noBorder">Personal Feedback</h1>
+  <ul class="expandCollaspeList">
+    <!-- ngRepeat: result in CD.checkpointResults -->
+  </ul>
+</div>
+<h1 ng-show="!CD.checkpointData" class="ng-scope">Data is not available.</h1></div>
+          </article>
+
+        </div>
+        <div id="submissions" class="tableWrap hide tab">
+
+
+          <article>
+            <!-- ngInclude:  --><div ng-include="" src="getTemplateURL(&#39;ng-content-submission.tpl.html&#39;)" class="ng-scope"><div ng-controller="SubmissionCtrl as subCtrl" class="ng-scope">
+<!-- ngIf: CD.challenge.currentStatus !== 'Completed' --><article ng-if="CD.challenge.currentStatus !== &#39;Completed&#39; " class="ng-scope">
+  <div class="notView2">
+    <p><strong>This challenge has not completed yet, submissions are viewable only for completed challenges.</strong></p>
+  </div>
+</article><!-- end ngIf: CD.challenge.currentStatus !== 'Completed' -->
+
+<article>
+  <!-- ngIf: CD.challenge.currentStatus === 'Completed' && !CD.challenge.submissionsViewable -->
+</article>
+
+<!-- ngIf: CD.challenge.currentStatus === 'Completed' && CD.challenge.submissionsViewable -->
+<!-- Submission Section End -->
+
+
+<!-- ngIf: CD.challenge.currentStatus === 'Completed' && CD.challenge.submissionsViewable -->
+<!-- Checkpoint Section End -->
+
+<!-- ngInclude:  --><div ng-include="" src="getTemplateURL(&#39;ng-content-submission-single-view.tpl.html&#39;)" class="ng-scope"><div class="submissionSingleView studio ng-scope ng-hide" ng-show="subCtrl.singleViewMode">
+
+  <!-- /.informationViewSlider -->
+
+  <div class="informationView">
+    <div class="basicInfo">
+      <span class="meataAction">
+        <span class="metaDate ng-binding" ng-bind="subCtrl.singleViewSubmission.formattedDate"></span>
+        <span ng-bind="&#39;Views &#39; + subCtrl.singleViewSubmission.viewCounter" class="ng-binding">Views </span>&nbsp;&nbsp;
+        <a ng-href="" class="download ng-binding" ng-bind="&#39;Downloads &#39; + subCtrl.singleViewSubmission.downloadCounter">Downloads </a>
+        <a href="javascript:;" class="back btn btnAlt" ng-click="subCtrl.singleViewMode = false">Back</a>
+      </span>
+      <span class="subNum ng-binding" ng-bind=" &#39;#&#39; + subCtrl.singleViewSubmission.submissionId">#</span>
+      <a ng-href="/member-profile//design" class="handle coderTextOrange ng-binding" ng-bind="subCtrl.singleViewSubmission.submitter" href="https://www.topcoder.com/member-profile//design"></a>
+    </div>
+    <!-- /.basicInfo -->
+    <div class="furtherInfo">
+      <h6>DECLARATION</h6>
+      <div class="commentInfo">
+        <label>Comment:</label>
+        <p><a href="javascript:;" ng-bind="subCtrl.submissionInfo.comment" class="ng-binding"></a></p>
+      </div>
+      <!-- /.furtherInfo -->
+      <div class="fontInfo">
+        <label>Fonts:</label>
+        <!-- ngRepeat: font in subCtrl.submissionInfo.fonts -->
+      </div>
+      <!-- /.fontInfo -->
+      <div class="stockArtInfo">
+        <label>Stock Art:</label>
+        <!-- ngRepeat: stockArt in subCtrl.submissionInfo.stockArts | limitTo : subCtrl.stockArtThreshold -->
+        <!-- remove the jsSeeMore class so we wont use old jquery code. -->
+        <!-- ngIf: subCtrl.submissionInfo.stockArts.length > 3 -->
+        <!-- ngIf: subCtrl.submissionInfo.stockArts.length > 3 -->
+      </div>
+      <!-- /.stockArtInfo -->
+      <div class="clear"></div>
+    </div>
+    <!-- /.furtherInfo -->
+  </div>
+  <!-- /.informationView -->
+
+  <div class="clear"></div>
+
+  <div class="submissionShowcase">
+    <div class="scrollPane" tc-scroll-pane="" style="overflow: hidden; padding: 0px; width: 227px;">
+      
+    <div class="jspContainer" style="width: 227px; height: 680px;"><div class="jspPane" style="padding: 18px 0px 0px; top: 0px; width: 227px;"><ul class="submissionShowcaseList">
+        <!-- ngRepeat: link in subCtrl.singleViewSubmission.previewList -->
+      </ul></div></div></div>
+    <div class="submissionBig">
+      <!-- ngRepeat: link in subCtrl.singleViewSubmission.fullPreviewList -->
+      <p><a href="javascript:;" class="btn btnAlt fullScreenBtn" tc-full-screen="">FULL SCREEN</a></p>
+    </div>
+    <div class="clear"></div>
+  </div>
+  <!-- /.submissionShowcase -->
+</div>
+<!-- /.submissionSingleView --></div>
+
+</div></div>
+          </article>
+
+        </div>
+        </section>
+        </div>
+        <!-- /.mainStream -->
+
+        </div>
+        <!-- /.rightSplit -->
+      <aside class="sideStream grid-1-3" style="float: left;">
+
+      <div class="topRightTitle">
+          <a ng-show="CD.isRegistered" ng-href="http://apps.topcoder.com/forums/?module=Category&amp;categoryID=31678" class="contestForumIcon" target="_blank" href="http://apps.topcoder.com/forums/?module=Category&amp;categoryID=31678">Challenge Discussion</a>
+      </div>
+
+      <div class="columnSideBar">
+
+        <div class="slider">
+          <ul>
+            <div ng-hide="CD.isDesign" class="slideBox">
+              <!-- ngInclude:  --><div ng-include="" src="getTemplateURL(&#39;ng-content-challenge-downloads.tpl.html&#39;)" class="ng-scope"><h3 class="ng-scope">Downloads:</h3>
+<div class="inner ng-scope">
+  <ul class="downloadDocumentList">
+    <!-- ngRepeat: document in CD.challenge.Documents -->
+    <!-- ngIf: CD.challenge.Documents && CD.challenge.Documents.length === 0 && CD.allowDownloads --><li ng-if="CD.challenge.Documents &amp;&amp; CD.challenge.Documents.length === 0 &amp;&amp; CD.allowDownloads" class="ng-scope">
+      <strong>None</strong>
+    </li><!-- end ngIf: CD.challenge.Documents && CD.challenge.Documents.length === 0 && CD.allowDownloads -->
+    <!-- ngIf: !CD.allowDownloads -->
+    <!-- ngIf: !CD.challenge.Documents && CD.allowDownloads && CD.isLoggedIn && !CD.isRegistered -->
+    <!-- ngIf: !CD.challenge.Documents && CD.allowDownloads && !CD.isLoggedIn -->
+  </ul>
+</div>
+</div>
+            </div>
+            <li ng-show="CD.challenge.event" class="slide">
+                <div class="contestLinks slideBox">
+                <h3>Eligible Events:</h3>
+
+                <div class="inner">
+                  <p><a ng-href="//community.topcoder.com/tco16" target="_blank" class="ng-binding" href="https://community.topcoder.com/tco16">2016 TopCoder(R) Open</a></p>
+                </div>
+              </div>
+            </li>
+            <li ng-hide="CD.isDesign" class="slide">
+
+              <div class="reviewStyle slideBox">
+                <h3>Review Style:</h3>
+
+                <div class="inner">
+                  <p><strong>Final Review: </strong><span class="ng-binding">Community Review Board</span>
+                    <a onmouseout="hideTooltip(&#39;FinalReview&#39;);" onmouseover="showTooltip(this, &#39;FinalReview&#39;);" class="tooltip" href="javascript:;"> </a></p>
+
+                  <p><strong>Approval: </strong><span>User Sign-Off</span>
+                    <a onmouseout="hideTooltip(&#39;Approval&#39;);" onmouseover="showTooltip(this, &#39;Approval&#39;);" class="tooltip" href="javascript:;"> </a>
+                  </p>
+                </div>
+
+              </div>
+              <!-- End review style section -->
+
+            </li>
+            <li ng-show="CD.challenge.screeningScorecardId || (!CD.isDesign &amp;&amp; CD.challenge.reviewScorecardId)" class="slide">
+
+              <div class="contestLinks slideBox">
+                <h3>Challenge Links:</h3>
+
+                <div class="inner">
+                  <p ng-show="CD.challenge.screeningScorecardId" class="ng-hide"><a href="https://software.topcoder.com/review/actions/ViewScorecard.do?method=viewScorecard&amp;scid=">Screening
+                      Scorecard</a></p>
+
+                  <p ng-show="!CD.isDesign &amp;&amp; CD.challenge.reviewScorecardId" class=""><a href="http://software.topcoder.com/review/actions/ViewScorecard.do?method=viewScorecard&amp;scid=30001610" target="_blank">Review
+                      Scorecard</a></p>
+                </div>
+
+              </div>
+
+            </li>
+            <li ng-hide="CD.isDesign || CD.isPeerReviewed" class="slide">
+
+              <div class="umltoolLinks slideBox">
+                <h3>Get the UML Tool:</h3>
+
+                <div class="inner">
+                  <p><a href="https://github.com/topcoderinc/topcoder-UML-Tool">Github source code repository</a></p>
+                  <p><a href="https://github.com/topcoderinc/topcoder-UML-Tool/blob/master/build/dist/TopCoder%20UML%20Tool%20OS%20X%201.2.7.zip?raw=true">Mac disk image </a></p>
+                  <p><a href="https://github.com/topcoderinc/topcoder-UML-Tool/blob/master/build/dist/TopCoder_UML_Tool_Installer-1.2.7.jar?raw=true">Java installer</a></p>
+                </div>
+
+              </div>
+              <!-- End review style section -->
+
+            </li>
+
+            <!-- ngIf: CD.isDesign -->
+            <!-- ngIf: CD.isDesign -->
+            <!-- ngIf: CD.isDesign -->
+            <!-- ngIf: CD.isDesign -->
+            <!-- ngIf: CD.isDesign -->
+            <li class="slide">
+              <div class="slideBox">
+                <h3>Share:</h3>
+
+                <div class="inner">
+                  <!-- AddThis Button BEGIN -->
+                  <div class="addthis_toolbox addthis_default_style addthis_32x32_style">
+                    <a class="addthis_button_email addthis_button_preferred_1 at300b" target="_blank" title="Email" href="https://www.topcoder.com/challenge-details/30052650/?type=develop#"><span class="at-icon-wrapper" style="line-height: 32px; height: 32px; width: 32px; background-color: rgb(115, 138, 141);"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 32 32" title="Email" alt="Email" style="width: 32px; height: 32px;" class="at-icon at-icon-email"><g><path d="M26.19 9.55H6.04l10.02 7.57 10.13-7.57zM16.06 19.67l-10.28-8.8v11.58h20.57V10.96l-10.29 8.71z"></path></g></svg></span></a>
+                    <a class="addthis_button_facebook addthis_button_preferred_2 at300b" title="Facebook" href="https://www.topcoder.com/challenge-details/30052650/?type=develop#"><span class="at-icon-wrapper" style="line-height: 32px; height: 32px; width: 32px; background-color: rgb(59, 89, 152);"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 32 32" title="Facebook" alt="Facebook" style="width: 32px; height: 32px;" class="at-icon at-icon-facebook"><g><path d="M21 6.144C20.656 6.096 19.472 6 18.097 6c-2.877 0-4.85 1.66-4.85 4.7v2.62H10v3.557h3.247V26h3.895v-9.123h3.234l.497-3.557h-3.73v-2.272c0-1.022.292-1.73 1.858-1.73h2V6.143z" fill-rule="evenodd"></path></g></svg></span></a>
+                    <a class="addthis_button_twitter addthis_button_preferred_3 at300b" title="Tweet" href="https://www.topcoder.com/challenge-details/30052650/?type=develop#"><span class="at-icon-wrapper" style="line-height: 32px; height: 32px; width: 32px; background-color: rgb(85, 172, 238);"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 32 32" title="Twitter" alt="Twitter" style="width: 32px; height: 32px;" class="at-icon at-icon-twitter"><g><path d="M26.67 9.38c-.78.35-1.63.58-2.51.69.9-.54 1.6-1.4 1.92-2.42-.85.5-1.78.87-2.78 1.06a4.38 4.38 0 0 0-7.57 3c0 .34.04.68.11 1-3.64-.18-6.86-1.93-9.02-4.57-.38.65-.59 1.4-.59 2.2 0 1.52.77 2.86 1.95 3.64-.72-.02-1.39-.22-1.98-.55v.06c0 2.12 1.51 3.89 3.51 4.29a4.37 4.37 0 0 1-1.97.07c.56 1.74 2.17 3 4.09 3.04a8.82 8.82 0 0 1-5.44 1.87c-.35 0-.7-.02-1.04-.06a12.43 12.43 0 0 0 6.71 1.97c8.05 0 12.45-6.67 12.45-12.45 0-.19-.01-.38-.01-.57.84-.62 1.58-1.39 2.17-2.27z"></path></g></svg></span></a>
+                    <a class="addthis_button_print addthis_button_preferred_4 at300b" title="Print" href="https://www.topcoder.com/challenge-details/30052650/?type=develop#"><span class="at-icon-wrapper" style="line-height: 32px; height: 32px; width: 32px; background-color: rgb(115, 138, 141);"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 32 32" title="Print" alt="Print" style="width: 32px; height: 32px;" class="at-icon at-icon-print"><g><path d="M24.67 10.62h-2.86V7.49H10.82v3.12H7.95c-.5 0-.9.4-.9.9v7.66h3.77v1.31L15 24.66h6.81v-5.44h3.77v-7.7c-.01-.5-.41-.9-.91-.9zM11.88 8.56h8.86v2.06h-8.86V8.56zm10.98 9.18h-1.05v-2.1h-1.06v7.96H16.4c-1.58 0-.82-3.74-.82-3.74s-3.65.89-3.69-.78v-3.43h-1.06v2.06H9.77v-3.58h13.09v3.61zm.75-4.91c-.4 0-.72-.32-.72-.72s.32-.72.72-.72c.4 0 .72.32.72.72s-.32.72-.72.72zm-4.12 2.96h-6.1v1.06h6.1v-1.06zm-6.11 3.15h6.1v-1.06h-6.1v1.06z"></path></g></svg></span></a>
+                    <a class="addthis_button_compact at300m" href="https://www.topcoder.com/challenge-details/30052650/?type=develop#"><span class="at-icon-wrapper" style="line-height: 32px; height: 32px; width: 32px; background-color: rgb(252, 109, 76);"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 32 32" title="Compact" alt="Compact" style="width: 32px; height: 32px;" class="at-icon at-icon-addthis"><g><path d="M25.07 13.74h-6.71V7.03h-4.47v6.71H7.18v4.47h6.71v6.71h4.47v-6.71h6.71z"></path></g></svg></span></a>
+                    <a class="addthis_counter addthis_bubble_style" href="https://www.topcoder.com/challenge-details/30052650/?type=develop#" style="display: inline-block;"><a class="addthis_button_expanded" target="_blank" title="View more services" href="https://www.topcoder.com/challenge-details/30052650/?type=develop#">0</a><a class="atc_s addthis_button_compact"><span></span></a></a>
+                  <div class="atclear"></div></div>
+                  <script type="text/javascript">var addthis_config = {"data_track_addressbar": false};
+                    var addthis_share = { url: location.href, title: 'Topcoder Challenge' }</script>
+                  <script type="text/javascript" src="./XML to JSON Converter Challenge_files/addthis_widget.js"></script>
+                  <!-- AddThis Button END -->
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+
+      </aside>
+      <!-- /.sideStream -->
+      <div class="clear"></div>
+    </div>
+    <!-- /.container -->
+  </article>
+  <!-- /#mainContent -->
+
+
+  <div onmouseout="hideTooltip(&#39;FinalReview&#39;)" onmouseover="enterTooltip(&#39;FinalReview&#39;)" class="tip reviewStyleTip tipFinalReview" style="display: none;">
+    <div class="inner">
+      <div class="tipHeader">
+        <h2>Final Review</h2>
+      </div>
+      <div class="tipBody ng-binding">
+      <!--Bugfix refactored-challenge-details-117: Removed unused hyperlink-->
+      Community Review Board performs a thorough review based on scorecards.
+      </div>
+      <div class="corner tl"></div>
+      <div class="corner tr"></div>
+      <div class="corner bl"></div>
+      <div class="corner br"></div>
+    </div>
+    <div class="shadow"></div>
+  </div>
+
+  <div onmouseout="hideTooltip(&#39;Approval&#39;)" onmouseover="enterTooltip(&#39;Approval&#39;)" class="tip reviewStyleTip tipApproval" style="display: none;">
+    <div class="inner">
+      <div class="tipHeader">
+        <h2>Approval</h2>
+      </div>
+      <div class="tipBody">
+        Customer has final opportunity to sign-off on the delivered assets.
+      </div>
+      <div class="corner tl"></div>
+      <div class="corner tr"></div>
+      <div class="corner bl"></div>
+      <div class="corner br"></div>
+    </div>
+    <div class="shadow"></div>
+  </div>
+</div>
+
+
+<footer class="bottom-footer">
+  <!-- Footer links -->
+  <nav class="menu-item">
+    <div class="menu-item-header show-small">OTHERS</div>
+    <ul class="submenu">
+      <li class="submenu-item"><a ng-click="$event.stopPropagation();" href="https://www.topcoder.com/sitemap" class="menu-link">SITEMAP</a></li>
+      <li class="submenu-item"><a ng-click="$event.stopPropagation();" href="https://www.topcoder.com/about" class="menu-link">ABOUT US</a></li>
+      <li class="submenu-item"><a ng-click="$event.stopPropagation();" href="https://www.topcoder.com/contact-us" class="menu-link">CONTACT US</a></li>
+      <li class="submenu-item"><a ng-click="$event.stopPropagation();" href="http://help.topcoder.com/" target="_blank" class="menu-link">HELP CENTER</a></li>
+      <li class="submenu-item"><a ng-click="$event.stopPropagation();" href="http://topcoder.com/community/how-it-works/privacy-policy/" class="menu-link">PRIVACY POLICY</a></li>
+      <li class="submenu-item"><a ng-click="$event.stopPropagation();" href="http://topcoder.com/community/how-it-works/terms/" class="menu-link">TERMS</a></li>
+    </ul>
+    <!-- Social links -->
+  </nav>
+  <div class="social-links">
+    <p>Topcoder is also on</p><a href="https://www.facebook.com/topcoder" target="fbwindow" class="fb-link"></a><a href="http://www.twitter.com/topcoder" target="twwindow" class="twitter-link"></a><a href="https://www.linkedin.com/company/topcoder" target="liwindow" class="linkedin-link"></a><a href="https://plus.google.com/u/0/b/104268008777050019973/104268008777050019973/posts" target="gpwindow" class="google-link"></a>
+  </div>
+  <p class="copyright-notice">© 2015 Topcoder. All Rights Reserved</p>
+</footer>
+
+
+
+
+</div>
+<!-- /.content -->
+</div>
+<!-- /#wrapper -->
+
+
+<div id="bgModal"></div><!-- background modal -->
+<div id="bgOverlapModal"></div><!-- background modal -->
+<div id="bgLoadingModal"><span></span></div><!-- background loading -->
+<div id="thanks" class="modal">
+  <a href="javascript:;" class="closeBtn closeModal"></a>
+
+  <div class="content">
+    <h2>Thanks for joining!</h2>
+
+    <p>We have sent you an email with activation instructions.<br>If you do not receive that email within 1 hour,
+      please email <a href="mailto:support@topcoder.com">support@topcoder.com</a>.</p>
+
+    <div>
+      <a href="javascript:;" class="btn closeModal redirectOnConfirm">Close</a>
+    </div>
+  </div>
+</div><!-- END #thanks -->
+<div id="registerSuccess" class="modal">
+  <a href="javascript:;" class="btnClose closeModal"></a>
+  <div class="content">
+    <h2>Registered!</h2>
+    <p class="success">Thank you for registering. You may now download the challenge files and participate in the challenge forums.</p>
+    <p class="submitBtn">
+      <a class="btn closeModalReg" href="javascript:;">OK</a>
+    </p>
+  </div>
+</div><!-- END #registerSuccess -->
+<div id="registerFailed" class="modal">
+  <a href="javascript:;" class="btnClose closeModal"></a>
+  <div class="content">
+    <h2>Info</h2>
+    <p class="failedMessage"></p>
+    <p class="submitBtn">
+      <a class="btn closeModal" href="javascript:;">OK</a>
+    </p>
+  </div>
+</div><!-- END #registerFailed -->
+
+<div id="showSubmission" class="modal">
+    <a href="javascript:;" class="btnClose closePopupModal"></a>
+    <div class="content">
+       <img alt="" style="width:910px; height:850px">
+    </div>
+</div><!-- END #show submission -->
+
+<div id="filterSavedSuccess" class="modal">
+  <a href="javascript:;" class="btnClose closeModal"></a>
+  <div class="content">
+    <h2>Success</h2>
+    <p class="success">Your filters have been saved and stored in the "My Filters" dropdown list.</p>
+    <p class="submitBtn">
+      <a class="btn closeModal" href="javascript:;">OK</a>
+    </p>
+  </div>
+</div><!-- END #filterSavedSuccess -->
+
+<div id="filterSavedFailed" class="modal">
+  <a href="javascript:;" class="btnClose closeModal"></a>
+  <div class="content">
+    <h2>Info</h2>
+    <p class="failedMessage"></p>
+    <p class="submitBtn">
+      <a class="btn closeModal" href="javascript:;">OK</a>
+    </p>
+  </div>
+</div><!-- END #filterSavedFailed -->
+
+<div id="designSubmissionCommentExample" class="modal">
+  <a href="javascript:;" class="btnClose closeModal"></a>
+  <div class="content">
+    <h2>Comment Examples</h2>
+
+    <strong>Example 1:</strong><br>
+    The logo represents movement and "taking action" rather than being stagnant.
+    The colors I chose signify power and give the brand a strong feel.<br><br>
+
+    <strong>Example 2:</strong><br>
+    This is a revised version of my previous submission. Changes include a new
+    header graphic, new font choices for the pop-up box and new icons for the
+    widget on the fourth page.<br><br>
+
+    <strong>Example 3:</strong><br>
+    This is my Round 2 submission. I have implemented all of the feedback you
+    gave me after Round 1 and I hope you like the changes.<br><br>
+  </div>
+</div><!-- END #show submission -->
+
+<div id="typeTooltip" class="tooltip hide">
+  <div class="inner">
+    <header></header>
+    <div class="data">
+      <p class="contestTy"></p>
+    </div>
+    <div class="arrow"></div>
+  </div>
+</div><!-- /.tooltip -->
+<div id="winnerTooltip" class="tooltip hide">
+  <div class="inner">
+    <header></header>
+    <div class="data">
+      <div class="winnerInfo"></div>
+    </div>
+    <div class="arrow alt"></div>
+  </div>
+</div><!-- /.tooltip -->
+<div id="badgeTooltip" class="tooltip hide">
+  <div class="inner">
+    <header></header>
+    <div class="data">
+      <p class="earnedOn"></p>
+    </div>
+    <div class="data">
+      <p class="currentlyEarned"><span></span></p>
+    </div>
+    <div class="arrow"></div>
+  </div>
+</div><!-- /.tooltip -->
+
+<script type="text/javascript" src="./XML to JSON Converter Challenge_files/jquery.min.js"></script>
+<script type="text/javascript" src="./XML to JSON Converter Challenge_files/angular.min.js"></script>
+<script type="text/javascript" src="./XML to JSON Converter Challenge_files/angular-animate.min.js"></script>
+<script type="text/javascript" src="./XML to JSON Converter Challenge_files/angular-route.min.js"></script>
+<script type="text/javascript" src="./XML to JSON Converter Challenge_files/underscore-min.js"></script>
+<script type="text/javascript" src="./XML to JSON Converter Challenge_files/restangular.min.js"></script>
+<script type="text/javascript" src="./XML to JSON Converter Challenge_files/ng-grid.min.js"></script>
+<script type="text/javascript" src="./XML to JSON Converter Challenge_files/ng-grid-flexible-height.js"></script>
+<script type="text/javascript" src="./XML to JSON Converter Challenge_files/angular-cookies.min.js"></script>
+<script type="text/javascript" src="./XML to JSON Converter Challenge_files/angular-ui-router.min.js"></script>
+<script type="text/javascript" src="./XML to JSON Converter Challenge_files/jquery-ui.min.js"></script>
+<script type="text/javascript" src="./XML to JSON Converter Challenge_files/Selectyze.jquery.js"></script>
+<script type="text/javascript" src="./XML to JSON Converter Challenge_files/tcapi.js"></script>
+<script type="text/javascript" src="./XML to JSON Converter Challenge_files/auth0-1.6.4.js"></script>
+<script type="text/javascript" src="./XML to JSON Converter Challenge_files/ng-details.min.js"></script>
+<!-- START Marketo Code -->
+<script type="text/javascript">
+document.write(unescape("%3Cscript src='//munchkin.marketo.net/munchkin.js' type='text/javascript'%3E%3C/script%3E"));
+</script><script src="./XML to JSON Converter Challenge_files/munchkin(1).js" type="text/javascript"></script>
+<script>Munchkin.init('921-UOU-112', {"wsInfo":"jFRS"});</script>
+<!-- END Marketo Code -->
+
+<!-- START KISSmetrics -->
+<script type="text/javascript">var _kmq = _kmq || [];
+var _kmk = _kmk || 'aa23cd43c455ef33b6a0df3de81a79af9ea30f75';
+function _kms(u){
+  setTimeout(function(){
+    var d = document, f = d.getElementsByTagName('script')[0],
+    s = d.createElement('script');
+    s.type = 'text/javascript'; s.async = true; s.src = u;
+    f.parentNode.insertBefore(s, f);
+  }, 1);
+}
+_kms('//i.kissmetrics.com/i.js');
+_kms('//doug1izaerwt3.cloudfront.net/' + _kmk + '.1.js');
+</script>
+<!-- END KISSmetrics -->
+
+<!-- START Google Analytics -->
+<script type="text/javascript">
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','__gaTracker');
+
+  __gaTracker('create', 'UA-6340959-1', 'auto');
+  __gaTracker('set', 'forceSSL', true);
+  __gaTracker('require', 'displayfeatures');
+  __gaTracker('send','pageview');
+</script>
+<!-- END Google Analytics -->
+
+<script>
+(function() {
+  var headerApp = angular.module('tc.header', [])
+  headerApp.directive('ngHeaderBootstrap', function(){
+    return {
+      restrict: 'C',
+      templateUrl: tcconfig.mainURL + '/mf/js/app/header/partials/header-nav.html',
+      controller: function($scope, $timeout){
+        $scope.vm = vm = {};
+        $scope.main = {};
+        $scope.main.menuVisible = false;
+        vm.isAuth = false;
+
+        if (app.isLoggedIn()) {
+          vm.isAuth = true;
+          app.getHandle(function(handle) {
+            $.get(tcconfig.apiURL + '/users/' + handle, function(data) {
+              var photoLink = data['photoLink'];
+              if (photoLink) {
+                if (photoLink.indexOf('//') == -1) {
+                  photoLink = tcconfig.communityURL + data['photoLink']
+                }
+              } else {
+                photoLink = tcconfig.communityURL + '/i/m/nophoto_login.gif';
+              }
+              
+              var color = '';
+              var ratings = data['ratingSummary'];
+              if (ratings) {
+                var maxRating = 0;
+                for (var i = 0; i < ratings.length; i++) {
+                  if (maxRating < ratings[i]['rating']) {
+                    maxRating = ratings[i]['rating'];
+                    color = ratings[i]['colorStyle'].split(": ")[1];
+                  }
+                }
+              } else if (data['isPM'] == true) {
+                color = '#FF9900';
+              }
+              
+              $timeout(function() {
+                vm.handleStyle = { color: color };
+                vm.photoURL = photoLink;
+              });
+            });
+
+            $timeout(function() {
+              vm.userHandle = handle;
+              vm.userMenu = [
+                { 'href': '/my-dashboard', 'text': 'DASHBOARD', 'icon': '/mf/i/nav/dashboard.svg' },
+                { 'href': '/members/' + handle, 'text': 'MY PROFILE', 'icon': '/mf/i/nav/profile.svg' },
+                { 'href': 'https:' + tcconfig.communityURL + '/PactsMemberServlet?module=PaymentHistory&full_list=false', 'text': 'PAYMENTS', 'icon': '/mf/i/nav/wallet.svg' },
+                { 'href': '/settings/profile', 'text': 'SETTINGS', 'icon': '/mf/i/nav/settings.svg' },
+              ];
+            });
+          });
+        }
+
+        vm.menuHeaders = [ 'compete', 'learn', 'community' ];
+        vm.menuLinks =
+        {
+          'compete': [
+              { 'href':  "/challenges/design/active/?pageIndex=1", 'text': 'DESIGN CHALLENGES', 'icon': '/mf/i/nav/track-design.svg' },
+              { 'href':  "/challenges/develop/active/?pageIndex=1", 'text': 'DEVELOPMENT CHALLENGES', 'icon': '/mf/i/nav/track-develop.svg' },
+              { 'href':  "/challenges/data/active/?pageIndex=1", 'text': 'DATA SCIENCE CHALLENGES', 'icon': '/mf/i/nav/track-data.svg' },
+              { 'href':  'https:' + tcconfig.arenaURL, 'text': 'COMPETITIVE PROGRAMMING', 'icon': '/mf/i/nav/track-cp.svg', 'target': '_blank' },
+          ],
+          'learn': [
+              { 'href': '/getting-started/', 'text': 'GETTING STARTED', 'icon': '/mf/i/nav/rocket.svg' },
+              { 'href': '/community/design/', 'text': 'DESIGN', 'icon': '/mf/i/nav/book-design.svg' },
+              { 'href': '/community/development/', 'text': 'DEVELOPMENT', 'icon': '/mf/i/nav/book-develop.svg' },
+              { 'href': '/community/data-science/', 'text': 'DATA SCIENCE', 'icon': '/mf/i/nav/book-data.svg' },
+              { 'href': '/community/competitive%20programming/', 'text': 'COMPETITIVE PROGRAMMING', 'icon': '/mf/i/nav/book-cp.svg' },
+          ],
+          'community': [
+              { 'href': '/community/members/', 'text': 'OVERVIEW', 'icon': '/mf/i/nav/members.svg' },
+              { 'href': '/community/member-programs/', 'text': 'PROGRAMS', 'icon': '/mf/i/nav/programs.svg' },
+              { 'href': 'https://' + tcconfig.forumsAppURL, 'text': 'FORUMS', 'icon': '/mf/i/nav/forums.svg' },
+              { 'href': '/community/statistics/', 'text': 'STATISTICS', 'icon': '/mf/i/nav/statistics.svg' },
+              { 'href': '/community/events/', 'text': 'EVENTS', 'icon': '/mf/i/nav/events.svg' },
+              { 'href': '/blog/', 'text': 'BLOG', 'icon': '/mf/i/nav/blog.svg' }
+          ]
+        };
+
+        vm.checkSubmit = function(ev) {
+          if (ev.keyCode === 13)
+            window.location.replace(tcconfig.mainURL + '/search?s=' + vm.searchTerm + '&scope=member');
+        }
+
+        vm.isActive = function(href) {
+          if (window.location.pathname == href)
+            return true;
+          return false;
+        }
+
+        vm.login = function() {
+          window.location.href = "/login?next=" + encodeURIComponent(window.location.href);
+        }
+
+        vm.logout = function() {
+          document.cookie = 'tcsso=; path=/; domain=.' + tcconfig.domain + '; expires=' + new Date(0).toUTCString();
+          document.cookie = 'tcjwt=; path=/; domain=.' + tcconfig.domain + '; expires=' + new Date(0).toUTCString();
+          main.menuVisible = vm.isAuth = false;
+          window.location.href = '/logout';
+        }
+      }
+    };
+  });
+
+  angular.bootstrap($('.ng-header-bootstrap'), ['tc.header']);
+})();
+</script>
+
+</div><div id="_atssh" style="visibility: hidden; height: 1px; width: 1px; position: absolute; top: -9999px; z-index: 100000;"><iframe id="_atssh886" title="AddThis utility frame" src="./XML to JSON Converter Challenge_files/sh.c484f296442c4cec3c78eab5.html" style="height: 1px; width: 1px; position: absolute; top: 0px; z-index: 100000; border: 0px; left: 0px;"></iframe></div>
+
+
+
+
+
+<style id="service-icons-0"></style></body></html>

@@ -1,0 +1,1 @@
+curl -v -F file=@.\RU50-209-2013-913051-1739668.xml http://localhost:8080/api/events

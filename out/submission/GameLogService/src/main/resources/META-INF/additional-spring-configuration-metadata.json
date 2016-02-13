@@ -1,0 +1,5 @@
+{"properties": [{
+  "name": "db.collections.name",
+  "type": "java.lang.String",
+  "description": "Name of the collections which will contain games events"
+}]}

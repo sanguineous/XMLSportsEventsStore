@@ -1,0 +1,68 @@
+{
+	"id": "ff3ffa3b-ed92-4593-5886-c0b8376a0091",
+	"name": "GameServiceAPI",
+	"description": "",
+	"order": [
+		"2a97d9a1-94e5-d445-3c9c-ed6e29f0e672",
+		"99b86913-8274-e2c0-1263-36ec2677203e"
+	],
+	"folders": [],
+	"timestamp": 1453378198412,
+	"owner": "",
+	"remoteLink": "",
+	"public": false,
+	"requests": [
+		{
+			"id": "2a97d9a1-94e5-d445-3c9c-ed6e29f0e672",
+			"headers": "",
+			"url": "http://{{host}}:{{port}}/api/events",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "POST",
+			"data": [
+				{
+					"key": "file",
+					"value": "RU50-209-2013-913051-1739668.xml",
+					"type": "file",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1453387830776,
+			"name": "Upload an XML event",
+			"description": "",
+			"collectionId": "ff3ffa3b-ed92-4593-5886-c0b8376a0091",
+			"responses": []
+		},
+		{
+			"id": "99b86913-8274-e2c0-1263-36ec2677203e",
+			"headers": "Content-Type: application/xml\n",
+			"url": "http://{{host}}:{{port}}/api/matches/913051",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "GET",
+			"data": [
+				{
+					"key": "file",
+					"value": null,
+					"type": "file",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1453388022983,
+			"name": "Get events for game with id 913051",
+			"description": "",
+			"collectionId": "ff3ffa3b-ed92-4593-5886-c0b8376a0091",
+			"responses": []
+		}
+	]
+}

@@ -1,0 +1,6 @@
+com\opta\gamelogservice\service\GameLogQueryService.class
+com\opta\gamelogservice\rest\MatchResource.class
+com\opta\gamelogservice\service\GameLogService.class
+com\opta\gamelogservice\GameLogServiceApplication.class
+com\opta\gamelogservice\rest\EventFeedResource.class
+com\opta\gamelogservice\rest\BadRequestException.class
